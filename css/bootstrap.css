@@ -75,15 +75,21 @@ body {
   outline: 0 !important;
 }
 .fondito{
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
+  background-image: url(../recursos/fondo2.jpg);
+  /* background-repeat: no-repeat; */
+  
 }
 
 .inicio-fondo{
   background-color: #000000 !important;
   border-radius: 20px;
-  margin-bottom: 88px !important;
-  margin-top: 80px !important;
-  padding: 70px  !important;
+  margin-bottom: 10vh !important;
+  /* margin-bottom: 88px !important; */
+  margin-top: 10vh !important;
+  /* margin-top: 80px !important; */
+  padding: 8vh  !important;
+  /* padding: 70px  !important; */
   font-size: 2vh !important;
 }
 

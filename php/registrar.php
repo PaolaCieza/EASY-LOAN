@@ -3,6 +3,8 @@ require_once("conexion.php");
 
 $nombre = $_POST["txtnombre"];
 $apellidos = $_POST["txtapellidos"];
+$dni = $_POST["txtdni"];
+$fecha = $_POST["txtfecha"];
 $sexo = $_POST["txtsexo"];
 $correo = $_POST["txtcorreo"];
 $usuario = $_POST["txtusuario"];
@@ -14,7 +16,8 @@ if ($sexo = 'masculino') {
     $sexo = false;
 }
 
-$sql= "INSERT INTO persona values(DEFAULT, '$nombre', '$apellidos','$sexo','$correo','$usuario','$contraseña')";
+$sql= "INSERT INTO usuario VALUES ((select coalesce(max(id),0)+1 from usuario), '$nombre', '$apellidos', '$dni',
+							'$fecha', '$sexo', '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT);";
 
 $rs = $cnx -> query($sql);
 

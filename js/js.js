@@ -79,17 +79,17 @@ function iniciarSesion(a){
 	if(a==0){
 		var user = $("#txtusuario").val();
 		$.ajax({
-		  url: 'login.php',
+		  url: '../php/login.php',
 		  type: 'post',
 		  data: {"txtuser":user, "a":1},
 		  success: function( data ){
 			if(data == 1){
-				window.location.href="index_pass.php";
+				window.location.href="../html/iniciarsesion2.html";
 			}
 			else{
 				Swal.fire({
-					title: '¡Eror al iniciar sesion!',
-					text: "Revisa bien tus datos",
+					title: '¡Usuario no encontrado!',
+					text: "Revisa bien tus datos o registrate",
 					type: 'error',
 					showCancelButton: false,
 					confirmButtonColor: '#FF4242',
@@ -97,7 +97,7 @@ function iniciarSesion(a){
 					confirmButtonText: 'Volver a intentar'
 				  }).then((result) => {
 					if (result.value) {
-					  location.reload();
+					  //location.reload();
 					}
 					else{
 					  //window.location.href="login.html";
@@ -111,9 +111,9 @@ function iniciarSesion(a){
 	  });
 	}
 	else{
-		var pass = $("#txtpassw").val();
+		var pass = $("#txtcontraseña").val();
 		$.ajax({
-		  url: 'login.php',
+		  url: '../php/login.php',
 		  type: 'post',
 		  data: {"txtpass":pass,"a":2},
 		  success: function( data ){
@@ -128,16 +128,16 @@ function iniciarSesion(a){
 					confirmButtonText: 'Aceptar'
 				  }).then((result) => {
 					if (result.value) {
-					  window.location.href="persona.php";
+					  window.location.href="index.html";
 					}
 					else{
-					  window.location.href="persona.php";
+					  window.location.href="index.html";
 					}
 				  }) 
 			}
 			else{
 				Swal.fire({
-					title: '¡Eror al iniciar sesion!',
+					title: '¡Error al iniciar sesion!',
 					text: "Revisa bien tus datos",
 					type: 'error',
 					showCancelButton: false,
@@ -163,7 +163,6 @@ function iniciarSesion(a){
 
 
   function validar(){
-
     var forms = document.getElementsByClassName('needs-validation');
     var validation = Array.prototype.filter.call(forms, function(form) {
         if (form.checkValidity() === false) {

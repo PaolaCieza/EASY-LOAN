@@ -15,6 +15,10 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/jquery-ui.js"></script>
+  <script type="text/javascript" src="../js/js.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.6/dist/sweetalert2.all.min.js"></script>
   <title>INICIAR SESION</title>
 </head>
 
@@ -33,17 +37,21 @@
   </nav>
 
   <div class="container">
-    <div class="inicio-fondo col-6 offset-3   ">
-      <h1 class="text-center text-warning ">INICIAR SESION</h1> <br>
-      <form action="../php/login.php" method="POST">
-        <span class="text-white mb-5 ">USUARIO</span>
-        <input type="text" class="form-control" name="txtusuario" placeholder="Ingrese su usuario aquí...."> <br>
-        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-          <input type="submit" value="INGRESAR CONTRASEÑA" class="btn btn-warning ">
-      </div>
-        <br>
-      </form>
+    <div class="row">
+        <div class="inicio-fondo col-6 offset-3">
+            <h1 class="text-center text-warning ">INICIAR SESION</h1> <br>
+            <form>     
+              <div class="from-group">
+                <label class="text-white" for="txtusuario">USUARIO</label>
+                <input type="text" class="form-control" name="txtusuario" id="txtusuario" placeholder="Ingrese su usuario aquí...."> <br>
+                <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" ></div>
+              <button type="button" class="btn btn-warning" onclick="iniciarSesion(0)" id="btn_envio" >SIGUIENTE</button>
+              </div>
+              <br>
+            </form>
+          </div>
     </div>
+
   </div>
   
   <footer class="page-footer font-small unique-color-dark " style="background-color: black;  color: white; ">

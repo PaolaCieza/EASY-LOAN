@@ -4,7 +4,7 @@ CREATE TABLE NIVEL(
 	MONTO_MAX	MONEY			NOT NULL
 );
 
-CREATE TABLE USUARIO(
+CREATE TABLE CLIENTE(
 	ID 			INT 							NOT NULL 		PRIMARY KEY,
 	NOMBRE 		VARCHAR(50) 					NOT NULL,
 	APELLIDO 	VARCHAR(50) 					NOT NULL,
@@ -25,11 +25,11 @@ INSERT INTO NIVEL VALUES (3, 'INTERMEDIO', 25);
 INSERT INTO NIVEL VALUES (4, 'AVANZADO', 25);
 INSERT INTO NIVEL VALUES (5, 'PRO', 25);
 
-INSERT INTO usuario
+INSERT INTO cliente
 	VALUES (1, 'Jesús Fernando', 'Luján Piscoya', '75553596', '1998-08-04', true,'jesusfer_nan2@hotmail.com' ,
 			'fernando10','fernando123', DEFAULT, DEFAULT);
 
-SELECT * FROM usuario INNER JOIN NIVEL ON ID_NIVEL = NIVEL.ID
+SELECT * FROM cliente INNER JOIN NIVEL ON ID_NIVEL = NIVEL.ID
 
 INSERT INTO public.usuario(
 	id, nombre, apellido, dni, fecha_nac, sexo, email, usuario, clave, id_nivel, tipo, fotousuario)
@@ -37,10 +37,13 @@ INSERT INTO public.usuario(
 
 
 -- codigo de php 
-INSERT INTO usuario VALUES ((select coalesce(max(id),0)+1 from usuario), '$nombre', '$apellidos', '$dni',
+INSERT INTO cliente VALUES ((select coalesce(max(id),0)+1 from usuario), '$nombre', '$apellidos', '$dni',
 							'$fecha', '$sexo', '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT);
+SELECT * FROM NIVEL
 
-delete  from usuario where id = 2;
+SELECT * FROM cliente where usuario = 'fernando10' and clave = 'fernando123'
+
+
 
 
 

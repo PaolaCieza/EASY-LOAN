@@ -2,94 +2,21 @@ function inicio(){
 	listaproductos(1);	
 }
 
-function listaproductos(columna){
-    $.ajax({
-        url: 'php/listar.php',
-        type: 'post',
-        data: {'columna': columna},
-        success: function( data ){
-        	$("#listaproductos").html(data);
-        },
-        error: function( jqXhr, textStatus, error ){
-            console.log( error );
-        }
-    });
-}
-
-function editar(id){
-    $.ajax({
-        url: 'php/modificar.php',
-        type: 'post',
-        data: {'id': id},
-        success: function( data ){
-            data = JSON.parse(data);
-            $('#idproducto').val(id);
-            $('#txtnombres').val(data.nombre);
-            $('#txtcantidad').val(data.autor);
-            $('#txtdescripcion').val(data.descripcion);
-            $('#txtusuario').val(data.usuario);
-        },
-        error: function( jqXhr, textStatus, error ){
-            console.log( error );
-        }
-    });
-}
-
-function buscar(letras){
-    $.ajax({
-        url: 'php/buscar.php',
-        type: 'post',
-        data: {'letras': letras},
-        success: function( data ){
-        	$("#listaproductos").html(data);
-        },
-        error: function( jqXhr, textStatus, error ){
-            console.log( error );
-        }
-    });
-}
-
-$('#buscarxnombre').keyup(function (e) { 
-    buscar(e.target.value);
-    
-});
-
-function eliminar(id){
-	$.ajax({
-        url: 'php/eliminar.php',
-        type: 'post',
-        data: {'idproducto':id},
-        success: function( data ){
-        	if(data==1){
-        		$("#divmsg").html("Registro eliminado");
-        		listaproductos(1);
-        	} else {
-        		$("#divmsg").html("Error al eliminar el registro");
-        	}
-			console.log(data);
-        },
-        error: function( jqXhr, textStatus, error ){
-            console.log( error );
-        }
-    });
-}
-
-
 function iniciarSesion(a){
 	if(a==0){
 		var user = $("#txtusuario").val();
 		$.ajax({
-		  url: '../php/login.php',
+		  url: 'login.php',
 		  type: 'post',
 		  data: {"txtuser":user, "a":1},
 		  success: function( data ){
 			if(data == 1){
-				window.location.href="../html/iniciarsesion2.html";
+				window.location.href="index_pass.php";
 			}
 			else{
 				Swal.fire({
-					title: '¡Usuario no encontrado!',
-					text: "Revisa bien tus datos o registrate",
+					title: '¡Eror al iniciar sesion!',
+					text: "Revisa bien tus datos",
 					type: 'error',
 					showCancelButton: false,
 					confirmButtonColor: '#FF4242',
@@ -97,7 +24,7 @@ function iniciarSesion(a){
 					confirmButtonText: 'Volver a intentar'
 				  }).then((result) => {
 					if (result.value) {
-					  //location.reload();
+					  location.reload();
 					}
 					else{
 					  //window.location.href="login.html";
@@ -111,9 +38,9 @@ function iniciarSesion(a){
 	  });
 	}
 	else{
-		var pass = $("#txtcontraseña").val();
+		var pass = $("#txtpassw").val();
 		$.ajax({
-		  url: '../php/login.php',
+		  url: 'login.php',
 		  type: 'post',
 		  data: {"txtpass":pass,"a":2},
 		  success: function( data ){
@@ -128,6 +55,7 @@ function iniciarSesion(a){
 					confirmButtonText: 'Aceptar'
 				  }).then((result) => {
 					if (result.value) {
+
 					  window.location.href="../index.html";
 					}
 					else{
@@ -137,7 +65,7 @@ function iniciarSesion(a){
 			}
 			else{
 				Swal.fire({
-					title: '¡Error al iniciar sesion!',
+					title: '¡Eror al iniciar sesion!',
 					text: "Revisa bien tus datos",
 					type: 'error',
 					showCancelButton: false,

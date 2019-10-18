@@ -19,8 +19,9 @@ if ($sexo = 'masculino') {
 $sql= "INSERT INTO cliente VALUES ((select coalesce(max(id),0)+1 from usuario), '$nombre', '$apellidos', '$dni',
 							'$fecha', '$sexo', '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT);";
 
-$rs = $cnx -> query($sql);
-
-header("location: ../index.html");
+$resp=1;
+$cnx -> query($sql) or $resp=$sql;
+echo $resp;
+// header("location: ../index.html");
 
 ?>

@@ -1,80 +1,3 @@
-function inicio(){
-	listaproductos(1);	
-}
-
-function listaproductos(columna){
-    $.ajax({
-        url: 'php/listar.php',
-        type: 'post',
-        data: {'columna': columna},
-        success: function( data ){
-        	$("#listaproductos").html(data);
-        },
-        error: function( jqXhr, textStatus, error ){
-            console.log( error );
-        }
-    });
-}
-
-function editar(id){
-    $.ajax({
-        url: 'php/modificar.php',
-        type: 'post',
-        data: {'id': id},
-        success: function( data ){
-            data = JSON.parse(data);
-            $('#idproducto').val(id);
-            $('#txtnombres').val(data.nombre);
-            $('#txtcantidad').val(data.autor);
-            $('#txtdescripcion').val(data.descripcion);
-            $('#txtusuario').val(data.usuario);
-        },
-        error: function( jqXhr, textStatus, error ){
-            console.log( error );
-        }
-    });
-}
-
-function buscar(letras){
-    $.ajax({
-        url: 'php/buscar.php',
-        type: 'post',
-        data: {'letras': letras},
-        success: function( data ){
-        	$("#listaproductos").html(data);
-        },
-        error: function( jqXhr, textStatus, error ){
-            console.log( error );
-        }
-    });
-}
-
-$('#buscarxnombre').keyup(function (e) { 
-    buscar(e.target.value);
-    
-});
-
-function eliminar(id){
-	$.ajax({
-        url: 'php/eliminar.php',
-        type: 'post',
-        data: {'idproducto':id},
-        success: function( data ){
-        	if(data==1){
-        		$("#divmsg").html("Registro eliminado");
-        		listaproductos(1);
-        	} else {
-        		$("#divmsg").html("Error al eliminar el registro");
-        	}
-			console.log(data);
-        },
-        error: function( jqXhr, textStatus, error ){
-            console.log( error );
-        }
-    });
-}
-
-
 function iniciarSesion(a){
 	if(a==0){
 		var user = $("#txtusuario").val();
@@ -162,7 +85,7 @@ function iniciarSesion(a){
   }
 
 
-  function validar(){
+function validar(){
     var forms = document.getElementsByClassName('needs-validation');
     var validation = Array.prototype.filter.call(forms, function(form) {
         if (form.checkValidity() === false) {
@@ -181,15 +104,58 @@ function iniciarSesion(a){
         });
   }
 
-  function captcha(){
-    setInterval(function(){
-      var response = grecaptcha.getResponse();
-      if(response.length == 0){
-        $("#msg-capt").show();
-      } else {
-        $("#msg-capt").hide();
-      }
+function registrar(){
+	var nombre = $("#txtnombre").val();
+		var apellidos = $("#txtapellidos").val();
+		var dni = $("#txtdni").val();
+		var fecha = $("#txtfecha").val();
+		var sexo = $("#txtsexo").val();
+		var correo = $("#txtcorreo").val();
+		var usuario = $("#txtusuario").val();
+		var contraseña = $("#txtcontraseña").val();
 
-    },100);
+		$.ajax({
+		  url: '../php/registrar.php',
+		  type: 'post',
+		  data: {"txtnombre":nombre, "txtapellidos":apellidos, "txtdni":dni, 
+		  "txtfecha":fecha, "txtsexo":sexo,"txtcorreo":correo, "txtusuario":usuario,
+		   "txtcontraseña":contraseña},
+		  success: function( data ){
+			  console.log(data);
+			if(data == 1){
+				Swal.fire({
+					title: '¡REGISTRADO CORRECTAMENTE!',
+					text: "Felicidades te acabas de unir a la familia de EASY LOAN",
+					type: 'error',
+					showCancelButton: false,
+					confirmButtonColor: '#FF4242',
+					confirmButtonText: 'OK'
+				  }).then((result) => {
+					if (result.value) {
+						window.location.href="../index.html";
+					}
+					else{
+						window.location.href="../index.html";
+					}
+				  })  
+			}
+			Limpiar();
+		  },
+		  error: function( jqXhr, textStatus, error ){
+			  console.log( error );
+		  }
+	  });
+	
 }
 
+function Limpiar()
+{
+    $("#txtnombre").val("");
+    $("#txtapellidos").val("");
+    $("#txtdni").val("");
+    $("#txtfecha").val("");
+    $("#txtsexo").val("");
+    $("#txtcorreo").val("");
+    $("#txtusuario").val("");
+    $("#txtcontraseña").val("");
+}

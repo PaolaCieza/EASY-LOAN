@@ -1,5 +1,5 @@
 function inicio(){
-    listaproductos(1);
+	listaproductos(1);	
 }
 
 function listaproductos(columna){
@@ -128,10 +128,10 @@ function iniciarSesion(a){
 					confirmButtonText: 'Aceptar'
 				  }).then((result) => {
 					if (result.value) {
-					  window.location.href="index.html";
+					  window.location.href="../index.html";
 					}
 					else{
-					  window.location.href="index.html";
+					  window.location.href="../index.html";
 					}
 				  }) 
 			}

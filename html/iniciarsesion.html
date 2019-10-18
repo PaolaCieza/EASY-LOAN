@@ -40,18 +40,18 @@
     <div class="row">
         <div class="inicio-fondo col-6 offset-3">
             <h1 class="text-center text-warning ">INICIAR SESION</h1> <br>
-            <form>     
+            <form id="frmuser">     
               <div class="from-group">
                 <label class="text-white" for="txtusuario">USUARIO</label>
-                <input type="text" class="form-control" name="txtusuario" id="txtusuario" placeholder="Ingrese su usuario aquí...."> <br>
+                <input input type="text" style="display: none;" disabled="disabled" size="1">
+                <input class="form-control" type="text"  id="txtusuario" placeholder="Ingrese su usuario aquí...." onkeypress = "if(event.keyCode == 13) iniciarSesion(0)"> <br>
                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" ></div>
-              <button type="button" class="btn btn-warning" onclick="iniciarSesion(0)" id="btn_envio" >SIGUIENTE</button>
               </div>
+              <button type="button" class="btn btn-warning" onclick="iniciarSesion(0)" id="btn_envio" >SIGUIENTE</button>
               <br>
             </form>
           </div>
     </div>
-
   </div>
   
   <footer class="page-footer font-small unique-color-dark " style="background-color: black;  color: white; ">

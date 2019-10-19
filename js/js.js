@@ -105,15 +105,15 @@ function validar(){
   }
 
 function registrar(){
-	var nombre = $("#txtnombre").val();
+		var nombre = $("#txtnombre").val();
 		var apellidos = $("#txtapellidos").val();
 		var dni = $("#txtdni").val();
 		var fecha = $("#txtfecha").val();
-		var sexo = $("#txtsexo").val();
+		var sexo = $("input:radio[name=txtsexo]:checked").val();
 		var correo = $("#txtcorreo").val();
 		var usuario = $("#txtusuario").val();
 		var contraseña = $("#txtcontraseña").val();
-
+		alert(sexo);
 		$.ajax({
 		  url: '../php/registrar.php',
 		  type: 'post',
@@ -121,12 +121,12 @@ function registrar(){
 		  "txtfecha":fecha, "txtsexo":sexo,"txtcorreo":correo, "txtusuario":usuario,
 		   "txtcontraseña":contraseña},
 		  success: function( data ){
-			  console.log(data);
+			console.log(data);
 			if(data == 1){
 				Swal.fire({
 					title: '¡REGISTRADO CORRECTAMENTE!',
 					text: "Felicidades te acabas de unir a la familia de EASY LOAN",
-					type: 'error',
+					type: 'success',
 					showCancelButton: false,
 					confirmButtonColor: '#FF4242',
 					confirmButtonText: 'OK'

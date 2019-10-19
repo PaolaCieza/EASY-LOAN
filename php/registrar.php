@@ -1,23 +1,23 @@
 <?php
 require_once("conexion.php");
 
-$nombre = $_POST["txtnombre"];
-$apellidos = $_POST["txtapellidos"];
-$dni = $_POST["txtdni"];
-$fecha = $_POST["txtfecha"];
-$sexo = $_POST["txtsexo"];
-$correo = $_POST["txtcorreo"];
-$usuario = $_POST["txtusuario"];
-$contraseña = $_POST["txtcontraseña"];
+$nombre = $_POST['txtnombre'];
+$apellidos = $_POST['txtapellidos'];
+$dni = $_POST['txtdni'];
+$fecha = $_POST['txtfecha'];
+$sexo = $_POST['txtsexo'];
+$correo = $_POST['txtcorreo'];
+$usuario = $_POST['txtusuario'];
+$contraseña = $_POST['txtcontraseña'];
 
-if ($sexo = 'masculino') {
-    $sexo = true;
+
+if ($sexo == 'femenino') {
+    $sexo = 'true';
 } else{
-    $sexo = false;
+    $sexo = 'false';
 }
 
-$sql= "INSERT INTO cliente VALUES ((select coalesce(max(id),0)+1 from usuario), '$nombre', '$apellidos', '$dni',
-							'$fecha', '$sexo', '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT);";
+$sql= "INSERT INTO cliente VALUES ((select coalesce(max(id),0)+1 from cliente), '$nombre', '$apellidos', '$dni','$fecha', $sexo, '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT);";
 
 $resp=1;
 $cnx -> query($sql) or $resp=$sql;

@@ -19,17 +19,44 @@
 </head>
 
 <body class="fondito">
-  <nav class="navbar navbar-dark " style="background-color: black;">
+  <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light   " style="background-color: black;">
     <a class="navbar-brand" href="#">
-      <img src="../recursos/icono_libreria.png" width="60" height="60" alt="">
-      <span class="text-warning titulo bg.text-warning"> EASY LOAN</span>
+      <img src="recursos/icono_libreria.png" width="60" height="60" alt="">
+      <span class="text-warning titulo"> EASY LOAN</span>
     </a>
-    <a href="#">NOTICIAS</a>
-    <a href="#">CATEGORIAS</a>
-    <a href="#">SERVICIOS</a>
-    <a href="#">HISTORIA</a>
-    <a href="#">VISION</a>
-    <a href="../html/registrarse.html"> <button class="btn btn-warning">REGISTRATE</button></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">NOTICIAS <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">CATEGORIAS</a>
+        </li>
+        <li class=" nav-item active">
+          <a class="nav-link " href="#"  > SERVICIOS </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link disabled" href="#">HISTORIA</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " href="#">VISION</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " href="iniciarsesion.html">INICIAR SESION 1</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " href="iniciarsesion2.html">INICIAR SESION 2</a>
+        </li>
+      </ul>
+      
+    </div>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " 
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <a href="registrarse.html" id="estesi"> <button class="btn btn-warning">REGISTRAR</button></a>
   </nav>
 
   <div class="container">

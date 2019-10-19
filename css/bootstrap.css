@@ -41,6 +41,48 @@
   box-sizing: border-box;
 }
 
+
+.cuadros-oferta-1{
+  border-radius: 2vh;
+  border: white 5px solid;
+  background-color: black;
+}
+
+.cuadros-oferta-2{
+  border-radius: 2vh;
+  border: white 5px solid;
+  background-color: #00897b;
+  /* width: 90% !important; */
+}
+
+.cuadros-oferta-3{
+  border-radius: 2vh;
+  border: white 5px solid;
+  background-color:  #5e35b1;
+  /* width: 90% !important; */
+}
+
+.cuadro1{
+  border-radius: 10px;
+  border: rgba(0, 0, 0, 0.479) 1px solid;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  /* background-color: dimgray; */
+}
+
+.contenedor-index{
+  border-radius: 0px 10px 10px 0px;
+}
+
+.index-primera-parte{
+  background-image: url(../recursos/fondo-index-3.jpg); 
+  /* background-image: url(https://www.freepik.es/fotos-vectores-gratis/fondo); */
+  background-repeat: no-repeat;
+  /* background-image: url(../recursos/fondo2.jpg); */
+  width: 100%;
+  height: 100%;
+}
+
 .text-pink{
   color: #e91e63 !important;
 }
@@ -10071,4 +10113,11 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+
+
+
+
+
+
+
 /*# sourceMappingURL=bootstrap.css.map */

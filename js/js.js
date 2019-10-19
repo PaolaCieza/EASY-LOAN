@@ -121,21 +121,36 @@ function registrar(){
 		  "txtfecha":fecha, "txtsexo":sexo,"txtcorreo":correo, "txtusuario":usuario,
 		   "txtcontraseña":contraseña},
 		  success: function( data ){
-			console.log(data);
 			if(data == 1){
 				Swal.fire({
 					title: '¡REGISTRADO CORRECTAMENTE!',
-					text: "Felicidades te acabas de unir a la familia de EASY LOAN",
+					text: "Felicidades te acabas de unir a la familia de EASY LOAN, ya puedes uniciar sesión",
 					type: 'success',
 					showCancelButton: false,
 					confirmButtonColor: '#FF4242',
 					confirmButtonText: 'OK'
 				  }).then((result) => {
 					if (result.value) {
-						window.location.href="../index.html";
+						window.location.href="../html/iniciarsesion.html";
 					}
 					else{
-						window.location.href="../index.html";
+						window.location.href="../html/registrarse.html";
+					}
+				  })  
+			}else{
+				Swal.fire({
+					title: '¡ERROR AL REGISTRAR!',
+					text: "No se pueden registrar personas menores de 18 años",
+					type: 'error',
+					showCancelButton: false,
+					confirmButtonColor: '#FF4242',
+					confirmButtonText: 'OK NO LOS VUELVO A JODER POBRES'
+				  }).then((result) => {
+					if (result.value) {
+						// window.location.href="../index.html";
+					}
+					else{
+						// window.location.href="../index.html";
 					}
 				  })  
 			}
@@ -148,6 +163,7 @@ function registrar(){
 	
 }
 
+
 function Limpiar()
 {
     $("#txtnombre").val("");
@@ -159,3 +175,8 @@ function Limpiar()
     $("#txtusuario").val("");
     $("#txtcontraseña").val("");
 }
+
+
+
+
+

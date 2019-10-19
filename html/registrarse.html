@@ -15,17 +15,44 @@
 </head>
 
 <body class="fondito">
-  <nav class="navbar navbar-dark " style="background-color: black;">
+  <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light   " style="background-color: black; ">
     <a class="navbar-brand" href="#">
       <img src="../recursos/icono_libreria.png" width="60" height="60" alt="">
       <span class="text-warning titulo"> EASY LOAN</span>
     </a>
-    <a href="#">NOTICIAS</a>
-    <a href="#">CATEGORIAS</a>
-    <a href="#">SERVICIOS</a>
-    <a href="#">HISTORIA</a>
-    <a href="#">VISION</a>
-    <a href="../html/iniciarsesion.html"> <button class="btn btn-warning">INICIAR SESIÓN</button></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">NOTICIAS <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">CATEGORIAS</a>
+        </li>
+        <li class=" nav-item active">
+          <a class="nav-link " href="#"  > SERVICIOS </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " href="#">HISTORIA</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " href="#">VISION</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " href="iniciarsesion.html">INICIAR SESION 1</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " href="iniciarsesion2.html">INICIAR SESION 2</a>
+        </li>
+      </ul>
+      
+    </div>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " 
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a>
   </nav>
   <div class="container ">
     <div class="col-8 offset-2 mt-5  inicio-fondo">
@@ -64,7 +91,8 @@
         </div>
         <div class="form-group">
             <label for="txtcontraseña">CONTRASEÑA</label> <br>
-            <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña"> 
+            <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña"
+            onkeypress = "if(event.keyCode == 13) registrar()"> 
         </div>
         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
         <input type="button" value="REGISTRAR" class="btn btn-warning" onclick="registrar()" >
@@ -166,5 +194,4 @@
 
   </footer>
 </body>
-
 </html>

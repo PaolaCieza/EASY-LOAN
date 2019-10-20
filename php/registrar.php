@@ -10,9 +10,10 @@ $correo = $_POST['txtcorreo'];
 $usuario = $_POST['txtusuario'];
 $contraseña = $_POST['txtcontraseña'];
 
-$sql = "select date_part('year',age(current_date, '$fecha'));";
+$sql = "select date_part('year',age(current_date, '$fecha')) as edad;";
 $rs = $cnx->query($sql) ;
-if($rs > 17){
+$edad = $rs->fetchObject();
+if($edad->edad > 17){
     if ($sexo == 'femenino') {
         $sexo = 'false';
     } else{
@@ -24,7 +25,7 @@ if($rs > 17){
     $cnx -> query($sql) or $resp=$sql;
 
 }else{
-    $resp 2;
+    $resp = 2;
 }
 
 

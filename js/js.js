@@ -92,12 +92,12 @@ function validar(){
           event.preventDefault();
           event.stopPropagation();
           console.log("Error al validar");
-          captcha();
+          //captcha();
         }
         else{
           var response = grecaptcha.getResponse();
           if(response.length !== 0){
-            registrar();
+            //registrar();
           }    
         }
         form.classList.add('was-validated');
@@ -113,7 +113,6 @@ function registrar(){
 		var correo = $("#txtcorreo").val();
 		var usuario = $("#txtusuario").val();
 		var contraseña = $("#txtcontraseña").val();
-		alert(sexo);
 		$.ajax({
 		  url: '../php/registrar.php',
 		  type: 'post',
@@ -121,6 +120,7 @@ function registrar(){
 		  "txtfecha":fecha, "txtsexo":sexo,"txtcorreo":correo, "txtusuario":usuario,
 		   "txtcontraseña":contraseña},
 		  success: function( data ){
+			console.log(data);
 			if(data == 1){
 				Swal.fire({
 					title: '¡REGISTRADO CORRECTAMENTE!',
@@ -154,7 +154,7 @@ function registrar(){
 					}
 				  })  
 			}
-			Limpiar();
+			//Limpiar();
 		  },
 		  error: function( jqXhr, textStatus, error ){
 			  console.log( error );

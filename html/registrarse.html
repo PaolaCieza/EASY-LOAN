@@ -54,48 +54,105 @@
     </button>
       <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a>
   </nav>
-  <div class="container ">
+  <fieldset class="container ">
     <div class="col-8 offset-2 mt-5  inicio-fondo">
       <h1 class="text-center text-warning">REGISTRATE</h1> <br>
-      <form class="text-white">
+      <form class="needs-validation text-white" novalidate>
         <div class="form-group">
             <label for="txtnombre">NOMBRE</label> <br>
-            <input type="text" class="form-control" name="txtnombre" id="txtnombre"> 
+            <input type="text" class="form-control" name="txtnombre" id="txtnombre" required> 
+            <div class="valid-feedback">
+              Lindo nombre! :)
+            </div>
+            <div class="invalid-feedback">
+              Necesitamos saber como te llamas!
+            </div>
         </div>
         <div class="form-group">
             <label for="txtapellidos">APELLIDOS</label> <br>
-            <input type="text" class="form-control" name="txtapellidos" id="txtapellidos"> 
+            <input type="text" class="form-control" name="txtapellidos" id="txtapellidos" required>
+            <div class="valid-feedback">
+              Tus padres son geniales! :)
+            </div>
+            <div class="invalid-feedback">
+              Necesitamos saber tu apellido!
+            </div> 
         </div>
         <div class="form-group">
             <label for="txtdni">DNI</label> <br>
-            <input type="text" class="form-control" name="txtdni" id="txtdni"> 
+            <input type="text" class="form-control" name="txtdni" id="txtdni" required> 
+            <div class="valid-feedback">
+              Correctamente indentificado!!
+            </div>
+            <div class="invalid-feedback">
+              Ops deberas otorgarnos esta informacion!
+            </div>
         </div>
         <div class="form-group">
             <label for="txtfecha">FECHA DE NACIMIENTO</label> <br>
-            <input type="date" class="form-control" name="txtfecha" id="txtfecha"> 
+            <input type="date" class="form-control" name="txtfecha" id="txtfecha" required> 
+            <div class="valid-feedback">
+              Te felicitaremos cuando llegue el dia!!!
+            </div>
+            <div class="invalid-feedback">
+             Ya ne cansé de hablarte bonito, no seas gil ctmr!
+            </div>
         </div>
-        <div class="form-group">
-            <label for="txtsexo">SEXO</label> <br>
-            <input type="radio" name="txtsexo" id="masculino" value="masculino" class="ml-5">
-            <label class="form-check-label text-blue-darken-1" style="font-size: 2.5vh;" for ="masculino">Masculino</label>
-            <input type="radio" name="txtsexo" id = "femenino" value="femenino" class="ml-5"> 
-            <label class="form-check-label text-pink "style="font-size: 2.5vh;" for ="femenino">Femenino</label>
-        </div>
+        <fieldset class="form-group">
+          <label>SEXO</label> <br>
+          
+              <input  type="radio" name="txtsexo" id="masculino" value="masculino" class="ml-5" required>
+              <label class="form-check-label text-blue-darken-1" style="font-size: 2.5vh;" for ="masculino">Masculino</label>
+          
+         
+              <input  type="radio" name="txtsexo" id = "femenino" value="femenino" class="ml-5"  required> 
+              <label class="form-check-label text-pink "style="font-size: 2.5vh;" for ="femenino">Femenino</label><br><br>
+              <div class="valid-feedback">
+                  Ok
+                </div>
+                <div class="invalid-feedback">
+                 No ok
+                </div>
+              
+          
+         
+        </fieldset>
+
+           
+
+        
         <div class="form-group">
             <label for="txtcorreo">CORREO</label> <br>
-            <input type="email" class="form-control" name="txtcorreo" id="txtcorreo"> 
+            <input type="email" class="form-control" name="txtcorreo" id="txtcorreo" required> 
+            <div class="valid-feedback">
+              Ok
+            </div>
+            <div class="invalid-feedback">
+             No ok
+            </div>
         </div>
         <div class="form-group">
             <label for="txtusuario">USUARIO</label> <br>
-            <input type="text" class="form-control" name="txtusuario" id="txtusuario"> 
+            <input type="text" class="form-control" name="txtusuario" id="txtusuario" required> 
+            <div class="valid-feedback">
+              Ok 
+            </div>
+            <div class="invalid-feedback">
+              No ok
+            </div>
         </div>
         <div class="form-group">
             <label for="txtcontraseña">CONTRASEÑA</label> <br>
-            <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña"
-            onkeypress = "if(event.keyCode == 13) registrar()"> 
+            <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña" required>
+            <div class="valid-feedback">
+              OK
+            </div>
+            <div class="invalid-feedback">
+              No ok
+            </div> 
         </div>
         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
-        <input type="button" value="REGISTRAR" class="btn btn-warning" onclick="registrar()" >
+        <input type="button" value="REGISTRAR" class="btn btn-warning" onclick="validar()" >
         </div>
       </form>
     </div>

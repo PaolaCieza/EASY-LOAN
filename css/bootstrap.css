@@ -83,12 +83,21 @@
   height: 100%;
 }
 
+.sobre-nosotros-parte1{
+  background-image: url(../recursos/fondo-sobre-nosotros.jpg);
+  
+}
+
 .text-pink{
   color: #e91e63 !important;
 }
 
 .text-blue-darken-1{
   color: #1e88e5 !important;
+}
+
+.text-purple{
+  color: #4527a0;
 }
 
 html {
@@ -133,6 +142,52 @@ body {
   padding: 8vh  !important;
   /* padding: 70px  !important; */
   font-size: 2vh !important;
+}
+
+.contenedor-sobre-nosotros{
+  border-radius: 3px;
+  border: rgb(177, 167, 167) 1px solid;
+  background-color: rgba(102, 102, 102, 0.185);
+  padding-right: 10px;
+  margin: 10px;
+  display: table;
+  height: 80px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+
+}
+
+.tex-contenedor-sobre-nosotros{
+  font-size: 1.14em;
+  color: #666;
+  line-height: 120%;
+  padding-right: 10px;
+  margin: 4vh 0vh 4vh 4vh;
+}
+
+.div-contenedor-icono{
+  display: table-cell;
+  vertical-align: middle;
+  height: auto;
+  float: none;
+  /* width: 25%; */
+  padding: 0 10px;
+}
+
+.icono-sobre-nosotros{
+  display: table-cell;
+  vertical-align: middle;
+  height: auto;
+  float: none;
+  width: 25%;
+  padding: 0 10px;
+}
+
+.img-historia{
+  background-image: url(../recursos/historia.jpg);
+  background-repeat: no-repeat;
 }
 
 hr {

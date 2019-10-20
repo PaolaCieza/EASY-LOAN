@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../css/bootstrap.css">
-  <script type="text/javascript" src="../js/js.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.6/dist/sweetalert2.all.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.6/dist/sweetalert2.all.min.js"></script>
+  <script type="text/javascript" src="../js/js.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <title>REGISTRAR USUARIO</title>
 </head>
 
@@ -59,7 +60,7 @@
       <h1 class="text-center text-warning">REGISTRATE</h1> <br>
       <form class="needs-validation text-white" novalidate>
         <div class="form-group">
-            <label for="txtnombre">NOMBRE</label> <br>
+            <label for="txtnombre">NOMBRE</label> 
             <input type="text" class="form-control" name="txtnombre" id="txtnombre" required> 
             <div class="valid-feedback">
               Lindo nombre! :)
@@ -69,7 +70,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="txtapellidos">APELLIDOS</label> <br>
+            <label for="txtapellidos">APELLIDOS</label> 
             <input type="text" class="form-control" name="txtapellidos" id="txtapellidos" required>
             <div class="valid-feedback">
               Tus padres son geniales! :)
@@ -79,8 +80,8 @@
             </div> 
         </div>
         <div class="form-group">
-            <label for="txtdni">DNI</label> <br>
-            <input type="text" class="form-control" name="txtdni" id="txtdni" required> 
+            <label for="txtdni">DNI</label> 
+            <input type="text" class="form-control" name="txtdni" id="txtdni" onkeypress="solonumeros(event,'#txtdni',8)" required> 
             <div class="valid-feedback">
               Correctamente indentificado!!
             </div>
@@ -89,7 +90,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="txtfecha">FECHA DE NACIMIENTO</label> <br>
+            <label for="txtfecha">FECHA DE NACIMIENTO</label> 
             <input type="date" class="form-control" name="txtfecha" id="txtfecha" required> 
             <div class="valid-feedback">
               Te felicitaremos cuando llegue el dia!!!
@@ -100,29 +101,26 @@
         </div>
         <fieldset class="form-group">
           <label>SEXO</label> <br>
-          
-              <input  type="radio" name="txtsexo" id="masculino" value="masculino" class="ml-5" required>
-              <label class="form-check-label text-blue-darken-1" style="font-size: 2.5vh;" for ="masculino">Masculino</label>
-          
-         
-              <input  type="radio" name="txtsexo" id = "femenino" value="femenino" class="ml-5"  required> 
-              <label class="form-check-label text-pink "style="font-size: 2.5vh;" for ="femenino">Femenino</label><br><br>
-              <div class="valid-feedback">
-                  Ok
+            <div class="custom-control custom-radio custom-control-inline ml-5">
+              <input class="custom-control-input" type="radio" name="txtsexo" id="masculino" value="masculino" required> 
+              <label class="custom-control-label text-blue-darken-1" style="font-size: 2.5vh;" for ="masculino">Masculino</label>   
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input  class="custom-control-input" type="radio" name="txtsexo" id = "femenino" value="femenino"  required> 
+              <label class="custom-control-label text-pink "style="font-size: 2.5vh;" for ="femenino">Femenino</label>
+            </div>
+            <div class="custom-control custom-radio ml-4">
+                <input class="custom-control-input" type="radio" name="txtsexo"  required> 
+                <div class="valid-feedback">
+                    Gaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                 </div>
                 <div class="invalid-feedback">
-                 No ok
+                  Queremos saber si eres machito o hembrita
                 </div>
-              
-          
-         
+            </div>
         </fieldset>
-
-           
-
-        
         <div class="form-group">
-            <label for="txtcorreo">CORREO</label> <br>
+            <label for="txtcorreo">CORREO</label> 
             <input type="email" class="form-control" name="txtcorreo" id="txtcorreo" required> 
             <div class="valid-feedback">
               Ok
@@ -132,8 +130,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="txtusuario">USUARIO</label> <br>
-            <input type="text" class="form-control" name="txtusuario" id="txtusuario" required> 
+            <label for="txtusuario">USUARIO</label>
+            <input type="text" class="form-control" name="txtusuario" id="txtusuario" onkeypress="sinespacios(event)" required> 
             <div class="valid-feedback">
               Ok 
             </div>
@@ -142,7 +140,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="txtcontraseña">CONTRASEÑA</label> <br>
+            <label for="txtcontraseña">CONTRASEÑA</label> 
             <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña" required>
             <div class="valid-feedback">
               OK
@@ -152,11 +150,18 @@
             </div> 
         </div>
         <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
-        <input type="button" value="REGISTRAR" class="btn btn-warning" onclick="validar()" >
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LckOLoUAAAAAITBmJNzelxX9j_qb90es6JxN9_G" id="captcha" required></div>
+                <div class="invalid-feedback" id="msg-capt">
+                      Complete el captcha
+                </div>
+            </div>
+            <input type="button" value="REGISTRAR" class="btn btn-warning" onclick="validar()" >
         </div>
       </form>
     </div>
-  </div>
+  </fieldset>
+
   <footer class="page-footer font-small unique-color-dark " style="background-color: black;  color: white; ">
 
     <div style="background-color: #4527a0; color: white;">

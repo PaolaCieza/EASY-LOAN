@@ -1,3 +1,7 @@
+$( document ).ready(function() {
+	$("#msg-capt").hide();
+});
+
 function iniciarSesion(a){
 	if(a==0){
 		var user = $("#txtusuario").val();
@@ -85,6 +89,22 @@ function iniciarSesion(a){
   }
 
 
+function solonumeros(e,id,cant){
+	var numero = $(id).val();
+	var key = e.keyCode;
+	if (key < 48 || key > 57 || numero.length>=cant) {
+		e.preventDefault();
+	}
+	
+}
+
+function sinespacios(e){
+	var key = e.keyCode;
+	if (key == 32) {
+		e.preventDefault();
+	}
+	
+}
 function validar(){
     var forms = document.getElementsByClassName('needs-validation');
     var validation = Array.prototype.filter.call(forms, function(form) {
@@ -92,17 +112,29 @@ function validar(){
           event.preventDefault();
           event.stopPropagation();
           console.log("Error al validar");
-          //captcha();
+          captcha();
         }
         else{
           var response = grecaptcha.getResponse();
           if(response.length !== 0){
-            //registrar();
+            registrar();
           }    
         }
         form.classList.add('was-validated');
         });
-  }
+}
+
+function captcha(){
+    setInterval(function(){
+      var response = grecaptcha.getResponse();
+      if(response.length == 0){
+        $("#msg-capt").show();
+      } else {
+        $("#msg-capt").hide();
+      }
+
+    },100);
+}
 
 function registrar(){
 		var nombre = $("#txtnombre").val();
@@ -127,7 +159,7 @@ function registrar(){
 					text: "Felicidades te acabas de unir a la familia de EASY LOAN, ya puedes uniciar sesión",
 					type: 'success',
 					showCancelButton: false,
-					confirmButtonColor: '#FF4242',
+					confirmButtonColor: '#3085d6',
 					confirmButtonText: 'OK'
 				  }).then((result) => {
 					if (result.value) {

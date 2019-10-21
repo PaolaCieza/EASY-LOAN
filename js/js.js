@@ -108,17 +108,24 @@ function sinespacios(e){
 function validar(){
     var forms = document.getElementsByClassName('needs-validation');
     var validation = Array.prototype.filter.call(forms, function(form) {
-        if (form.checkValidity() === false) {
+        if (form.checkValidity() == false) {
           event.preventDefault();
           event.stopPropagation();
-          console.log("Error al validar");
-          captcha();
+          //console.log(valuser());
+		  captcha();
+		  valuser();
         }
         else{
-          var response = grecaptcha.getResponse();
-          if(response.length !== 0){
-            registrar();
-          }    
+		  var response = grecaptcha.getResponse();
+		  //console.log(valuser());
+          if(response.length != 0 && valuser()){
+			registrar();
+		  }
+		  else{
+			captcha();
+			//valuser();
+			//console.log(valuser());
+		  }  
         }
         form.classList.add('was-validated');
         });
@@ -136,6 +143,50 @@ function captcha(){
     },100);
 }
 
+var valid;
+function valuser(){
+	var usuario = $("#txtusuario").val();
+	if(usuario !== ""){
+		$.ajax({
+			url: '../php/registrar.php',
+			type: 'post',
+			data: {"validar": 1,"txtusuario":usuario},
+			success: function( data ){
+			  //console.log(data);
+			  if(data == 1){
+				$("#msg-e2").show();
+				$("#msg-e1").hide();
+				$("#msg-s").hide();
+				$("#txtusuario").toggleClass("is-invalid", true);
+				$("#txtusuario").toggleClass("is-valid",false);
+				valid = false;
+			  }else{
+				$("#msg-s").show();
+				$("#msg-e1").hide();
+				$("#msg-e2").hide();
+				$("#txtusuario").toggleClass("is-valid",true);
+				$("#txtusuario").toggleClass("is-invalid", false);
+				valid = true;
+			  }
+			 
+			},
+			error: function( jqXhr, textStatus, error ){
+				console.log( error );
+			}
+		});
+	}
+	else{
+		$("#msg-e1").show();
+		$("#msg-s").hide();
+		$("#msg-e2").hide();
+		$("#txtusuario").toggleClass("is-invalid", true);
+		$("#txtusuario").toggleClass("is-valid",false);
+		valid = false;
+	}
+	return valid;
+}
+
+
 function registrar(){
 		var nombre = $("#txtnombre").val();
 		var apellidos = $("#txtapellidos").val();
@@ -148,7 +199,7 @@ function registrar(){
 		$.ajax({
 		  url: '../php/registrar.php',
 		  type: 'post',
-		  data: {"txtnombre":nombre, "txtapellidos":apellidos, "txtdni":dni, 
+		  data: {"validar": 0 ,"txtnombre":nombre, "txtapellidos":apellidos, "txtdni":dni, 
 		  "txtfecha":fecha, "txtsexo":sexo,"txtcorreo":correo, "txtusuario":usuario,
 		   "txtcontraseña":contraseña},
 		  success: function( data ){

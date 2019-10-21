@@ -156,12 +156,40 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
+  color: #666;
 
+}
+
+.contenedor-sobre-nosotros:hover {
+  background: rgb(74, 4, 121);
+	color: #ffffff;
+  box-shadow: inset 0 0 0 3px #3a7999;
+  animation: bounce 1s;
+}
+
+/* nav  a:hover{
+  color: #005cbf;
+  background-color: #394644;
+  box-shadow: inset 0 0 0 3px #3a7999;
+} */
+
+.nav-a{
+  color: #fff !important;
+  font-size: 20px;
+  padding: 0.5em 1.2em;
+  position: relative;
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.nav-a:hover {
+  box-shadow:  0 0 20px #4527a0;
+  outline-color: #4527a0;
+  outline-offset: 80px;
+  text-shadow: 1px 1px 6px #4527a0;;
 }
 
 .tex-contenedor-sobre-nosotros{
   font-size: 1.14em;
-  color: #666;
   line-height: 120%;
   padding-right: 10px;
   margin: 4vh 0vh 4vh 4vh;

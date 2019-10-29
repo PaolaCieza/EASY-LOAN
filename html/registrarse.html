@@ -58,7 +58,7 @@
   <fieldset class="container ">
     <div class="col-8 offset-2 mt-5  inicio-fondo">
       <h1 class="text-center text-warning">REGISTRATE</h1> <br>
-      <form class="needs-validation text-white" novalidate>
+      <form class="needs-validation text-white" >
         <div class="form-group">
             <label for="txtnombre">NOMBRE</label> 
             <input type="text" class="form-control" name="txtnombre" id="txtnombre" required> 
@@ -129,35 +129,42 @@
              No ok
             </div>
         </div>
+      </form>
+      <form class="text-white">
         <div class="form-group">
-            <label for="txtusuario">USUARIO</label>
-            <input type="text" class="form-control" name="txtusuario" id="txtusuario" onkeypress="sinespacios(event)" required> 
-            <div class="valid-feedback">
-              Ok 
-            </div>
-            <div class="invalid-feedback">
-              No ok
-            </div>
-        </div>
+          <label for="txtusuario">USUARIO</label>
+          <input type="text" class="form-control" name="txtusuario" id="txtusuario" onkeypress="sinespacios(event)" onkeyup="valuser()" required> 
+          <div class="valid-feedback" id="msg-s">
+            Ok 
+          </div>
+          <div class="invalid-feedback" id="msg-e1">
+            Complete
+          </div>
+          <div class="invalid-feedback" id="msg-e2">
+            Usuario ya existe
+          </div>
+      </div>
+      </form>
+      <form class="needs-validation text-white">
         <div class="form-group">
-            <label for="txtcontraseña">CONTRASEÑA</label> 
-            <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña" required>
-            <div class="valid-feedback">
-              OK
-            </div>
-            <div class="invalid-feedback">
-              No ok
-            </div> 
-        </div>
-        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
-            <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="6LckOLoUAAAAAITBmJNzelxX9j_qb90es6JxN9_G" id="captcha" required></div>
-                <div class="invalid-feedback" id="msg-capt">
-                      Complete el captcha
-                </div>
-            </div>
-            <input type="button" value="REGISTRAR" class="btn btn-warning" onclick="validar()" >
-        </div>
+          <label for="txtcontraseña">CONTRASEÑA</label> 
+          <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña" required>
+          <div class="valid-feedback">
+            OK
+          </div>
+          <div class="invalid-feedback">
+            No ok
+          </div> 
+      </div>
+      <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+          <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="6LckOLoUAAAAAITBmJNzelxX9j_qb90es6JxN9_G" id="captcha" required></div>
+              <div class="invalid-feedback" id="msg-capt">
+                    Complete el captcha
+              </div>
+          </div>
+          <input type="button" value="REGISTRAR" class="btn btn-warning" onclick="validar()">
+      </div>
       </form>
     </div>
   </fieldset>

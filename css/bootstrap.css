@@ -167,6 +167,42 @@ body {
   animation: bounce 1s;
 }
 
+/* perfil */
+.perfil_user{
+  width: 15vw;
+  /* height: 30vh; */
+}
+
+/* .columna1{
+  border: 1px #0b2e13 solid;
+}
+
+.columna2{
+  border: 1px #0b2e13 solid;
+} */
+
+.user-profile-nav {
+  background-color: #fff;
+  border-bottom: 1px solid #d1d5da;
+}
+.width-full {
+  width: 100%!important;
+}
+
+.UnderlineNav-body {
+  display: flex;
+}
+
+.top-0 {
+  top: 0!important;
+}
+.UnderlineNav {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom: 1px solid #e1e4e8;
+  justify-content: space-between;
+}
 /* nav  a:hover{
   color: #005cbf;
   background-color: #394644;

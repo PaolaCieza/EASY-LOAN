@@ -15,7 +15,7 @@
   <title>INICIAR SESION</title>
 </head>
 
-<body class="fondito">
+<body class="fonditoj">
   <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light   " style="background-color: black;">
       <a class="navbar-brand" href="../index.html">
           <img src="../recursos/icono_libreria.png" width="60" height="60" alt="">
@@ -56,13 +56,15 @@
       <a href="registrarse.html" id="estesi"> <button class="btn btn-warning">REGISTRAR</button></a>
   </nav>
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-        <div class="inicio-fondo col-6 offset-3">
+      <div class="col-4">
+      </div>
+        <div class="col-md-4 col-sm-6 col-md-offset-3 col-sm-offset-3 inicio-fondo">
             <h1 class="text-center text-warning ">INICIAR SESION</h1> <br>
             <form id="frmuser">     
               <div class="from-group">
-                <label class="text-white" for="txtusuario">USUARIO</label>
+                <label class="text-body" for="txtusuario">USUARIO</label>
                 <input input type="text" style="display: none;" disabled="disabled" size="1">
                 <input class="form-control" type="text"  id="txtusuario" placeholder="Ingrese su usuario aquí...." onkeypress = "if(event.keyCode == 13) iniciarSesion(0)"> <br>
                 <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" ></div>
@@ -71,6 +73,7 @@
               <br>
             </form>
           </div>
+          
     </div>
   </div>
   

@@ -55,118 +55,128 @@
     </button>
       <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a>
   </nav>
-  <fieldset class="container ">
-    <div class="col-8 offset-2 mt-5  inicio-fondo">
-      <h1 class="text-center text-warning">REGISTRATE</h1> <br>
-      <form class="needs-validation text-white" >
-        <div class="form-group">
-            <label for="txtnombre">NOMBRE</label> 
-            <input type="text" class="form-control" name="txtnombre" id="txtnombre" required> 
-            <div class="valid-feedback">
-              Lindo nombre! :)
-            </div>
-            <div class="invalid-feedback">
-              Necesitamos saber como te llamas!
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="txtapellidos">APELLIDOS</label> 
-            <input type="text" class="form-control" name="txtapellidos" id="txtapellidos" required>
-            <div class="valid-feedback">
-              Tus padres son geniales! :)
-            </div>
-            <div class="invalid-feedback">
-              Necesitamos saber tu apellido!
-            </div> 
-        </div>
-        <div class="form-group">
-            <label for="txtdni">DNI</label> 
-            <input type="text" class="form-control" name="txtdni" id="txtdni" onkeypress="solonumeros(event,'#txtdni',8)" required> 
-            <div class="valid-feedback">
-              Correctamente indentificado!!
-            </div>
-            <div class="invalid-feedback">
-              Ops deberas otorgarnos esta informacion!
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="txtfecha">FECHA DE NACIMIENTO</label> 
-            <input type="date" class="form-control" name="txtfecha" id="txtfecha" required> 
-            <div class="valid-feedback">
-              Te felicitaremos cuando llegue el dia!!!
-            </div>
-            <div class="invalid-feedback">
-             Ya ne cansé de hablarte bonito, no seas gil ctmr!
-            </div>
-        </div>
-        <fieldset class="form-group">
-          <label>SEXO</label> <br>
-            <div class="custom-control custom-radio custom-control-inline ml-5">
-              <input class="custom-control-input" type="radio" name="txtsexo" id="masculino" value="masculino" required> 
-              <label class="custom-control-label text-blue-darken-1" style="font-size: 2.5vh;" for ="masculino">Masculino</label>   
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input  class="custom-control-input" type="radio" name="txtsexo" id = "femenino" value="femenino"  required> 
-              <label class="custom-control-label text-pink "style="font-size: 2.5vh;" for ="femenino">Femenino</label>
-            </div>
-            <div class="custom-control custom-radio ml-4">
-                <input class="custom-control-input" type="radio" name="txtsexo"  required> 
-                <div class="valid-feedback">
-                    Gaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                </div>
-                <div class="invalid-feedback">
-                  Queremos saber si eres machito o hembrita
-                </div>
-            </div>
-        </fieldset>
-        <div class="form-group">
-            <label for="txtcorreo">CORREO</label> 
-            <input type="email" class="form-control" name="txtcorreo" id="txtcorreo" required> 
-            <div class="valid-feedback">
-              Ok
-            </div>
-            <div class="invalid-feedback">
-             No ok
-            </div>
-        </div>
-      </form>
-      <form class="text-white">
-        <div class="form-group">
-          <label for="txtusuario">USUARIO</label>
-          <input type="text" class="form-control" name="txtusuario" id="txtusuario" onkeypress="sinespacios(event)" onkeyup="valuser()" required> 
-          <div class="valid-feedback" id="msg-s">
-            Ok 
+  <fieldset class="container-fluid ">
+    <div class="row">
+        <div class="col-3">
+
           </div>
-          <div class="invalid-feedback" id="msg-e1">
-            Complete
-          </div>
-          <div class="invalid-feedback" id="msg-e2">
-            Usuario ya existe
-          </div>
-      </div>
-      </form>
-      <form class="needs-validation text-white">
-        <div class="form-group">
-          <label for="txtcontraseña">CONTRASEÑA</label> 
-          <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña" required>
-          <div class="valid-feedback">
-            OK
-          </div>
-          <div class="invalid-feedback">
-            No ok
-          </div> 
-      </div>
-      <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+      <!-- <div class="col-8 offset-2 mt-5  inicio-fondo"> -->
+      <div class="col-md-6 col-sm-6 col-md-offset-3 col-sm-offset-3  inicio-fondo">
+        <h1 class="text-center text-warning">REGISTRATE</h1> <br>
+        <form class="needs-validation text-white" >
           <div class="form-group">
-              <div class="g-recaptcha" data-sitekey="6LckOLoUAAAAAITBmJNzelxX9j_qb90es6JxN9_G" id="captcha" required></div>
-              <div class="invalid-feedback" id="msg-capt">
-                    Complete el captcha
+              <label for="txtnombre">NOMBRE</label> 
+              <input type="text" class="form-control" name="txtnombre" id="txtnombre" required> 
+              <div class="valid-feedback">
+                Lindo nombre! :)
+              </div>
+              <div class="invalid-feedback">
+                Necesitamos saber como te llamas!
               </div>
           </div>
-          <input type="button" value="REGISTRAR" class="btn btn-warning" onclick="validar()">
+          <div class="form-group">
+              <label for="txtapellidos">APELLIDOS</label> 
+              <input type="text" class="form-control" name="txtapellidos" id="txtapellidos" required>
+              <div class="valid-feedback">
+                Tus padres son geniales! :)
+              </div>
+              <div class="invalid-feedback">
+                Necesitamos saber tu apellido!
+              </div> 
+          </div>
+          <div class="form-group">
+              <label for="txtdni">DNI</label> 
+              <input type="text" class="form-control" name="txtdni" id="txtdni" onkeypress="solonumeros(event,'#txtdni',8)" required> 
+              <div class="valid-feedback">
+                Correctamente indentificado!!
+              </div>
+              <div class="invalid-feedback">
+                Ops deberas otorgarnos esta informacion!
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="txtfecha">FECHA DE NACIMIENTO</label> 
+              <input type="date" class="form-control" name="txtfecha" id="txtfecha" required> 
+              <div class="valid-feedback">
+                Te felicitaremos cuando llegue el dia!!!
+              </div>
+              <div class="invalid-feedback">
+               Ya ne cansé de hablarte bonito, no seas gil ctmr!
+              </div>
+          </div>
+          <fieldset class="form-group">
+            <label>SEXO</label> <br>
+              <div class="custom-control custom-radio custom-control-inline ml-5">
+                <input class="custom-control-input" type="radio" name="txtsexo" id="masculino" value="masculino" required> 
+                <label class="custom-control-label text-blue-darken-1" style="font-size: 2.5vh;" for ="masculino">Masculino</label>   
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input  class="custom-control-input" type="radio" name="txtsexo" id = "femenino" value="femenino"  required> 
+                <label class="custom-control-label text-pink "style="font-size: 2.5vh;" for ="femenino">Femenino</label>
+              </div>
+              <div class="custom-control custom-radio ml-4">
+                  <input class="custom-control-input" type="radio" name="txtsexo"  required> 
+                  <div class="valid-feedback">
+                      Gaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                  </div>
+                  <div class="invalid-feedback">
+                    Queremos saber si eres machito o hembrita
+                  </div>
+              </div>
+          </fieldset>
+          <div class="form-group">
+              <label for="txtcorreo">CORREO</label> 
+              <input type="email" class="form-control" name="txtcorreo" id="txtcorreo" required> 
+              <div class="valid-feedback">
+                Ok
+              </div>
+              <div class="invalid-feedback">
+               No ok
+              </div>
+          </div>
+        </form>
+        <form class="text-white">
+          <div class="form-group">
+            <label for="txtusuario">USUARIO</label>
+            <input type="text" class="form-control" name="txtusuario" id="txtusuario" onkeypress="sinespacios(event)" onkeyup="valuser()" required> 
+            <div class="valid-feedback" id="msg-s">
+              Ok 
+            </div>
+            <div class="invalid-feedback" id="msg-e1">
+              Complete
+            </div>
+            <div class="invalid-feedback" id="msg-e2">
+              Usuario ya existe
+            </div>
+        </div>
+        </form>
+        <form class="needs-validation text-white">
+          <div class="form-group">
+            <label for="txtcontraseña">CONTRASEÑA</label> 
+            <input type="password" class="form-control" name="txtcontraseña" id="txtcontraseña" required>
+            <div class="valid-feedback">
+              OK
+            </div>
+            <div class="invalid-feedback">
+              No ok
+            </div> 
+        </div>
+        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LckOLoUAAAAAITBmJNzelxX9j_qb90es6JxN9_G" id="captcha" required></div>
+                <div class="invalid-feedback" id="msg-capt">
+                      Complete el captcha
+                </div>
+            </div>
+            <input type="button" value="REGISTRAR" class="btn btn-warning" onclick="validar()">
+        </div>
+        </form>
       </div>
-      </form>
+      <div class="col-1">
+  
+        </div>
     </div>
+      
   </fieldset>
 
   <footer class="page-footer font-small unique-color-dark " style="background-color: black;  color: white; ">

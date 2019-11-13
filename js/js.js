@@ -260,6 +260,29 @@ function Limpiar()
 }
 
 
+function editarPerfil(){
+    $.ajax({
+        url: 'editarUsuario.php',
+        dataType: 'text',
+        type: 'post',
+        data: {'id': id },
+        success: function( data ){
+            var datos = JSON.parse(data);
+            // $("#divform").modal("toggle");
+            $("#idproducto").val(datos.idproducto);
+            $("#txtnombre").val(datos.nombre);
+            $("#txtprecio").val(datos.precio);
+            $("#txtfecha").val(datos.fecha_vencimiento);
+            $("#cbopresentacion").val(datos.idpresentacion);
+            $("#cbocategoria").val(datos.idcategoria);
+
+            console.log(data);
+        },
+        error: function( jqXhr, textStatus, errorThrown ){
+            console.log( errorThrown );
+        }
+    });
+}
 
 
 

@@ -43,6 +43,46 @@ SELECT * FROM NIVEL
 
 SELECT * FROM cliente where usuario = 'fernando10' and clave = 'fernando123'
 
+select * from cliente
+
+create table solicitud(
+	solicitudID int primary key,
+	clienteId int not null references cliente,
+	fecha date not null,
+	estado boolean not null, -- true hay solicitud false fue cancelada
+	monto money not null
+);
+
+create table respuesta(
+	respuestaid int primary key,
+	idSolicitud int not null references solicitud,
+	clienteid int not null references cliente,
+	fecha date not null,
+	interes_cliente numeric(8,2) not null,
+	interes_empresa numeric(8,2) not null,
+	estado boolean not null -- true aceptada, false rechazada (si el cliente acepta alguna respuesta las otras son rechazadas inmediatamente)
+);
+
+create table prestamo(
+	idPrestamo int primary key,
+	idRespuesta int not null references respuesta,
+	estado boolean not null,  -- true pagado false deuda
+	fecha date not null,
+	montoFinal numeric(8,2) not null,
+	numeroCuotas int not null,
+);
+
+create table cuota(
+	idCuota int primary key,
+	idPrestamo int not null references prestamo,
+	numeroCuota int not null,
+	fechaVencimiento date not null,
+	fechaPago date not null,
+	
+)
+
+
+
 
 
 

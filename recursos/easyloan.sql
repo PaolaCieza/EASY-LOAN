@@ -60,8 +60,8 @@ create table respuesta(
 	hora				time			default current_time	not null,
 	interes_cliente 	numeric(8,2) 	not null,
 	interes_empresa 	numeric(8,2) 	not null,
-	estado 				boolean 		not null -- true vigente, false la cancelaste .... si el cliente acepta otra respuesta tu respuesta se pondra en 
-);												-- false. si tú deseas retirar la respuesta pones cancelar y se cambia el estado de la resp                
+	estado 				boolean 		not null --true=vigente, false=cancelada, si el cliente acepta otra resp tu resp se pondrá en 
+);												-- false si tú deseas retirar la respuesta pones cancelar y se cambia el estado de la resp
 
 create table prestamo(
 	idPrestamo 			int 			primary key,

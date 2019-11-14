@@ -46,6 +46,7 @@ create table solicitud(
 	idSolicitud 		int 			primary key,
 	idCliente 			int 			not null 				references cliente,
 	fecha 				date 			default current_date 	not null,
+	hora				time			default current_time	not null,
 	estado 				boolean 		not null, -- true hay solicitud false fue cancelada
 	monto 				money 			not null,
 	periodo				boolean			not null
@@ -56,10 +57,11 @@ create table respuesta(
 	idSolicitud 		int 			not null 				references solicitud,
 	idCliente 			int 			not null 				references cliente,
 	fecha 				date 			default current_date 	not null,
+	hora				time			default current_time	not null,
 	interes_cliente 	numeric(8,2) 	not null,
 	interes_empresa 	numeric(8,2) 	not null,
-	estado 				boolean 		not null -- true aceptada, false rechazada (si el cliente acepta alguna respuesta las otras son rechazadas inmediatamente)
-);
+	estado 				boolean 		not null -- true vigente, false la cancelaste .... si el cliente acepta otra respuesta tu respuesta se pondra en 
+);												-- false. si tú deseas retirar la respuesta pones cancelar y se cambia el estado de la resp                
 
 create table prestamo(
 	idPrestamo 			int 			primary key,
@@ -80,7 +82,7 @@ create table cuota(
 	montoMora			numeric(8,2)	not null,
 	fechaVencimiento 	date 			not null,
 	montoTotal			numeric(8,2)	null,
-	estado 				boolean			not null -- true pagado, false sin pagar  --ESTA EN DUDA
+	estado 				boolean			not null -- true pagado, false sin pagar  
 );
 
 create table pago(

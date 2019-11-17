@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,6 +24,9 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script type="text/javascript" src="../js/js.js"></script>
+    <script type="text/javascript">
+		window.ready = inicio();
+	</script>
     <title>PRÉSTAMO</title>
 </head>
 
@@ -47,10 +54,10 @@
                     <a class="nav-link nav-a" href="#">VISION</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="iniciarsesion.html">INICIAR SESION 1</a>
+                    <a class="nav-link nav-a" href="iniciarsesion.php">INICIAR SESION 1</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="iniciarsesion2.html">INICIAR SESION 2</a>
+                    <a class="nav-link nav-a" href="iniciarsesion2.php">INICIAR SESION 2</a>
                 </li>
             </ul>
 
@@ -65,8 +72,8 @@
     <section class="container mt-5">
         <br>
         <div class="row mt-5 border border-left-0 border-top-0 border-right-0">
-            <div class="col-lg-2 justify-content-center">
-                <img src="../recursos/yo.jpg" alt="" class="perfil_user rounded-circle"> 
+            <div class="col-lg-2 justify-content-center" >
+                <img src="../recursos/<?php echo $_SESSION['foto']; ?>" alt="" class="perfil_user rounded-circle mb-3">
             </div>
             <div class="col-lg-10 ">
                 <div class="row justify-content-end pt-3 ">
@@ -87,7 +94,7 @@
                                 <div class="modal-body">
                                     <form>
                                         <div class="form-group">
-                                            <center><img src="../recursos/yo.jpg" alt=""
+                                            <center><img src="../recursos/<?php echo $_SESSION['foto']; ?>" alt=""
                                                     class="rounded-circle perfil_user"></center>
                                         </div>
                                         <div class="form-group">
@@ -140,9 +147,18 @@
                     <div class="modal fade" id="modalNivel" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div id="nivel">
-                                    
+                            <div class="modal-content"><!---->
+                                <div class='modal-header'>
+                                    <h1 class='modal-title' id='exampleModalLabel' class='text-lowercase'><b> Hola
+                                            <label for='lblnombre' id='lblnombre'><?php echo $_SESSION['nombre']; ?></label>!</b></h1>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                                <div class='modal-body'>
+                                    <form id="nivel">
+                                        
+                                    </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>

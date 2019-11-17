@@ -1,8 +1,7 @@
-$( document ).ready(function() {
+function inicio(){
 	$("#msg-capt").hide();
 	listarPrestamos(1);
-});
-
+}
 function iniciarSesion(a){
 	if(a==0){
 		var user = $("#txtusuario").val();
@@ -12,7 +11,7 @@ function iniciarSesion(a){
 		  data: {"txtuser":user, "a":1},
 		  success: function( data ){
 			if(data == 1){
-				window.location.href="../html/iniciarsesion2.html";
+				window.location.href="../html/iniciarsesion2.php";
 			}
 			else{
 				Swal.fire({
@@ -215,10 +214,10 @@ function registrar(){
 					confirmButtonText: 'OK'
 				  }).then((result) => {
 					if (result.value) {
-						window.location.href="../html/iniciarsesion.html";
+						window.location.href="../html/iniciarsesion.php";
 					}
 					else{
-						window.location.href="../html/registrarse.html";
+						window.location.href="../html/registrarse.php";
 					}
 				  })  
 			}else{
@@ -341,3 +340,5 @@ function mostrarNivel(){
         }
     });
 }
+
+

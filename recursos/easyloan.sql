@@ -52,6 +52,7 @@ create table solicitud(
 	estado 				boolean 		null, -- true hay solicitud false fue cancelada
 	monto 				money 			not null,
 	periodo				boolean			not null, --true mensual, false semanal
+	numeroCuotas		int				not null
 	vencimiento			timestamp		default (current_timestamp::timestamp + (5||'day')::interval)::timestamp
 );
 
@@ -183,10 +184,11 @@ where s.idCliente=1 offset 0  limit 3
 
 
 select c.nombre ||' '||c.apellido as prestamista, r.tasainteres*100, c.fotousuario from respuesta r inner join cliente c
-on c.idcliente=r.idcliente where r.idsolicitud = 1
+on c.idcliente=r.idcliente where r.idsolicitud = (select idsolicitud from solicitud where estado=true order by fecha desc limit 1 )
+and r.estado is null;
 
 
-
+select * from solicitud s inner join respuesta r on r.idsolicitud = s.idsolicitud where r.estado is null
 ----------------------------
 select c.nombre as usuario, n.idnivel, n.nombre, n.descripcion,n.imagen 
 from cliente c inner join nivel n on n.idnivel=c.idnivel where c.idcliente=1

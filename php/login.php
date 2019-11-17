@@ -28,6 +28,8 @@ else{
 		$registro = $rs->fetchObject();
 		$_SESSION['idusuario']=$registro->idcliente;
 		$_SESSION['usuario']=$registro->usuario;	
+		$_SESSION['foto']=$registro->fotousuario;	
+		$_SESSION['nombre']=$registro->nombre;	
 		echo 1;				
 	}
 	else{

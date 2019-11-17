@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(!isset($_SESSION['usuario'])) header("location: iniciarsesion.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 

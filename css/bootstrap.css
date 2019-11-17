@@ -134,11 +134,27 @@ body {
 }
 
 .inicio-fondo{
-  background-color: #000000 !important;
-  border-radius: 20px;
-  margin-bottom: 10vh !important;
+  
+  /* background-color: #000000 !important; */
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 24vh !important;
   /* margin-bottom: 88px !important; */
-  margin-top: 10vh !important;
+  margin-top: 17vh !important;
+  /* margin-top: 80px !important; */
+  padding: 8vh  !important;
+  /* padding: 70px  !important; */
+  font-size: 2vh !important;
+}
+
+#regis{
+  
+  /* background-color: #000000 !important; */
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 12vh !important;
+  /* margin-bottom: 88px !important; */
+  margin-top: 4vh !important;
   /* margin-top: 80px !important; */
   padding: 8vh  !important;
   /* padding: 70px  !important; */

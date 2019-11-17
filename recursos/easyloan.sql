@@ -98,16 +98,6 @@ create table cuota(
 	monto 				numeric(8,2)	not null
 	--noseeeeeeeeeeeeeeeee
 );
-
-
-select * from prestamo
-select * from cliente
-select prestamo.idprestamo,cliente.nombre,cliente.apellido as prestamista,prestamo.estado, prestamo.fecha,prestamo.montofinal, 
-prestamo.numerocuotas 
-from prestamo inner join respuesta on respuesta.idrespuesta = prestamo.idrespuesta
-inner join cliente on cliente.id = respuesta.idcliente where cliente.usuario = 'paolacieza09' order by 1;
-
-SELECT * FROM NIVEL
 */
 
 
@@ -193,8 +183,11 @@ inner join cliente c on r.idcliente=c.idcliente
 where s.idCliente=1 offset 0  limit 3
 
 
-select c.nombre ||' '||c.apellido as prestamista, r.tasainteres*100, c.fotousuario from respuesta r inner join cliente c
-on c.idcliente=r.idcliente where r.idsolicitud = (select idsolicitud from solicitud where estado=true order by fecha desc limit 1 )
+select c.nombre ||' '||c.apellido as prestamista, r.tasainteres*100 as interes, c.fotousuario,
+s.numerocuotas, (case when s.periodo=true then 'MENSUALES' else 'SEANALES' end) as periodo
+from respuesta r inner join cliente c
+on c.idcliente=r.idcliente inner join solicitud s on r.idsolicitud=s.idsolicitud
+where r.idsolicitud = (select idsolicitud from solicitud where estado=true and idcliente= 1 order by fecha desc limit 1 )
 and r.estado is null;
 
 

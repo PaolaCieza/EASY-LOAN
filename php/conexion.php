@@ -5,7 +5,7 @@ $servidor = "localhost";
 $basedatos = "DB_EASYLOAN";
 $puerto = "5432";
 $usuario = "postgres";
-$clave 	 = "mimamamemima";
+$clave 	 = "lujan";
 $cadena = "$driver:host=$servidor;port=$puerto;dbname=$basedatos";
 $cnx = new PDO($cadena,$usuario,$clave);
 ?>

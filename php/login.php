@@ -26,7 +26,7 @@ else{
 	if($cantidad_registros==1) 
 	{
 		$registro = $rs->fetchObject();
-		$_SESSION['idusuario']=$registro->id;
+		$_SESSION['idusuario']=$registro->idcliente;
 		$_SESSION['usuario']=$registro->usuario;	
 		echo 1;				
 	}

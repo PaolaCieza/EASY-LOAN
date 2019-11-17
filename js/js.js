@@ -1,5 +1,6 @@
 $( document ).ready(function() {
 	$("#msg-capt").hide();
+	listarPrestamos(1);
 });
 
 function iniciarSesion(a){
@@ -284,5 +285,59 @@ function editarPerfil(){
     });
 }
 
+function listarPrestamos(pag){
+	$.ajax({
+        url: '../php/listarPrestamos.php',
+        type: 'post',
+        data: {'pag':pag},
+        success: function( data ){
+        	$("#registros").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+    paginacion();
+}
 
+function paginacion(){
+	$.ajax({
+        url: '../php/paginacionPrestamos.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#divpaginas").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
 
+function listarRespuestas(){
+	$.ajax({
+        url: '../php/listarRespuestas.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#respuestas").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function mostrarNivel(){
+	$.ajax({
+        url: '../php/mostrarNivel.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#nivel").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}

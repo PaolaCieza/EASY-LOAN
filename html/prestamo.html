@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <script type="text/javascript" src="../js/js.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css"> 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.6/dist/sweetalert2.all.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -20,6 +19,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script type="text/javascript" src="../js/js.js"></script>
     <title>PRÉSTAMO</title>
 </head>
 
@@ -136,43 +136,13 @@
 
                     <!--  BOTÓN CON MODAL DE NIVEL -->
                     <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalNivel"
-                        data-whatever="@mdo">NIVEL</button>
+                        data-whatever="@mdo" onclick="mostrarNivel()">NIVEL</button>
                     <div class="modal fade" id="modalNivel" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase"><b> HOLA
-                                            <label for="lblnombre" id="lblnombre">PAOLA</label>!</b></h1>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
-                                            <center> <img src="../recursos/nivel1.png" alt="" width="120px"></center>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">USTED SE ENCUENTRA EN EL
-                                                NIVEL</label>
-                                            <input type="text"
-                                                class="form-control border-top-0 border-left-0 border-right-0 border-dark bg-transparent"
-                                                id="recipient-name" readonly value="BÁSICO">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">AQUÍ TIENE ACCESOS PARA
-                                            </label>
-                                            <!-- <input type="text" class="form-control" id="recipient-name" readonly> -->
-                                            <ul>
-                                                <li>CACHAR</li>
-                                                <li>CACHAR</li>
-                                                <li>CACHAR</li>
-                                                <li>CACHAR</li>
-                                            </ul>
-                                        </div>
-                                    </form>
+                                <div id="nivel">
+                                    
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
@@ -191,7 +161,7 @@
         <div class="row mb-3">
             <!--  BOTÓN CON MODAL DE RESPUESTAS-->
             <button type="button" class="btn btn-outline-info col-12 p-3" data-toggle="modal"
-                data-target="#modalRespuestas" data-whatever="@mdo">RESPUESTAS DEL PRÉSTAMO ACTUAL</button>
+                data-target="#modalRespuestas" data-whatever="@mdo" onclick="listarRespuestas()">RESPUESTAS A LA SOLICITUD ACTUAL</button>
             <div class="modal fade" id="modalRespuestas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -203,75 +173,10 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form id="respuestas">
                                 <!-- <div class="form-group">
                             <center> <img src="../recursos/nivel1.png" alt="" width="120px"></center>
                             </div> -->
-                                <div class="form-group border border-success p-3">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <img src="../recursos/yo.jpg" alt="" width="100px" class="rounded-circle">
-                                        </div>
-                                        <div class="col-lg-8">
-                                                <label for="recipient-name" class="col-form-label">JORGE CASTILLO</label>
-                                                <label for="">INTERÉS</label> <br>
-                                                <label for="lblPorcentaje">10%</label>
-                                                <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline-secondary"
-                                                            data-dismiss="modal">RECHAZAR</button>
-                                                        <button type="button" class="btn btn-outline-danger">ACEPTAR</button>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                </div><div class="form-group border border-success p-3">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <img src="../recursos/yo.jpg" alt="" width="100px" class="rounded-circle">
-                                        </div>
-                                        <div class="col-lg-8">
-                                                <label for="recipient-name" class="col-form-label">JORGE CASTILLO</label>
-                                                <label for="">INTERÉS</label> <br>
-                                                <label for="lblPorcentaje">10%</label>
-                                                <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline-secondary"
-                                                            data-dismiss="modal">RECHAZAR</button>
-                                                        <button type="button" class="btn btn-outline-danger">ACEPTAR</button>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                </div><div class="form-group border border-success p-3">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <img src="../recursos/yo.jpg" alt="" width="100px" class="rounded-circle">
-                                        </div>
-                                        <div class="col-lg-8">
-                                                <label for="recipient-name" class="col-form-label">JORGE CASTILLO</label>
-                                                <label for="">INTERÉS</label> <br>
-                                                <label for="lblPorcentaje">10%</label>
-                                                <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline-secondary"
-                                                            data-dismiss="modal">RECHAZAR</button>
-                                                        <button type="button" class="btn btn-outline-danger">ACEPTAR</button>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                </div><div class="form-group border border-success p-3">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <img src="../recursos/yo.jpg" alt="" width="100px" class="rounded-circle">
-                                        </div>
-                                        <div class="col-lg-8">
-                                                <label for="recipient-name" class="col-form-label">JORGE CASTILLO</label>
-                                                <label for="">INTERÉS</label> <br>
-                                                <label for="lblPorcentaje">10%</label>
-                                                <div class="modal-footer">
-                                                        <button type="button" class="btn btn-outline-secondary"
-                                                            data-dismiss="modal">RECHAZAR</button>
-                                                        <button type="button" class="btn btn-outline-danger">ACEPTAR</button>
-                                                    </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -292,16 +197,16 @@
                         <th>ID</th>
                         <th>PRESTAMISTA</th>
                         <th>MONTO</th>
+                        <th>CUOTAS</th>
                         <th>ESTADO</th>
                         <th>FECHA-PRÉSTAMO</th>
-                        <th>FECHA-FIN</th>
-                        <th>FECHA-FIN</th>
                     </tr>
                 </thead>
                 <tbody id="registros">
 
                 </tbody>
             </table>
+            <div id="divpaginas"></div>
             <br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br>

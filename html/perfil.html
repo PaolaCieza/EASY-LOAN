@@ -20,13 +20,18 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-    <title>SOBRE NOSOTROS</title>
+    <!-- fghhjk -->
+    <title>PERFIL USUARIO</title>
 </head>
 
 <body class="-fondito">
-    <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light   " style="background-color: black; ">
+    <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light  fixed-top " style="background-color: black; ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
+            aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <a class="navbar-brand" href="../index.html">
-            <img src="../recursos/icono_libreria.png" width="60" height="60" alt="">
+            <!-- <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> -->
             <span class="text-warning titulo"> EASY LOAN</span>
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -47,24 +52,20 @@
                     <a class="nav-link nav-a" href="#">VISION</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="iniciarsesion.html">INICIAR SESION 1</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link nav-a" href="iniciarsesion2.html">INICIAR SESION 2</a>
+                        <select name="PERIODO" id="" class="border-0 bg-transparent text-wrap nav-link nav-a mt-0" >
+                                <option value="" selected disabled="disabled">  HOLA, <label for="txtUsuarioSelect">PAOLA</label></option>
+                                <option value="" class="text-dark">CERRAR SESIÓN</option>
+                                <option value="" class="text-dark">MENSUAL</option>
+                            </select>
                 </li>
             </ul>
 
         </div>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
-            aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a>
-    </nav>
+        
+    </nav> <br> <br>
     <section class="container-fluid">
         <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-3  border border-left-3 mr-3">
+            <div class="col-lg-3  border border-left-3 mr-3 ml-3 p-3">
                 <div class=" row justify-content-center mt-3" id="">
                     <img src="../recursos/user.png" alt="" class="perfil_user rounded-circle">
                 </div>
@@ -74,49 +75,62 @@
                 <div class="row justify-content-center mt-3">
                     <a href="perfilEditar.html"> <input type="button" class="bg-warning" value="EDITAR PERFIL" > </a>
                 </div>
-                <br><br><br><br><br><br>                <br><br><br><br><br><br>
-                <br><br><br><br><br><br>
 
             </div>
-            <div class="col-7 ">
+            <div class="col-lg-7 ">
                 <div class=" row justify-content-center mt-3 bg-warning  ">
                     <h1>BIENVENIDO A TU PERFIL</h1>
                 </div> <br>
                 <div class="UnderlineNav width-full user-profile-nav js-sticky top-0" style="position: static;">
                     <nav class="mb-1 mt-2 navbar navbar-expand-lg default-color UnderlineNav-body">
-                        <a class="navbar-brand text-dark rainbow-button " href="perfil.html"> <span class="text-btn">Logistica</span> </a>
-                        <a class="navbar-brand text-dark rainbow-button" href="perfilPrestamos.html">  <span class="text-btn">Préstamos</span>  </a>
-                        <a class="navbar-brand text-dark rainbow-button" href="perfilPrestado.html">  <span class="text-btn">Prestado</span> </a>
-                        <a class="navbar-brand text-dark rainbow-button" href="perfilNivel.html">   <span class="text-btn">Nivel</span></a>
+                        <button class="navbar-brand text-dark rainbow-button border-0" href="#" > <span class="text-btn">DATOS</span> </button>
+                        <button class="navbar-brand text-dark rainbow-button border-0" href="#"> <span class="text-btn">LOGÍSTICA</span> </button>
+                        <button class="navbar-brand text-dark rainbow-button border-0" href="#">  <span class="text-btn">PRÉSTAMOS</span>  </button>
+                        <button class="navbar-brand text-dark rainbow-button border-0" href="#">  <span class="text-btn">PRÉSTADOS</span> </button>
+                        <button class="navbar-brand text-dark rainbow-button border-0" href="#">   <span class="text-btn">NIVEL</span></button>
                     </nav>
                 </div>
-                <br><br><br><br><br><br>
-
-                <div>
-                    <div id="myfirstchart" style="height: 250px;"></div>
-                    <script>
-                        new Morris.Line({
-                            // ID of the element in which to draw the chart.
-                            element: 'myfirstchart',
-                            // Chart data records -- each entry in this array corresponds to a point on
-                            // the chart.
-                            data: [
-                                { year: '2008', value: 20 },
-                                { year: '2009', value: 10 },
-                                { year: '2010', value: 5 },
-                                { year: '2011', value: 5 },
-                                { year: '2012', value: 20 }
-                            ],
-                            // The name of the data record attribute that contains x-values.
-                            xkey: 'year',
-                            // A list of names of data record attributes that contain y-values.
-                            ykeys: ['value'],
-                            // Labels for the ykeys -- will be displayed when you hover over the
-                            // chart.
-                            labels: ['Value']
-                        });
-                    </script>
+                <br>
+                <div id="datos" class=" bg-light p-2 rounded-circle">
+                    <div class="form-group">
+                        <label for="txtnombre">NOMBRE</label> 
+                        <input type="text" class="form-control" name="txtnombre" id="txtnombre" readonly required> 
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="txtapellidos">APELLIDOS</label> 
+                        <input type="text" class="form-control" name="txtapellidos" id="txtapellidos" readonly required>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="txtdni">DNI</label> 
+                        <input type="text" class="form-control" name="txtdni" id="txtdni" onkeypress="solonumeros(event,'#txtdni',8)" readonly required> 
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="txtfecha">FECHA DE NACIMIENTO</label> 
+                        <input type="date" class="form-control" name="txtfecha" id="txtfecha" readonly required> 
+                        
+                    </div>
+                    <fieldset class="form-group">
+                      <label>SEXO</label> <br>
+                      <input type="text" class="form-control" name="txtsexo" id="txtsexo    " readonly required> 
+                        
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="txtcorreo">CORREO</label> 
+                        <input type="email" class="form-control" name="txtcorreo" id="txtcorreo" readonly required> 
+                        
+                    </div>
+                  </form>
+                  <form class="text-capitalize">
+                    <div class="form-group">
+                      <label for="txtusuario">USUARIO</label>
+                      <input type="text" class="form-control" readonly name="txtusuario" id="txtusuario" onkeypress="sinespacios(event)" onkeyup="valuser()" required> 
+                  </div>
+                  </form>
                 </div>
+                
             </div>
         </div>
     </section>
@@ -223,3 +237,28 @@
 </body>
 
 </html>
+<!-- <div>
+        <div id="myfirstchart" style="height: 250px;"></div>
+        <script>
+            new Morris.Line({
+                // ID of the element in which to draw the chart.
+                element: 'myfirstchart',
+                // Chart data records -- each entry in this array corresponds to a point on
+                // the chart.
+                data: [
+                    { year: '2008', value: 20 },
+                    { year: '2009', value: 10 },
+                    { year: '2010', value: 5 },
+                    { year: '2011', value: 5 },
+                    { year: '2012', value: 20 }
+                ],
+                // The name of the data record attribute that contains x-values.
+                xkey: 'year',
+                // A list of names of data record attributes that contain y-values.
+                ykeys: ['value'],
+                // Labels for the ykeys -- will be displayed when you hover over the
+                // chart.
+                labels: ['Value']
+            });
+        </script>
+    </div> -->

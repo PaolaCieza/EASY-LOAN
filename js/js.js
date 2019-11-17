@@ -11,7 +11,7 @@ function iniciarSesion(a){
 		  data: {"txtuser":user, "a":1},
 		  success: function( data ){
 			if(data == 1){
-				window.location.href="../html/iniciarsesion2.php";
+				window.location.href="../html/iniciarsesion2.php" ;
 			}
 			else{
 				Swal.fire({

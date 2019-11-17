@@ -98,6 +98,16 @@ create table cuota(
 	monto 				numeric(8,2)	not null
 	--noseeeeeeeeeeeeeeeee
 );
+
+
+select * from prestamo
+select * from cliente
+select prestamo.idprestamo,cliente.nombre,cliente.apellido as prestamista,prestamo.estado, prestamo.fecha,prestamo.montofinal, 
+prestamo.numerocuotas 
+from prestamo inner join respuesta on respuesta.idrespuesta = prestamo.idrespuesta
+inner join cliente on cliente.id = respuesta.idcliente where cliente.usuario = 'paolacieza09' order by 1;
+
+SELECT * FROM NIVEL
 */
 
 

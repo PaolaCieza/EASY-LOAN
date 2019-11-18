@@ -20,5 +20,16 @@
                 <td>$reg->numerocuotas</td>
                 <td>$reg->estado</td>
                 <td>$reg->fecha</td>
+                <td class='p-2' >
+                <button type='button' class='bg-transparent border-0 m-0' data-toggle='modal'
+                data-target='#modaListarCuotas' data-whatever='@mdo'>  <img src='../recursos/listarCuotasG.png' >
+                </button>
+                </td>
+                <td class='p-2' >
+                <button type='button' class='bg-transparent border-0 m-0' data-toggle='modal'
+                data-target='#modalPagar' data-whatever='@mdo'> <img src='../recursos/pagar.png' >
+                </button>
+                </td>
+
             </tr>";
     }

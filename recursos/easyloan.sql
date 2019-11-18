@@ -30,6 +30,9 @@ INSERT INTO NIVEL VALUES (5, 'PRO','Permite realizar y solicitar prestamos de ha
 INSERT INTO cliente
 	VALUES (1, 'Jesús Fernando', 'Luján Piscoya', '75553596', '1998-08-04', true,'jesusfer_nan2@hotmail.com' ,
 			'fernando10','fernando123', DEFAULT, DEFAULT);
+INSERT INTO cliente
+	VALUES (2, 'Paola E', 'Cieza Bances', '75756219', '1999-11-09', true,'paolita_thu_xikitah@gmail.com' ,
+			'paola','123', DEFAULT, DEFAULT);
 
 SELECT * FROM cliente INNER JOIN NIVEL ON ID_NIVEL = NIVEL.ID
 
@@ -52,7 +55,7 @@ create table solicitud(
 	estado 				boolean 		null, -- true hay solicitud false fue cancelada
 	monto 				money 			not null,
 	periodo				boolean			not null, --true mensual, false semanal
-	numeroCuotas		int				not null
+	numeroCuotas		int				not null,
 	vencimiento			timestamp		default (current_timestamp::timestamp + (5||'day')::interval)::timestamp
 );
 
@@ -74,7 +77,7 @@ create table prestamo(
 	fecha 				date 			default current_date 	not null,
 	hora				time			default current_time	not null,
 	monto 				numeric(8,2) 	not null,
-	tasaInteres			numeric(8,2)		not null,
+	tasaInteres			numeric(8,2)	not null,
 	numeroCuotas 		int 			not null,
 	periodo				boolean			not null
 );
@@ -113,7 +116,7 @@ $$
 				LOOP
 				INSERT INTO public.cuota(
 				idcuota, idprestamo, numerocuota, montocuota, montomora, fechavencimiento, estado)
-				VALUES ((select coalesce(max(idcuota),0)+1 from cuota), new.idprestamo, num, monto, null, 
+				VALUES ((select coalesce(max(idcuota),0)+1 from cuota), new.idprestamo, num, monto, 0, 
 						(current_date::date + (num||' month')::interval), false);
 				num = num +1;
 			 END LOOP;
@@ -122,7 +125,7 @@ $$
 				LOOP
 				INSERT INTO public.cuota(
 				idcuota, idprestamo, numerocuota, montocuota, montomora, fechavencimiento, estado)
-				VALUES ((select coalesce(max(idcuota),0)+1 from cuota), new.idprestamo, num, monto, null, 
+				VALUES ((select coalesce(max(idcuota),0)+1 from cuota), new.idprestamo, num, monto, 0, 
 						(current_date::date + (num||' week')::interval), false);
 				num = num +1;
 			 END LOOP;
@@ -168,6 +171,30 @@ $$ LANGUAGE 'plpgsql';
 
 CREATE TRIGGER tg_aceptar_solicitud AFTER INSERT ON respuesta FOR EACH ROW EXECUTE PROCEDURE fn_aceptar_solicitud();
 -----------------------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION fn_aceptar_respuesta(id integer) RETURNS BOOLEAN AS
+$$
+DECLARE
+	sol integer;
+	mont numeric;
+	cuotas integer;
+	inter numeric;
+	per boolean;
+BEGIN
+	select r.idsolicitud,r.tasainteres into sol, inter from respuesta r where idrespuesta=id;
+	select s.monto, s.numerocuotas,s.periodo into mont, cuotas, per from solicitud s where s.idsolicitud=sol; 
+	UPDATE public.respuesta r SET estado=true WHERE r.idrespuesta=id;
+	UPDATE public.respuesta r SET estado=false WHERE r.idsolicitud=sol and r.estado is null;
+	INSERT INTO public.prestamo(
+	idprestamo, idrespuesta, estado, fecha, hora, monto, tasainteres, numerocuotas, periodo)
+	VALUES ((select coalesce(max(idprestamo),0)+1 from prestamo), id, DEFAULT, DEFAULT, DEFAULT, mont, inter, cuotas, per);
+	return true;
+	exception
+		when others then return false;
+END;
+$$ LANGUAGE 'plpgsql';
+
+-----------------------------------------------------------------------------------------------------------------------------
+select fn_aceptar_respuesta(5)
 select * from cliente
 select * from respuesta
 select * from solicitud
@@ -183,12 +210,12 @@ inner join cliente c on r.idcliente=c.idcliente
 where s.idCliente=1 offset 0  limit 3
 
 
-select c.nombre ||' '||c.apellido as prestamista, r.tasainteres*100 as interes, c.fotousuario,
+SELECT r.idrespuesta, c.nombre ||' '||c.apellido as prestamista, r.tasainteres*100 as interes, c.fotousuario,
 s.numerocuotas, (case when s.periodo=true then 'MENSUALES' else 'SEANALES' end) as periodo
 from respuesta r inner join cliente c
 on c.idcliente=r.idcliente inner join solicitud s on r.idsolicitud=s.idsolicitud
-where r.idsolicitud = (select idsolicitud from solicitud where estado=true and idcliente= 1 order by fecha desc limit 1 )
-and r.estado is null;
+where r.idsolicitud = (select idsolicitud from solicitud where estado=true and idcliente= 1 order by fecha,hora desc limit 1 )
+and r.estado is null
 
 
 select * from solicitud s inner join respuesta r on r.idsolicitud = s.idsolicitud where r.estado is null

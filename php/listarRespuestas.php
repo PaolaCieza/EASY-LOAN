@@ -2,11 +2,11 @@
 require_once("conexion.php");
 session_start();
 $idcliente = $_SESSION['idusuario'];
-$sql="SELECT c.nombre ||' '||c.apellido as prestamista, r.tasainteres*100 as interes, c.fotousuario,
+$sql="SELECT r.idrespuesta, c.nombre ||' '||c.apellido as prestamista, r.tasainteres*100 as interes, c.fotousuario,
 s.numerocuotas, (case when s.periodo=true then 'MENSUALES' else 'SEANALES' end) as periodo
 from respuesta r inner join cliente c
 on c.idcliente=r.idcliente inner join solicitud s on r.idsolicitud=s.idsolicitud
-where r.idsolicitud = (select idsolicitud from solicitud where estado=true and idcliente= $idcliente order by fecha desc limit 1 )
+where r.idsolicitud = (select idsolicitud from solicitud where estado=true and idcliente= $idcliente order by fecha,hora desc limit 1 )
 and r.estado is null;
 ";
 $result = $cnx->query($sql);
@@ -25,7 +25,7 @@ while($reg = $result->fetchObject()){
                         <div class='modal-footer'>
                                 <button type='button' class='btn btn-outline-secondary'
                                     data-dismiss='modal'>RECHAZAR</button>
-                                <button type='button' class='btn btn-outline-danger'>ACEPTAR</button>
+                                <button type='button' class='btn btn-outline-danger' onclick='aceptarRespuesta($reg->idrespuesta)'>ACEPTAR</button>
                         </div>
                 </div>
             </div>

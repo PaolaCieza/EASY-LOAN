@@ -341,4 +341,55 @@ function mostrarNivel(){
     });
 }
 
+function aceptarRespuesta(id){
+	Swal.fire({
+		title: '¿Estás seguro?',
+		text: "Al aceptar se registrará el prestamo",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#328FE1',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Aceptar',
+		cancelButtonText: 'Cancelar'
+	  }).then((result) => {
+		if (result.value) {
+			$.ajax({
+				url: '../php/aceptarRespuesta.php',
+				type: 'post',
+				data: {'id':id},
+				success: function( data ){
+					console.log( data );
+					if(data==1){
+						Swal.fire({
+							title: '¡Registrado corectamente!',
+							type: 'success',
+							showCancelButton: false,
+							confirmButtonColor: '#328FE1',
+							confirmButtonText: 'Ok'
+						  }).then((result) => {
+							if (result.value) {
+								location.reload();
+							}
+							else{
+								location.reload();
+							}
+						  })  
+						
+					}
+					else{
+						Swal.fire({
+							type: 'error',
+							title: 'Ocurrio un error',
+							text: 'Algo salió mal',
+						  })
+					}
+				},
+				error: function( jqXhr, textStatus, error ){
+					console.log( error );
+				}
+			});
+		}
+	  })
+	
+}
 

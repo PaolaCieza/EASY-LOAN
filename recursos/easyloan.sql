@@ -21,11 +21,11 @@ CREATE TABLE CLIENTE(
 	FOTOUSUARIO VARCHAR(36)		DEFAULT 'user.jpg'	NOT	NULL
 );
 
-INSERT INTO NIVEL VALUES (1, 'BÁSICO', 25);
-INSERT INTO NIVEL VALUES (2, 'MEDIO', 25);
-INSERT INTO NIVEL VALUES (3, 'INTERMEDIO', 25);
-INSERT INTO NIVEL VALUES (4, 'AVANZADO', 25);
-INSERT INTO NIVEL VALUES (5, 'PRO', 25);
+INSERT INTO NIVEL VALUES (1, 'BÁSICO', 'Permite realizar y solicitar prestamos de hasta S/25',25,'nivel1.png');
+INSERT INTO NIVEL VALUES (2, 'MEDIO','Permite realizar y solicitar prestamos de hasta S/25', 25,'nivel2.png');
+INSERT INTO NIVEL VALUES (3, 'INTERMEDIO','Permite realizar y solicitar prestamos de hasta S/25', 25,'nivel3.png');
+INSERT INTO NIVEL VALUES (4, 'AVANZADO', 'Permite realizar y solicitar prestamos de hasta S/25',25,'nivel4.png');
+INSERT INTO NIVEL VALUES (5, 'PRO','Permite realizar y solicitar prestamos de hasta S/25', 25,'nivel5.png');
 
 INSERT INTO cliente
 	VALUES (1, 'Jesús Fernando', 'Luján Piscoya', '75553596', '1998-08-04', true,'jesusfer_nan2@hotmail.com' ,
@@ -195,5 +195,5 @@ select * from solicitud s inner join respuesta r on r.idsolicitud = s.idsolicitu
 ----------------------------
 select c.nombre as usuario, n.idnivel, n.nombre, n.descripcion,n.imagen 
 from cliente c inner join nivel n on n.idnivel=c.idnivel where c.idcliente=1
-
+select version();
 

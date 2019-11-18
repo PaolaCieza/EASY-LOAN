@@ -73,7 +73,7 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
         <br>
         <div class="row mt-5 border border-left-0 border-top-0 border-right-0">
             <div class="col-lg-2 justify-content-center" >
-                <img src="../recursos/<?php echo $_SESSION['foto']; ?>" alt="" class="perfil_user rounded-circle mb-3">
+                <img src="../recursos/perfiles/<?php echo $_SESSION['foto']; ?>" alt="" class="perfil_user rounded-circle mb-3">
             </div>
             <div class="col-lg-10 ">
                 <div class="row justify-content-end pt-3 ">
@@ -94,7 +94,7 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                                 <div class="modal-body">
                                     <form>
                                         <div class="form-group">
-                                            <center><img src="../recursos/<?php echo $_SESSION['foto']; ?>" alt=""
+                                            <center><img src="../recursos/perfiles/<?php echo $_SESSION['foto']; ?>" alt=""
                                                     class="rounded-circle perfil_user"></center>
                                         </div>
                                         <div class="form-group">

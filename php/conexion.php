@@ -1,11 +1,11 @@
 <?php
 // PDO PHP Data Object
 $driver = "pgsql"; //pgsql
-$servidor = "localhost";
-$basedatos = "DB_EASYLOAN";
-$puerto = "5432";
+$servidor = "192.168.1.38";
+$basedatos = "BD_easyloan";
+$puerto = "5454";
 $usuario = "postgres";
-$clave 	 = "mimamamemima";
+$clave 	 = "123456789";
 $cadena = "$driver:host=$servidor;port=$puerto;dbname=$basedatos";
 $cnx = new PDO($cadena,$usuario,$clave);
 ?>

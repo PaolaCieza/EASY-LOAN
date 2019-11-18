@@ -71,7 +71,7 @@ if(!isset($_SESSION['usuario'])) header("location: iniciarsesion.php");
                       <input input type="text" style="display: none;" disabled="disabled" size="1">
                       <input type="password" class="form-control mb-2" id="txtcontraseña" placeholder="Ingrese su contraseña aquí...."  
                         onkeypress = "if(event.keyCode == 13) iniciarSesion(1)">
-                      <a href="recuperarcontraseña.html" style="color: blueviolet;">¿OLVIDÓ SU CONTRASEÑA?</a> <br> <br>
+                      <a href="recuperarcontraseña.html" style="color: blueviolet;" >¿OLVIDÓ SU CONTRASEÑA?</a> <br> <br>
                       <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" ></div>
                       <button type="button" class="btn btn-warning" onclick="iniciarSesion(1)" id="btn_envio" >INICIAR SESION</button>
                   </div>

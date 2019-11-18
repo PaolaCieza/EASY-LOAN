@@ -195,11 +195,7 @@ $$ LANGUAGE 'plpgsql';
 
 -----------------------------------------------------------------------------------------------------------------------------
 select fn_aceptar_respuesta(5)
-select * from cliente
-select * from respuesta
-select * from solicitud
-select * from prestamo
-select * from cuota
+
 SELECT round(46.5)
 --------------------------------------------------------------------------------------------------------------------------------------
 select p.idprestamo, c.nombre ||' '||c.apellido as prestamista,p.monto, p.numerocuotas, 
@@ -223,4 +219,37 @@ select * from solicitud s inner join respuesta r on r.idsolicitud = s.idsolicitu
 select c.nombre as usuario, n.idnivel, n.nombre, n.descripcion,n.imagen 
 from cliente c inner join nivel n on n.idnivel=c.idnivel where c.idcliente=1
 select version();
+---------------------------------------------------------------------------------------------------------------------
+select * from cliente
+select * from respuesta
+select * from solicitud
+select * from prestamo
+select * from cuota
+---------------------------------------------------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION fn_validar_solicitud(idC integer) RETURNS BOOLEAN AS
+$$
+DECLARE
+	prest integer; --0
+	solc integer; --0
+	resp integer; --0
+BEGIN
+	select count(*) into prest from prestamo p inner join respuesta r on p.idrespuesta=r.idrespuesta inner join 
+	solicitud s on s.idsolicitud=r.idsolicitud where s.idcliente=idC and p.estado=false;   
+	select count(*) into solc from solicitud s where estado is null and s.idcliente=idC;
+	select count(*) into resp from solicitud s inner join respuesta r on r.idsolicitud=s.idsolicitud
+	where r.estado is null and s.idcliente=idC;
+	if(prest=0 and solc=0 and resp=0)then
+		return true;		
+	else
+		return false;
+	end if;
+END;
+$$ LANGUAGE 'plpgsql';
+
+
+select fn_validar_solicitud(2)
+
+
+
+
 

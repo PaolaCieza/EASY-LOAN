@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
+if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -112,8 +112,8 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                                             <label for="message-text" class="col-form-label">PERIODO</label> <br>
                                             <select name="periodo" id="periodo" class="border-0">
                                                 <option value="" selected disabled="disabled">seleccionar</option>
-                                                <option value="0">SEMANAL</option>
-                                                <option value="1">MENSUAL</option>
+                                                <option value="false">SEMANAL</option>
+                                                <option value="true">MENSUAL</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -197,6 +197,7 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                         </div>
                         <div class="modal-body">
                             <form id="respuestas">
+                                   
                                 <!-- <div class="form-group">
                             <center> <img src="../recursos/nivel1.png" alt="" width="120px"></center>
                             </div> -->
@@ -228,7 +229,6 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                     </tr>
                 </thead>
                 <tbody id="registros">
-
                 </tbody>
             </table>
             <div id="divpaginas"></div>
@@ -266,8 +266,7 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
-                        <button type="button" class="btn btn-primary">SOLICITAR</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
                     </div>
                 </div>
             </div>

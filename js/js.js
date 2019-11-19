@@ -421,28 +421,67 @@ function datosSolicitar(){
 function validarSolicitud(){
 	var monto = $("#txtmonto").val();
 	var periodo = $("select[name=periodo]").val();
-	var cuotas = $("select[name=periodo]").val();
-	if(monto == ''){
+	var cuotas = $("select[name=cuotas]").val();
+	if(monto != ''){
+		if(periodo != null){
+			if(cuotas != null){
+				$.ajax({
+					url: '../php/validarSolicitud.php',
+					type: 'post',
+					data: {},
+					success: function( data ){
+						//console.log(data);
+						//console.log(monto);
+						if( parseFloat(monto)>=20.0 && parseFloat(monto)<=data){
+							resgistrarSolicitud(monto,periodo,cuotas);
+						}
+						else{
+							Swal.fire({
+								type: 'warning',
+								title: 'Cuidado',
+								text: 'Monto no permitido',
+							});
+						}
+					},
+					error: function( jqXhr, textStatus, error ){
+						console.log( error );
+					}
+				});
+			}
+			else{
+				Swal.fire({
+					type: 'warning',
+					title: 'Cuidado',
+					text: 'Seleccione la cantidad de cuotas',
+				});
+			};
+		}
+		else{
+			Swal.fire({
+				type: 'warning',
+				title: 'Cuidado',
+				text: 'Seleccione un periodo',
+			});
+		};
+	}
+	else{
 		Swal.fire({
 			type: 'warning',
 			title: 'Cuidado',
 			text: 'Complete el monto',
 		  });
 	}
-	else{
-		alert("yeeee");
-	}
-	
 }
 
 function permitirSolicitud(){
 	$.ajax({
-        url: '../php/validarSolicitud.php',
+        url: '../php/permitirSolicitud.php',
         type: 'post',
         data: {},
         success: function( data ){
 			if(data == 1){
 				$('#modalPrestamoSoli').modal('show');
+				datosSolicitar();
 			}
         	else{
 				Swal.fire({
@@ -457,4 +496,55 @@ function permitirSolicitud(){
         }
     });
 	
+}
+
+function resgistrarSolicitud(m,p,c){
+	$.ajax({
+        url: '../php/registrarSolicitud.php',
+        type: 'post',
+        data: {'monto':m,'periodo':p,'cuotas':c},
+        success: function( data ){
+			if(data==1){
+				Swal.fire({
+					title: '¡Solicitud enviada!',
+					type: 'success',
+					showCancelButton: false,
+					confirmButtonColor: '#328FE1',
+					confirmButtonText: 'Ok'
+				  }).then((result) => {
+					if (result.value) {
+						location.reload();
+					}
+					else{
+						location.reload();
+					}
+				  })  
+				
+			}
+			else{
+				Swal.fire({
+					type: 'error',
+					title: 'Ocurrio un error',
+					text: 'Algo salió mal',
+				  })
+			}
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function listarCuotas(idprestamo){
+	$.ajax({
+        url: '../php/listarCuotas.php',
+        type: 'post',
+        data: {'idprestamo':idprestamo},
+        success: function( data ){
+        	$("#listacuotas").html(data);;
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
 }

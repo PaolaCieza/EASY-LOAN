@@ -1,13 +1,13 @@
 CREATE TABLE NIVEL(
-	IDNIVEL 			INT				NOT NULL		PRIMARY KEY,  --NIVELES DEL 1 AL 5 (0 A 1500 SOLES)
+	IDNIVEL 	INT		NOT NULL		PRIMARY KEY,  --NIVELES DEL 1 AL 5 (0 A 1500 SOLES)
 	NOMBRE		VARCHAR(20)		NOT NULL		UNIQUE,
 	DESCRIPCION VARCHAR(200)	NOT NULL,
-	MONTO_MAX	MONEY			NOT NULL,
+	MONTOMAX	NUMERIC (8,2)	NOT NULL,
 	IMAGEN		VARCHAR(100) 	NOT NULL
 );
 
 CREATE TABLE CLIENTE(
-	IDCLIENTE 			INT 							NOT NULL 		PRIMARY KEY,
+	IDCLIENTE 			INT 					NOT NULL 		PRIMARY KEY,
 	NOMBRE 		VARCHAR(50) 					NOT NULL,
 	APELLIDO 	VARCHAR(50) 					NOT NULL,
 	DNI 		CHAR(8) 						NOT NULL,
@@ -210,7 +210,7 @@ SELECT r.idrespuesta, c.nombre ||' '||c.apellido as prestamista, r.tasainteres*1
 s.numerocuotas, (case when s.periodo=true then 'MENSUALES' else 'SEANALES' end) as periodo
 from respuesta r inner join cliente c
 on c.idcliente=r.idcliente inner join solicitud s on r.idsolicitud=s.idsolicitud
-where r.idsolicitud = (select idsolicitud from solicitud where estado=true and idcliente= 1 order by fecha,hora desc limit 1 )
+where r.idsolicitud = (select idsolicitud from solicitud where estado=true and idcliente = 1 order by 1 desc limit 1 )
 and r.estado is null
 
 
@@ -249,8 +249,10 @@ $$ LANGUAGE 'plpgsql';
 
 select fn_validar_solicitud(1);
 
+select * from solicitud
+select * from respuesta
 
+SELECT montomax from cliente c inner join nivel n on c.idnivel=n.idnivel where c.idcliente=1
 
-
-
-
+select numerocuota, montocuota, fechavencimiento,(case when estado=true then 'PAGADO' else 'PENDIENTE' end) 
+from cuota c where c.idprestamo=1

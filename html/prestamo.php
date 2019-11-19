@@ -9,7 +9,7 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/bootstrap.css"> 
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.6/dist/sweetalert2.all.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -24,8 +24,8 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script type="text/javascript" src="../js/js.js"></script>
     <script type="text/javascript">
-		window.ready = inicio();
-	</script>
+        window.ready = inicio();
+    </script>
     <title>PRÉSTAMO</title>
 </head>
 
@@ -71,8 +71,9 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
     <section class="container mt-5">
         <br>
         <div class="row mt-5 border border-left-0 border-top-0 border-right-0">
-            <div class="col-lg-2 justify-content-center" >
-                <img src="../recursos/perfiles/<?php echo $_SESSION['foto']; ?>" alt="" class="perfil_user rounded-circle mb-3">
+            <div class="col-lg-2 justify-content-center">
+                <img src="../recursos/perfiles/<?php echo $_SESSION['foto']; ?>" alt=""
+                    class="perfil_user rounded-circle mb-3">
             </div>
             <div class="col-lg-10 ">
                 <div class="row justify-content-end pt-3 ">
@@ -92,8 +93,8 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                                 <div class="modal-body">
                                     <form>
                                         <div class="form-group">
-                                            <center><img src="../recursos/perfiles/<?php echo $_SESSION['foto']; ?>" alt=""
-                                                    class="rounded-circle perfil_user"></center>
+                                            <center><img src="../recursos/perfiles/<?php echo $_SESSION['foto']; ?>"
+                                                    alt="" class="rounded-circle perfil_user"></center>
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">DNI</label>
@@ -149,17 +150,19 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                     <div class="modal fade" id="modalNivel" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                            <div class="modal-content"><!---->
+                            <div class="modal-content">
+                                <!---->
                                 <div class='modal-header'>
                                     <h1 class='modal-title' id='exampleModalLabel' class='text-lowercase'><b> Hola
-                                            <label for='lblnombre' id='lblnombre'><?php echo $_SESSION['nombre']; ?></label>!</b></h1>
+                                            <label for='lblnombre'
+                                                id='lblnombre'><?php echo $_SESSION['nombre']; ?></label>!</b></h1>
                                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                                         <span aria-hidden='true'>&times;</span>
                                     </button>
                                 </div>
                                 <div class='modal-body'>
                                     <form id="nivel">
-                                        
+
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -170,22 +173,24 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                     </div>
                     <!-- FIN BOTÓN CON MODAL DE NIVEL -->
                 </div>
-            </div> 
+            </div>
         </div> <br>
 
 
-<!-- ESPACIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
+        <!-- ESPACIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
 
         <div class="row mb-3">
             <!--  BOTÓN CON MODAL DE RESPUESTAS-->
             <button type="button" class="btn btn-outline-info col-12 p-3" data-toggle="modal"
-                data-target="#modalRespuestas" data-whatever="@mdo" onclick="listarRespuestas()">RESPUESTAS A LA SOLICITUD ACTUAL</button>
+                data-target="#modalRespuestas" data-whatever="@mdo" onclick="listarRespuestas()">RESPUESTAS A LA
+                SOLICITUD ACTUAL</button>
             <div class="modal fade" id="modalRespuestas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">AQUÍ TE TENEMOS RESPUESTAS</h1>
+                            <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">AQUÍ TE TENEMOS
+                                RESPUESTAS</h1>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -218,6 +223,8 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                         <th>CUOTAS</th>
                         <th>ESTADO</th>
                         <th>FECHA-PRÉSTAMO</th>
+                        <th>LISTA CUOTAS</th>
+                        <th>PAGAR CUOTA</th>
                     </tr>
                 </thead>
                 <tbody id="registros">
@@ -229,6 +236,112 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
             <br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br>
         </div>
+
+        <!--  BOTÓN CON MODAL DE LISTAR CUOTAS-->
+        <div class="modal fade  " id="modaListarCuotas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">ESTÁS SON TUS CUOTAS</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <table class="table table-responsive  table-striped table-dark">
+                                <thead class="">
+                                    <tr>
+                                        <th>NÚMERO CUOTA</th>
+                                        <th>MONTO CUOTA</th>
+                                        <th>FECHA VENCIMIENTO</th>
+                                        <th>ESTADO</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listacuotas">
+
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
+                        <button type="button" class="btn btn-primary">SOLICITAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN BOTÓN CON MODAL DE LISTAR CUOTAS -->
+
+        <!--  BOTÓN CON MODAL DE PAGAR CUOTAS-->
+        <div class="modal fade  " id="modalPagar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog  " role="document">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">PAGAR</h1>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">N° CUOTA</label>
+                                <input type="text" class="form-control" id="recipient-name" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">MONTO</label>
+                                <input type="text" class="form-control" id="recipient-name" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>NOMBRE TITULAR</label>
+                                <input type="text" class="form-control" name="cc_number" required="" />
+                            </div>
+                            <div class="form-group">
+                                <label>NÚMERO DE TARJETA</label>
+                                <input type="number" class="form-control" name="cc_number" required="" />
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-8">
+                                    <label>FECHA EXPIRACIÓN</label>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <input class="form-control" type="text" name="cc_month" placeholder="MM"
+                                                pattern="\\d*" minlength="2" maxlength="2" required="" />
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" class="form-control" name="cc_year" placeholder="YY"
+                                                pattern="\\d*" minlength="2" maxlength="2" required="" />
+                                        </div>
+                                    </div>
+                                </div> <br>
+                                <div class="col-lg-2">
+                                    <label>
+                                        CVC
+                                    </label>
+                                    <input type="text" class="form-control" name="cc_cvc" placeholder="123"
+                                        pattern="\\d*" minlength="3" maxlength="3" required="" />
+                                </div>
+                            </div>
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="save_cc" checked="checked">
+                                    GUARDAR TARJETA
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="button btn btn-success">PAGAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FIN BOTÓN CON MODAL DE PAGAR CUOTAS -->
+
     </section>
     <footer class="page-footer font-small unique-color-dark " style="background-color: black;  color: white; ">
 
@@ -327,6 +440,7 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
         </div>
 
     </footer>
+
 </body>
 
 </html>

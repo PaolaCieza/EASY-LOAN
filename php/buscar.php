@@ -1,10 +1,7 @@
 <?php
 require_once("conexion.php");
 $nombre = $_POST["letras"];
-
 $sql = "SELECT * FROM `producto` WHERE nombre like '$nombre%'";
-
-
 $result = $cnx ->query($sql);
 
 while($reg = $result->fetchObject()){
@@ -21,6 +18,4 @@ while($reg = $result->fetchObject()){
 			</td>
 		</tr>";
 }
-
-
 ?>

@@ -20,7 +20,6 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
         crossorigin="anonymous"></script>
     <!-- wbda grafico -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script type="text/javascript" src="../js/js.js"></script>
@@ -78,8 +77,7 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
             <div class="col-lg-10 ">
                 <div class="row justify-content-end pt-3 ">
                     <!--  BOTÓN CON MODAL DE SOLICITAR PRÉSTAMO -->
-                    <button type="button" class="btn btn-outline-warning mr-3" data-toggle="modal"
-                        data-target="#modalPrestamoSoli" data-whatever="@mdo">SOLICITAR PRÉSTAMO</button>
+                    <button type="button" class="btn btn-outline-warning mr-3" data-whatever="@mdo" onclick="permitirSolicitud()">SOLICITAR PRÉSTAMO</button>
                     <div class="modal fade" id="modalPrestamoSoli" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -99,33 +97,37 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">DNI</label>
-                                            <input type="text" class="form-control" id="recipient-name" readonly>
+                                            <input type="text" class="form-control" id="recipient-name" value="" readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">CORREO</label>
                                             <input type="text" class="form-control" id="message-text" readonly></input>
                                         </div>
                                         <div class="form-group">
-                                            <label for="message-text" class="col-form-label">MONTO SOLICITAR</label>
-                                            <input type="number" class="form-control" id="message-text"></input>
+                                            <label for="message-text" class="col-form-label">MONTO SOLICITAR S/</label>
+                                            <input type="number" class="form-control" id="txtmonto" onkeypress="solonumeros(event,'#txtmonto',8)"></input>
                                         </div>
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">PERIODO</label> <br>
-                                            <select name="PERIODO" id="" class="border-0">
+                                            <select name="periodo" id="periodo" class="border-0">
                                                 <option value="" selected disabled="disabled">seleccionar</option>
-                                                <option value="">SEMANAL</option>
-                                                <option value="">MENSUAL</option>
+                                                <option value="0">SEMANAL</option>
+                                                <option value="1">MENSUAL</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">CUOTAS</label> <br>
-                                            <select name="" id="" class="border-0">
+                                            <select name="cuotas" id="periodo" class="border-0">
                                                 <option value="" selected disabled="disabled">seleccionar</option>
-                                                <option value="">1</option>
-                                                <option value="">2</option>
-                                                <option value="">3</option>
-                                                <option value="">4</option>
-                                                <option value="">5</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
                                             </select>
 
                                         </div>
@@ -134,7 +136,7 @@ if(!isset($_SESSION['idusuario'])) header("location: ../index.html");
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">CANCELAR</button>
-                                    <button type="button" class="btn btn-primary">SOLICITAR</button>
+                                    <button type="button" class="btn btn-primary" onclick="validarSolicitud()">SOLICITAR</button>
                                 </div>
                             </div>
                         </div>

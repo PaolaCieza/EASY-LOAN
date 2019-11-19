@@ -98,6 +98,15 @@ function solonumeros(e,id,cant){
 	
 }
 
+function soloDecimales(e,id,cant){
+	var numero = $(id).val();
+	var key = e.keyCode;
+	
+	if ((key < 48 && key > 46) || key > 57 || key==190 || key < 46 || numero.length>=cant) {
+		e.preventDefault();
+	}
+	
+}
 function sinespacios(e){
 	var key = e.keyCode;
 	if (key == 32) {
@@ -393,3 +402,59 @@ function aceptarRespuesta(id){
 	
 }
 
+function datosSolicitar(){
+	$.ajax({
+        url: '../php/datosSolicitarPrestamo.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+			datos = JSON.parse(data);
+        	$("#recipient-name").val(datos[0]);
+        	$("#message-text").val(datos[1]);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function validarSolicitud(){
+	var monto = $("#txtmonto").val();
+	var periodo = $("select[name=periodo]").val();
+	var cuotas = $("select[name=periodo]").val();
+	if(monto == ''){
+		Swal.fire({
+			type: 'warning',
+			title: 'Cuidado',
+			text: 'Complete el monto',
+		  });
+	}
+	else{
+		alert("yeeee");
+	}
+	
+}
+
+function permitirSolicitud(){
+	$.ajax({
+        url: '../php/validarSolicitud.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+			if(data == 1){
+				$('#modalPrestamoSoli').modal('show');
+			}
+        	else{
+				Swal.fire({
+					type: 'error',
+					title: 'Vaya :(',
+					text: 'No puedes realizar solicitudes en este momento',
+				  });
+			}
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+	
+}

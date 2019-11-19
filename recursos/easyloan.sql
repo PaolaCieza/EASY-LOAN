@@ -247,7 +247,8 @@ END;
 $$ LANGUAGE 'plpgsql';
 
 
-select fn_validar_solicitud(2)
+select fn_validar_solicitud(1);
+
 
 
 

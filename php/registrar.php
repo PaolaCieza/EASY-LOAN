@@ -28,11 +28,11 @@ else{
     $edad = $rs->fetchObject();
     if($edad->edad > 17){
         if ($sexo == 'femenino') {
-            $sexo = 'false';
+            $sexo = false;
         } else{
-            $sexo = 'true';
+            $sexo = true;
         }
-        $sql= "INSERT INTO cliente VALUES ((select coalesce(max(id),0)+1 from cliente), '$nombre', '$apellidos', '$dni','$fecha', $sexo, '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT);";
+        $sql= "INSERT INTO cliente VALUES ((select coalesce(max(idcliente),0)+1 from cliente), '$nombre', '$apellidos', '$dni','$fecha', '$sexo', '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT);";
         $resp = 1;
         $cnx->query($sql); //or $resp=100;
         echo $resp;

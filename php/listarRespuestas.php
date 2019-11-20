@@ -3,14 +3,15 @@ require_once("conexion.php");
 session_start();
 $idcliente = $_SESSION['idusuario'];
 $sql="SELECT r.idrespuesta, c.nombre ||' '||c.apellido as prestamista, r.tasainteres*100 as interes, c.fotousuario,
-s.numerocuotas, (case when s.periodo=true then 'MENSUALES' else 'SEANALES' end) as periodo
+s.numerocuotas, (case when s.periodo=true then 'MENSUALES' else 'SEMANALES' end) as periodo
 from respuesta r inner join cliente c
 on c.idcliente=r.idcliente inner join solicitud s on r.idsolicitud=s.idsolicitud
-where r.idsolicitud = (select idsolicitud from solicitud where estado=true and idcliente= $idcliente order by fecha,hora desc limit 1 )
+where r.idsolicitud = (select idsolicitud from solicitud where estado=true and idcliente= $idcliente order by 1 desc limit 1 )
 and r.estado is null;
 ";
 $result = $cnx->query($sql);
-while($reg = $result->fetchObject()){
+if($result->rowCount() != 0){
+    while($reg = $result->fetchObject()){
         echo "
         <div class='form-group border border-success p-3'>
             <div class='row'>
@@ -31,4 +32,9 @@ while($reg = $result->fetchObject()){
             </div>
         </div>   
         ";
-    }
+}
+}
+else{
+    
+}
+

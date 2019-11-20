@@ -35,6 +35,16 @@ if($result->rowCount() != 0){
 }
 }
 else{
-    
+    echo "
+    <div class='  border border-warning btn-outline-light '>
+        <div class='justify-content-center row align-content-center' height='600px'>
+        <img src='../recursos/emojiTriste.png' width='100vh' class='spinner-border-web'>   
+        </div>
+        <div class='justify-content-center row align-content-center '>
+         <h2 class=' font-weight-bold text-purple'>USTED AÚN NO TIENE RESPUESTAS</h2>
+        </div>
+    </div>
+        
+    ";
 }
 

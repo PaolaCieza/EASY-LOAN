@@ -69,7 +69,7 @@ if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
         <!-- <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a> -->
     </nav>
     <section class="container mt-5">
-        <br>
+        <br> 
         <div class="row mt-5 border border-left-0 border-top-0 border-right-0">
             <div class="col-lg-2 justify-content-center">
                 <img src="../recursos/perfiles/<?php echo $_SESSION['foto']; ?>" alt=""

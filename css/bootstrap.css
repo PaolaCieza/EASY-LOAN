@@ -6694,6 +6694,10 @@ a.close.disabled {
   -webkit-animation: spinner-border .75s linear infinite;
   animation: spinner-border .75s linear infinite;
 }
+.spinner-border-web {
+  -webkit-animation: spinner-border 1.75s linear infinite;
+  animation: spinner-border 1.75s linear infinite;
+}
 
 .spinner-border-sm {
   width: 1rem;

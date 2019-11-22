@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.6/dist/sweetalert2.all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/js.js"></script>
+    <title>MANTENIMIENTO CLIENTE</title>
+</head>
+
+<body class="bg-purplessxdf">
+    <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top   " style="background-color: black; ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
+            aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+            <!-- <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> -->
+            <span class="text-warning titulo "> EASY LOAN</span>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-autosdf">
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="#">USUARIO <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="#">NIVEL</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="#"> PRESTAMOS </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a> -->
+    </nav> <br>
+    <div class="container-fluid mt-4 ">
+        <div class="row mt-4 fondo-man-usu">
+            <div class="col-lg-6 align-content-center">
+                <center>
+                    <h1 class="text-purple border  m-4">MANTENIMIENTO USUARIOS</h1>
+                </center>
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <button class="btn btn-outline-dark m-1 text-warning " type="button" data-toggle="modal"
+                data-target="#modalClientesBaja" data-whatever="@mdo">DADOS DE BAJA</button>
+            <button class="btn btn-outline-dark m-1 text-warning " type="button" data-toggle="modal"
+                data-target="#modalBloqueados" data-whatever="@mdo">BLOQUEADOS POR UN TIEMPO</button>
+        </div>
+    </div>
+
+    <section class="container mt-5 ">
+        </div>
+        <div class="row m-3">
+            <div class="col-lg-10">
+                <input class="form-control mr-sm-2 " type="search" placeholder="BUSCAR" aria-label="Search">
+            </div>
+            <div class="col-lg-2">
+                <button class="btn btn-outline-purple my-2 my-sm-0 " type="submit">BUSCAR</button>
+            </div>
+        </div>
+        <div class="mt-1">
+            <table class=" table table-responsive  table-striped ">
+                <thead class=" table table-dark">
+                    <tr>
+                        <th>FOTO</th>
+                        <th>ID</th>
+                        <th>CLIENTE</th>
+                        <th>USUARIO</th>
+                        <th>DNI</th>
+                        <th>PRESTAMOS CANTIDAD</th>
+                        <!-- SOLO SALE LA CANTIDAD PERO AL PRECIONAR AHÍ SE PUEDE ABRIR UN MODAL CON LISTADO DE PRESTAMOS Y TAMBIEN PUEDE SACAR PDF ESE LISTAS Y SI PRECIONA EN ALGUNA LISTA SE ABRE EL DETALLE DEL PRESTAMO Y ESE DETALLE TAMBIEN SE PUEDE GENERAR PDF -->
+                        <th>PRESTADOS CANTIDAD</th> <!-- LO MISMO DE ARRIBA -->
+                        <th>FECHA NACIMIENTO</th>
+                        <th>SEXO</th>
+                        <th>DIRECCIÓN</th>
+                        <th>CORREO</th>
+                        <th>NIVEL</th>
+                        <th>PDF</th> <!-- TODOS LOS DATOS DEL USUARIO DE ESA FILA PUEDEN SER GENERADOS EN UN PDF -->
+                    </tr>
+                </thead>
+                <tbody id="registros" class="text-white ">
+
+                </tbody>
+
+            </table>
+        </div>
+    </section>
+
+
+
+    <!--  BOTÓN CON MODAL DE LISTAR CLIENTES DADOS DE BAJA-->
+    <div class="modal fade  " id="modalClientesBaja" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">CLIENTES DADOS DE BAJA</h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <div class="row">
+                                <div class="col-lg-3 mr-5">
+                                    <select name="" id="" class="btn btn-outline-purple">
+                                        <option value="" disabled selected>SELECCIONAR</option>
+                                        <option value="">DNI</option>
+                                        <option value="">NOMBRE</option>
+                                        <option value="">USUARIO</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-7 mb-3 align-content-end">
+                                    <input class="form-control mr-sm-2 " type="search" placeholder="BUSCAR"
+                                        aria-label="Search">
+                                </div>
+                            </div>
+                    <form>
+                        <table class="table table-responsive  table-striped table-warning">
+                            <thead class="">
+                                <tr>
+                                    <th>FOTO</th>
+                                    <th>NOMBRE</th>
+                                    <th>DNI</th>
+                                    <th>RAZÓN</th>
+                                    <th>FECHA</th>
+                                    <th>ACTIVAR</th>
+                                    <th>PDF</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listaDadosDeBaja">
+
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN BOTÓN CON MODAL DE LISTAR CUOTAS -->
+
+    <!--  BOTÓN CON MODAL DE LISTAR CLIENTES BLOQUEADOS-->
+    <div class="modal fade  " id="modalBloqueados" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog  " role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">CLIENTES BLOQUEADOS POR DEUDAS
+                    </h1>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-3 mr-5">
+                            <select name="" id="" class="btn btn-outline-purple">
+                                <option value="" disabled selected>SELECCIONAR</option>
+                                <option value="">DNI</option>
+                                <option value="">NOMBRE</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-7 mb-3 align-content-end">
+                            <input class="form-control mr-sm-2 " type="search" placeholder="BUSCAR"
+                                aria-label="Search">
+                        </div>
+                    </div>
+
+                    <form>
+                        <table class="table table-responsive  table-striped table-warning">
+                            <thead class="">
+                                <tr>
+                                    <th>FOTO</th>
+                                    <th>NOMBRE</th>
+                                    <th>DNI</th>
+                                    <th>FECHA</th>
+                                    <th>FECHA-DESBLOQUEO</th>
+                                    <th>PDF</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listarBloqueado">
+
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN BOTÓN CON MODAL DE LISTAR CUOTAS -->
+
+
+
+
+
+
+
+    <footer class="page-footer font-small unique-color-dark fixed-bottom"
+        style="background-color: black;  color: white; ">
+        <div class="footer-copyright text-center py-3" style=" background-color:rgb(39, 38, 38) ;"> © 2019 Copyright:
+            <a href="#" style=" color: white; "> PAOLA CIEZA PS XD</a>
+        </div>
+    </footer>
+</body>
+
+</html>

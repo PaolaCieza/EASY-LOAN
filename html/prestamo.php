@@ -28,7 +28,6 @@ if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
     </script>
     <title>PRÉSTAMO</title>
 </head>
-
 <body class="bg-light">
     <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top   " style="background-color: black; ">
         <a class="navbar-brand" href="../index.html">
@@ -68,7 +67,7 @@ if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
         </button>
         <!-- <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a> -->
     </nav>
-    <section class="container mt-5">
+    <section class="container mt-1">
         <br> 
         <div class="row mt-5 border border-left-0 border-top-0 border-right-0">
             <div class="col-lg-2 justify-content-center">
@@ -240,7 +239,7 @@ if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
         <!--  BOTÓN CON MODAL DE LISTAR CUOTAS-->
         <div class="modal fade  " id="modaListarCuotas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-dialog  " role="document">
                 <div class="modal-content ">
                     <div class="modal-header">
                         <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">ESTÁS SON TUS CUOTAS</h1>

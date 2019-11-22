@@ -41,7 +41,6 @@
   box-sizing: border-box;
 }
 
-
 .cuadros-oferta-1{
   border-radius: 2vh;
   border: white 5px solid;
@@ -85,6 +84,7 @@
 
 .sobre-nosotros-parte1{
   background-image: url(../recursos/fondo-sobre-nosotros.jpg);
+  /* background-image: url(../recursos/fondo-sobre-nosotros2.jpg); */
   
 }
 
@@ -98,6 +98,10 @@
 
 .text-purple{
   color: #4527a0;
+}
+
+.bg-purple{
+  background-color: #4527a0 ;
 }
 
 html {
@@ -133,6 +137,12 @@ body {
   
 }
 
+.fondo-man-usu{
+  background-image: url(../recursos/admiUsuarios.jpg);
+  height: 300px;
+  /* background-image: url(..//recursos/fondoOpcional.jpg); */
+}
+
 .inicio-fondo{
   
   /* background-color: #000000 !important; */
@@ -148,7 +158,6 @@ body {
 }
 
 #regis{
-  
   /* background-color: #000000 !important; */
   background-color: white;
   border-radius: 10px;
@@ -3042,6 +3051,42 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
 }
 
+/*  */
+.btn-outline-purple {
+  color: #4527a0;
+  border-color: #4527a0;
+}
+
+.btn-outline-purple:hover {
+  color: #fff;
+  background-color:#4527a0;
+  border-color: #4527a0;
+}
+
+.btn-outline-purple:focus, .btn-outline-purple.focus {
+  box-shadow: 0 0 0 0.2rem rgba(69, 39, 160, 0.5);
+}
+
+.btn-outline-purple.disabled, .btn-outline-purble:disabled {
+  color: #4527a0;
+  background-color: transparent;
+}
+
+.btn-outline-purple:not(:disabled):not(.disabled):active, .btn-outline-purple:not(:disabled):not(.disabled).active,
+.show > .btn-outline-purple.dropdown-toggle {
+  color: #fff;
+  background-color: #4527a0;
+  border-color: #4527a0;
+}
+
+.btn-outline-purple:not(:disabled):not(.disabled):active:focus, .btn-outline-purple:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-purple.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(69, 39, 160, 0.5);
+}
+/*  */
+
+
+
 .btn-outline-info {
   color: #17a2b8;
   border-color: #17a2b8;
@@ -4409,7 +4454,9 @@ input[type="button"].btn-block {
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  /* padding: 0.5rem 1rem; */
+  padding-left: 1rem ;
+  padding-right: 1rem m;
 }
 
 .navbar > .container,

@@ -548,3 +548,16 @@ function listarCuotas(idprestamo){
         }
     });
 }
+
+function pagarCuota(){
+	Culqi.publicKey = 'pk_test_3kjZ9masp6u8AYBU';
+    // Configura tu Culqi Checkout
+    Culqi.settings({
+        title: 'Culqi Store',
+        currency: 'PEN',
+        description: 'Polo Culqi lover',
+        amount: 3500
+    });
+	Culqi.open();
+   
+}

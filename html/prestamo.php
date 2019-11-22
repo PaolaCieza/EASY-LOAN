@@ -22,6 +22,7 @@ if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script src="https://checkout.culqi.com/js/v3"></script>
     <script type="text/javascript" src="../js/js.js"></script>
     <script type="text/javascript">
         window.ready = inicio();
@@ -332,7 +333,7 @@ if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="button btn btn-success">PAGAR</button>
+                        <button type="button" class="button btn btn-success" onclick="pagarCuota()">PAGAR</button>
                     </div>
                 </div>
             </div>

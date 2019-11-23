@@ -770,3 +770,68 @@ function contactarCliente(cliente){
         }
     });
 }
+
+function bajaCliente(cliente){
+	Swal.fire({
+		title: '¿Estás seguro de dar de baja?',
+		text: "El cliente no podrá hacer uso de los servicios de Easyloan",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#328FE1',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Aceptar',
+		cancelButtonText: 'Cancelar'
+	  }).then((result) => {
+		if (result.value) {
+			$.ajax({
+				url: '../php/bajaCliente.php',
+				type: 'post',
+				data: {'cliente':cliente},
+				success: function( data ){
+					console.log( data );
+					if(data==1){
+						Swal.fire({
+							title: '¡Dado de baja correctamente!',
+							type: 'success',
+							showCancelButton: false,
+							confirmButtonColor: '#328FE1',
+							confirmButtonText: 'Ok'
+						  }).then((result) => {
+							if (result.value) {
+								location.reload();
+							}
+							else{
+								location.reload();
+							}
+						  })  
+						
+					}
+					else{
+						Swal.fire({
+							type: 'error',
+							title: 'Ocurrio un error',
+							text: 'Algo salió mal',
+						  })
+					}
+				},
+				error: function( jqXhr, textStatus, error ){
+					console.log( error );
+				}
+			});
+		}
+	  })
+}
+
+function listarNiveles(){
+	$.ajax({
+        url: '../php/listarNiveles.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#niveles").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}

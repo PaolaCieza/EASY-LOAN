@@ -40,7 +40,7 @@
                         <button class="btn btn-outline-purple" type="button" data-toggle="modal"
                             data-target="#modalContactar" data-whatever="@mdo" onclick="contactarCliente(<?=$reg->idcliente?>)">CONTACTAR</button>
                         <button class="btn btn-outline-purple" type="button" data-toggle="modal"
-                            data-target="#modalDarBaja" data-whatever="@mdo">DAR DE BAJA</button>
+                            data-target="#modalDarBaja" data-whatever="@mdo" onclick="bajaCliente(<?=$reg->idcliente?>)">DAR DE BAJA</button>
                         <button class="btn btn-outline-purple">PDF</button>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
             </div>
         </div>      
     <?php
-    }
+        }
     }
     else{
     ?>

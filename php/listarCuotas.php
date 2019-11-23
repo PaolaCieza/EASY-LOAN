@@ -15,7 +15,7 @@ if($result->rowCount() != 0){
             </tr>
 
 <?php
-}
+    }
 }
 else{
 ?>

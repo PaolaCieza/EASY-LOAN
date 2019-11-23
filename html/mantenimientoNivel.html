@@ -15,6 +15,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/js.js"></script>
+    <script type="text/javascript">
+        window.ready = listarNiveles();
+    </script>
     <title>MANTENIMIENTO CLIENTE</title>
 </head>
 
@@ -87,28 +90,8 @@
         data-target="#modalNuevoNivel" data-whatever="@mdo">
             AGREGAR NUEVO NIVEL
         </button>
-        <div class="row">
-            <div class="col-lg-4 border border-white p-4 rounded bg-fondito-nivel">
-                <div>
-                    <label for="" class="text-body font-weight-light">USUARIOS: <label for=""> 3442</label></label>
-                </div>
-                <div class="row justify-content-center">
-                    <img src="../recursos/niveles/nivel1.png" alt="" class=" perfil_user_mantenimiento img-Nivel">
-                </div>
-                <div>
-                    <h1>
-                        <label for="" class="text-purple font-weight-bold">BÁSICO</label>
-                    </h1>
-                </div>
-                <div>
-                    <label for="" class="text-body font-weight-bold text-justify">Este es el nivel inicial, no obtiene
-                        beneficios, porque es puto o yo no se, esto igual será eliminado porque tiene que jalarse de la base de datos, amén</label>
-                </div>
-                <div class=" row justify-content-end">
-                    <button class="btn btn-outline-light m-4" data-toggle="modal"
-                    data-target="#modalEditarNivel" data-whatever="@mdo">EDITAR</button>
-                </div>
-            </div>
+        <div id="niveles" class="row">
+            
         </div>
         <br><br><br><br><br><br>
     </section>

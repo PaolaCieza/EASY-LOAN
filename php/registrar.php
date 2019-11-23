@@ -32,7 +32,9 @@ else{
         } else{
             $sexo = true;
         }
-        $sql= "INSERT INTO cliente VALUES ((select coalesce(max(idcliente),0)+1 from cliente), '$nombre', '$apellidos', '$dni','$fecha', '$sexo', '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);";
+        $sql= "INSERT INTO cliente VALUES 
+        ((select coalesce(max(idcliente),0)+1 from cliente), '$nombre', '$apellidos', '$dni',
+        '$fecha', '$sexo', '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT);";
         $resp = 1;
         $cnx->query($sql); //or $resp=100;
         echo $resp;

@@ -16,9 +16,11 @@ CREATE TABLE CLIENTE(
 	EMAIL 		VARCHAR(100) 					NOT NULL,
 	USUARIO 	VARCHAR(20) 					NOT NULL 		UNIQUE,
 	CLAVE 		CHAR(32) 						NOT NULL,
-	IDNIVEL 	INT 			DEFAULT 1		NOT NULL 		REFERENCES NIVEL,
-	TIPO 		BOOLEAN 		DEFAULT TRUE	NOT NULL, 		--FALSE NORMALITO, TRUE PREMIUN
-	FOTOUSUARIO VARCHAR(36)		DEFAULT 'user.jpg'	NOT	NULL
+	IDNIVEL 	INT 			DEFAULT 1		NULL 		REFERENCES NIVEL,
+	TIPO 		BOOLEAN 		DEFAULT TRUE	NULL, 		--FALSE NORMALITO, TRUE PREMIUN
+	VIGENCIA	BOOLEAN			DEFAULT TRUE	NOT NULL,
+	FOTOUSUARIO VARCHAR(36)		DEFAULT 'user.jpg'	NULL,
+	TIPOACCESO	BOOLEAN			DEFAULT	TRUE	NOT NULL --TRUE CLIENTE, FALSE ADMIN		
 );
 
 INSERT INTO NIVEL VALUES (1, 'BÁSICO', 'Permite realizar y solicitar prestamos de hasta S/25',25,'nivel1.png');
@@ -74,8 +76,9 @@ create table prestamo(
 	idPrestamo 			int 			primary key,
 	idRespuesta 		int 			not null 				references respuesta,
 	estado 				boolean 		default false 			not null,  -- true pagado false deuda
-	fecha 				date 			default current_date 	not null,
+	fechaRegistro 		date 			default current_date 	not null,
 	hora				time			default current_time	not null,
+	fechaPago			date									null,
 	monto 				numeric(8,2) 	not null,
 	tasaInteres			numeric(8,2)	not null,
 	numeroCuotas 		int 			not null,
@@ -89,6 +92,7 @@ create table cuota(
 	montoCuota			numeric(8,2)	not null,
 	montoMora			numeric(8,2)	not null,
 	fechaVencimiento 	date 			not null,
+	fechaPago			date			null,
 	--montoTotal			numeric(8,2)	null,
 	estado 				boolean			default false			not null -- true pagado, false sin pagar  
 );
@@ -115,9 +119,9 @@ $$
 			FOR num in 1..new.numerocuotas
 				LOOP
 				INSERT INTO public.cuota(
-				idcuota, idprestamo, numerocuota, montocuota, montomora, fechavencimiento, estado)
+				idcuota, idprestamo, numerocuota, montocuota, montomora, fechavencimiento, fechaPago, estado)
 				VALUES ((select coalesce(max(idcuota),0)+1 from cuota), new.idprestamo, num, monto, 0, 
-						(current_date::date + (num||' month')::interval), false);
+						(current_date::date + (num||' month')::interval), null, false);
 				num = num +1;
 			 END LOOP;
 		ELSE
@@ -147,9 +151,9 @@ BEGIN
 			SELECT numeroCuotas INTO total FROM prestamo WHERE idPrestamo = OLD.idPrestamo;
 			SELECT COUNT(*) INTO pagado FROM cuota WHERE estado = true and idPrestamo = OLD.idPrestamo;
 			IF(total = pagado) THEN
-				UPDATE public.prestamo SET estado=TRUE WHERE idPrestamo = NEW.idPrestamo;
+				UPDATE public.prestamo SET estado=TRUE,fechaPago=current_date WHERE idPrestamo = NEW.idPrestamo;
 			ELSE
-				UPDATE public.prestamo SET estado=FALSE WHERE idPrestamo = NEW.idPrestamo;
+				UPDATE public.prestamo SET estado=FALSE,fechaPago=null WHERE idPrestamo = NEW.idPrestamo;
 			END IF;
 			RETURN NEW;
 END;
@@ -185,8 +189,8 @@ BEGIN
 	UPDATE public.respuesta r SET estado=true WHERE r.idrespuesta=id;
 	UPDATE public.respuesta r SET estado=false WHERE r.idsolicitud=sol and r.estado is null;
 	INSERT INTO public.prestamo(
-	idprestamo, idrespuesta, estado, fecha, hora, monto, tasainteres, numerocuotas, periodo)
-	VALUES ((select coalesce(max(idprestamo),0)+1 from prestamo), id, DEFAULT, DEFAULT, DEFAULT, mont, inter, cuotas, per);
+	idprestamo, idrespuesta, estado, fecha, hora, fechaPago, monto, tasainteres, numerocuotas, periodo)
+	VALUES ((select coalesce(max(idprestamo),0)+1 from prestamo), id, DEFAULT, DEFAULT, DEFAULT, null, mont, inter, cuotas, per);
 	return true;
 	exception
 		when others then return false;
@@ -256,3 +260,6 @@ SELECT montomax from cliente c inner join nivel n on c.idnivel=n.idnivel where c
 
 select numerocuota, montocuota, fechavencimiento,(case when estado=true then 'PAGADO' else 'PENDIENTE' end) 
 from cuota c where c.idprestamo=1
+
+select * from cliente
+

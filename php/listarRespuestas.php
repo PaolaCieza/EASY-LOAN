@@ -19,10 +19,10 @@
                         <img src='../recursos/perfiles/<?=$reg->fotousuario?>' alt='' width='100px' class='rounded-circle'>
                     </div>
                     <div class='col-lg-8'>
-                            <label for='recipient-name' class='col-form-label'><?$reg->prestamista?></label><br>
+                            <label for='recipient-name' class='col-form-label'><?=$reg->prestamista?></label><br>
                             <label for=''>INTERÉS: </label>
                             <label for='lblPorcentaje'><?=$reg->interes?>%</label><br>
-                            <label for='lblPorcentaje'><?=$reg->numerocuotas?> CUOTAS $reg->periodo</label>
+                            <label for='lblPorcentaje'><?=$reg->numerocuotas?> CUOTAS <?=$reg->periodo?></label>
                             <div class='modal-footer'>
                                     <button type='button' class='btn btn-outline-secondary'
                                         data-dismiss='modal'>RECHAZAR</button>

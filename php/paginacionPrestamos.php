@@ -11,6 +11,8 @@ $cantreg = $result->rowCount();
 $crxp=10;
 $cantpag = ceil($cantreg/$crxp);
 for($i=1;$i<=$cantpag;$i++){
-	echo " <a href='#' class='btn btn-warning' onclick='listarPrestamos($i)'> $i </a> ";
+?>
+	 <a href='#' class='btn btn-warning' onclick='listarPrestamos(<?=$i?>)'> <?=$i?> </a> 
+<?php
 }
 ?>

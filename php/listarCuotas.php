@@ -6,16 +6,20 @@ from cuota c where c.idprestamo=$idprestamo";
 $result = $cnx->query($sql);
 if($result->rowCount() != 0){
     while($reg = $result->fetchObject()){
-        echo "
+?>
             <tr>
-                <td>$reg->numerocuota</td>
-                <td>$reg->montocuota</td>
-                <td>$reg->fechavencimiento</td>
-                <td>$reg->estado</td>
+                <td><?=$reg->numerocuota?></td>
+                <td><?=$reg->montocuota?></td>
+                <td><?=$reg->fechavencimiento?></td>
+                <td><?=$reg->estado?></td>
             </tr>
-            ";
+
+<?php
 }
 }
 else{
-    
+?>
+    <!-- aqui va html -->
+
+<?php
 }

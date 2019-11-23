@@ -47,6 +47,7 @@ function iniciarSesion(a){
 		  type: 'post',
 		  data: {"txtpass":pass,"a":2},
 		  success: function( data ){
+			  console.log(data);
 			if(data == 1){
 				Swal.fire({
 					title: '¡Bienvenido!',

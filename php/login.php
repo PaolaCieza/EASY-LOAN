@@ -3,7 +3,7 @@ require_once("conexion.php");
 $a = $_POST['a'];
 if($a == 1){
 	$usuario = $_POST['txtuser'];
-	$sql = "SELECT * FROM cliente WHERE usuario ='$usuario' ";
+	$sql = "SELECT * FROM cliente WHERE usuario ='$usuario' and vigencia=true";
 	$rs = $cnx->query($sql) or die($sql);
 	$cantidad_registros = $rs->rowCount();		
 	if($cantidad_registros==1) {
@@ -20,14 +20,16 @@ else{
 	$passw = $_POST['txtpass'];	
 	session_start();
 	$usuario = $_SESSION['usuario'];
-	$sql = "SELECT * FROM cliente where usuario = '$usuario' and clave = '$passw'";	
+	$sql = "SELECT *,(case when tipoacceso=true then 'cliente'  else 'admin' end) as acceso
+	 FROM cliente where usuario = '$usuario' and clave = '$passw' and vigencia=true";	
 	$rs = $cnx->query($sql) or die($sql);
 	$cantidad_registros = $rs->rowCount();
 	if($cantidad_registros==1) 
 	{
 		$registro = $rs->fetchObject();
 		$_SESSION['idusuario']=$registro->idcliente;
-		$_SESSION['usuario']=$registro->usuario;	
+		$_SESSION['usuario']=$registro->usuario;
+		$_SESSION['acceso']=$registro->acceso;	
 		$_SESSION['foto']=$registro->fotousuario;	
 		$_SESSION['nombre']=$registro->nombre;	
 		echo 1;				

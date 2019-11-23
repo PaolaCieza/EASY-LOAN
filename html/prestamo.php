@@ -1,6 +1,8 @@
 <?php
 session_start();
-if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
+if(!isset($_SESSION['idusuario'])){header("location: iniciarsesion.php");}
+elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,7 +40,7 @@ if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="#">NOTICIAS <span class="sr-only">(current)</span></a>
+                    <a class="nav-link nav-a" href="#">NOTICIAS<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link nav-a" href="#">CATEGORIAS</a>

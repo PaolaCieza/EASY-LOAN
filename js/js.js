@@ -596,16 +596,55 @@ function culqi() {
 	if (Culqi.token) { // ¡Objeto Token creado exitosamente!
 		var token = Culqi.token.id;
 		var email = Culqi.token.email;
+		var idcuota = $("#idcuota").val();
+		let timerInterval
+		Swal.fire({
+			title: 'Espera',
+			type: 'warning',
+			html: 'Estamos procesando el pago',
+			timer: 10000,
+			timerProgressBar: true,
+			onBeforeOpen: () => {
+				Swal.showLoading()
+				timerInterval = setInterval(() => {
+				Swal.getContent().querySelector('b')
+					.textContent = Swal.getTimerLeft()
+				}, 100)
+			},
+			onClose: () => {
+				clearInterval(timerInterval)
+			}
+			}).then((result) => {
+			if (
+				/* Read more about handling dismissals below */
+				result.dismiss === Swal.DismissReason.timer
+			) {
+				console.log('I was closed by the timer') // eslint-disable-line
+			}
+		})
 		$.ajax({
-			url: '../php/pagar.php',
+			url: '../php/pagarCuota.php',
 			type: 'post',
-			data: {'token':token,'monto':montoPagar,'email':email},
+			data: {'token':token,'monto':montoPagar,'email':email,'idcuota':idcuota},
 			dataType: 'JSON',
 			success: function( data ){
 				if(data.capture==true){
 					console.log(data.outcome.type);
 					if(data.outcome.type="venta_exitosa"){
-						pagarCuota();
+						Swal.fire({
+							title: '¡Cuota pagada correctamente!',
+							type: 'success',
+							showCancelButton: false,
+							confirmButtonColor: '#328FE1',
+							confirmButtonText: 'Ok'
+						  }).then((result) => {
+							if (result.value) {
+								location.reload();
+							}
+							else{
+								location.reload();
+							}
+						  }) 
 					}
 					else{
 						Swal.fire({
@@ -613,8 +652,7 @@ function culqi() {
 							title: 'Ocurrió un error',
 							text: 'Algo salió mal',
 						});
-					}
-					
+					}	
 				}
 				else{
 					data = JSON.parse(data);
@@ -625,19 +663,6 @@ function culqi() {
 						text: data.merchant_message,
 					});
 				}
-			
-				/*
-				if(data){
-					
-				}
-				else{
-					Swal.fire({
-						type: 'warning',
-						title: 'Cuidado',
-						text: 'Monto no permitido',
-					});
-				}
-				*/
 			},
 			error: function( jqXhr, textStatus, error ){
 				console.log( error );
@@ -657,6 +682,7 @@ function culqi() {
 	}
   }
 
+  /*
  function pagarCuota(){
 	 var idcuota = $("#idcuota").val();
 	 console.log(idcuota);
@@ -695,3 +721,4 @@ function culqi() {
         }
     });
 }
+*/

@@ -561,3 +561,20 @@ function pagarCuota(){
 	Culqi.open();
    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

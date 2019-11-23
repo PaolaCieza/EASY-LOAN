@@ -835,3 +835,19 @@ function listarNiveles(){
         }
     });
 }
+
+function cerrarSesion(){
+	$.ajax({
+        url: '../php/cerrarSesion.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+			if(data==1){
+				window.location.href="../html/iniciarsesion.php"
+			}
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}

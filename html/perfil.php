@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -52,11 +56,18 @@
                     <a class="nav-link nav-a" href="#">VISION</a>
                 </li>
                 <li class="nav-item active">
-                        <select name="PERIODO" id="" class="border-0 bg-transparent text-wrap nav-link nav-a mt-0" >
-                                <option value="" selected disabled="disabled">  HOLA, <label for="txtUsuarioSelect">PAOLA</label></option>
-                                <option value="" class="text-dark">CERRAR SESIÓN</option>
-                                <option value="" class="text-dark">MENSUAL</option>
-                            </select>
+                    <div class="btn-group">
+                        <button type="button" class="btn bg-transparent text-white dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hola, <label for=""> <?=$_SESSION['nombre']; ?> </label>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" href="cambiarcontraseña.php">Cambiar Contraseña</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
 
@@ -67,10 +78,10 @@
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col-lg-3  border border-left-3 mr-3 ml-3 p-3">
                 <div class=" row justify-content-center mt-3" id="">
-                    <img src="../recursos/user.png" alt="" class="perfil_user rounded-circle">
+                    <img src="../recursos/perfiles/<?=$_SESSION['foto']?>" alt="" class="perfil_user rounded-circle">
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <span class="text-break">USUARIO</span>
+                    <span class="text-break"><?=$_SESSION['nombre']?></span>
                 </div>
                 <div class="row justify-content-center mt-3">
                     <a href="perfilEditar.html"> <input type="button" class="bg-warning" value="EDITAR PERFIL" > </a>

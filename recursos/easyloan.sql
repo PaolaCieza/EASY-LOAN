@@ -273,6 +273,9 @@ select count(*) from respuesta where estado=true and idcliente=2
 
 SELECT c.*,n.nombre as nivel from cliente c inner join nivel n on c.idnivel=n.idnivel  
 where upper(c.nombre) like upper('%CIE%') or upper(c.apellido) like upper('%CIE%')
-select * from cliente
+select * from nivel
 
 SELECT (case when telefono is null then 'No registrado' else telefono end)  FROM cliente 
+
+
+select * from cuota

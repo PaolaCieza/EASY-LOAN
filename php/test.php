@@ -1,8 +1,10 @@
 <?php
 require_once("conexion.php");
-	$sql="SELECT * FROM usuario";
-	$result = $cnx->query($sql);
-	
-	while($reg = $result->fetchObject()){
-        var_dump($reg);
-	}
+	$usuario = "fernando10";
+	$sentencia = $cnx->prepare("SELECT * FROM cliente WHERE usuario = ? and vigencia=true");
+	$sentencia->bindParam(1, $usuario); 
+	$sentencia->execute();
+	echo($sentencia->rowCount());
+	//while($reg = $sentencia->fetchObject()){
+      //  var_dump($reg->idcliente);
+	//}

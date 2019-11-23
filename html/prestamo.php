@@ -33,6 +33,7 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
     </script>
     <title>PRÉSTAMO</title>
 </head>
+
 <body class="bg-light">
     <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top   " style="background-color: black; ">
         <a class="navbar-brand" href="../index.html">
@@ -57,10 +58,18 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                     <a class="nav-link nav-a" href="#">VISION</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="iniciarsesion.php">INICIAR SESION 1</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link nav-a" href="iniciarsesion2.php">INICIAR SESION 2</a>
+                    <div class="btn-group">
+                        <button type="button" class="btn bg-transparent text-white dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hola, <label for=""> <?=$_SESSION['nombre']; ?> </label>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" href="cambiarcontraseña.php">Cambiar Contraseña</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
 
@@ -73,16 +82,17 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
         <!-- <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a> -->
     </nav>
     <section class="container mt-1">
-        <br> 
+        <br>
         <div class="row mt-5 border border-left-0 border-top-0 border-right-0">
             <div class="col-lg-2 justify-content-center">
-                <img src="../recursos/perfiles/<?php echo $_SESSION['foto']; ?>" alt=""
-                    class="perfil_user rounded-circle mb-3">
+                <img src="../recursos/perfiles/<?=$_SESSION['foto']; ?>" alt=""
+                    class="perfil_user rounded-circle mb-3 ">
             </div>
             <div class="col-lg-10 ">
                 <div class="row justify-content-end pt-3 ">
                     <!--  BOTÓN CON MODAL DE SOLICITAR PRÉSTAMO -->
-                    <button type="button" class="btn btn-outline-warning mr-3" data-whatever="@mdo" onclick="permitirSolicitud()">SOLICITAR PRÉSTAMO</button>
+                    <button type="button" class="btn btn-outline-warning mr-3" data-whatever="@mdo"
+                        onclick="permitirSolicitud()">SOLICITAR PRÉSTAMO</button>
                     <div class="modal fade" id="modalPrestamoSoli" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -97,12 +107,13 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                                 <div class="modal-body">
                                     <form>
                                         <div class="form-group">
-                                            <center><img src="../recursos/perfiles/<?php echo $_SESSION['foto']; ?>"
-                                                    alt="" class="rounded-circle perfil_user"></center>
+                                            <center><img src="../recursos/perfiles/<?=$_SESSION['foto']; ?>" alt=""
+                                                    class="rounded-circle perfil_user"></center>
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">DNI</label>
-                                            <input type="text" class="form-control" id="recipient-name" value="" readonly>
+                                            <input type="text" class="form-control" id="recipient-name" value=""
+                                                readonly>
                                         </div>
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">CORREO</label>
@@ -110,7 +121,8 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                                         </div>
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">MONTO SOLICITAR S/</label>
-                                            <input type="number" class="form-control" id="txtmonto" onkeypress="solonumeros(event,'#txtmonto',8)"></input>
+                                            <input type="number" class="form-control" id="txtmonto"
+                                                onkeypress="solonumeros(event,'#txtmonto',8)"></input>
                                         </div>
                                         <div class="form-group">
                                             <label for="message-text" class="col-form-label">PERIODO</label> <br>
@@ -141,7 +153,8 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">CANCELAR</button>
-                                    <button type="button" class="btn btn-primary" onclick="validarSolicitud()">SOLICITAR</button>
+                                    <button type="button" class="btn btn-primary"
+                                        onclick="validarSolicitud()">SOLICITAR</button>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +172,7 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                                 <div class='modal-header'>
                                     <h1 class='modal-title' id='exampleModalLabel' class='text-lowercase'><b> Hola
                                             <label for='lblnombre'
-                                                id='lblnombre'><?php echo $_SESSION['nombre']; ?></label>!</b></h1>
+                                                id='lblnombre'><?=$_SESSION['nombre']; ?></label>!</b></h1>
                                     <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                                         <span aria-hidden='true'>&times;</span>
                                     </button>
@@ -201,7 +214,7 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                         </div>
                         <div class="modal-body">
                             <form id="respuestas">
-                                   
+
                                 <!-- <div class="form-group">
                             <center> <img src="../recursos/nivel1.png" alt="" width="120px"></center>
                             </div> -->
@@ -290,13 +303,13 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                     </div>
                     <div class="modal-body">
                         <form class="needs-validation" id="pagarcuota">
-                            
-                            
-                        
-                        
+
+
+
+
                         </form>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

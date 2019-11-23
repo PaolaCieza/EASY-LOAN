@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -26,7 +30,7 @@
 <body class="-fondito">
     <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light   " style="background-color: black; ">
         <a class="navbar-brand" href="../index.html">
-            <!-- <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> -->
+        <!--    <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> -->
             <span class="text-warning titulo"> EASY LOAN</span>
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -38,7 +42,7 @@
                     <a class="nav-link nav-a" href="#">CATEGORIAS</a>
                 </li>
                 <li class=" nav-item active">
-                    <a class="nav-link nav-a" href="#"> SERVICIOS </a>
+                    <a class="nav-link nav-a" href="servicio.html"> SERVICIOS </a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link nav-a" href="#">HISTORIA</a>
@@ -47,10 +51,18 @@
                     <a class="nav-link nav-a" href="#">VISION</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="iniciarsesion.html">INICIAR SESION 1</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link nav-a" href="iniciarsesion2.html">INICIAR SESION 2</a>
+                    <div class="btn-group">
+                        <button type="button" class="btn bg-transparent text-white dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hola, <label for=""> <?=$_SESSION['nombre']; ?> </label>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" href="cambiarcontraseña.php">Cambiar Contraseña</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
 
@@ -62,52 +74,107 @@
         </button>
         <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a>
     </nav>
-
     <section class="container-fluid">
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col-lg-3  border border-left-3 mr-3 ml-3 p-3">
                 <div class=" row justify-content-center mt-3" id="">
-                    <img src="../recursos/user.png" alt="" class="perfil_user rounded-circle">
+                    <img src="../recursos/perfiles/<?=$_SESSION['foto']?>" alt="" class="perfil_user rounded-circle">
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <span class="text-break">USUARIO</span>
+                    <span class="text-break"><?=$_SESSION['nombre']?></span>
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <a href="perfil.html"> <button class="bg-warning border-0">VOLVER A PERFIL</button> </a>
+                    <a href="cambiarContraseña.html"> <button class="bg-warning border-0">CAMBIAR CONTRASEÑA</button>
+                    </a>
                 </div>
             </div>
             <div class="col-lg-7 ">
                 <div class=" row justify-content-center mt-3 bg-warning  ">
-                    <h1>CAMBIAR CONTRASEÑA</h1>
+                    <h1>EDITA TU PERFIL AQUÍ</h1>
                 </div> <br>
 
-                <form class=" text-dark bg-light p-2 rounded-circle">
+                <form class="needs-validation text-dark bg-light p-2 rounded-circle">
                     <div class="form-group">
-                        <label for="txtclave"> CONTRASEÑA ACTUAL</label>
-                        <input type="password" class="form-control" name="txtclave" id="txtclave"
-                            placeholder="Ingrese su contraseña actual...">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtclave"> CONTRASEÑA NUEVA</label>
-                        <input type="password" class="form-control" name="txtclave" id="txtclave"
-                            placeholder="Ingrese su contraseña nueva...">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtclave"> VUELVA A ESCRIBIR</label>
-                        <input type="password" class="form-control" name="txtclave" id="txtclave"
-                            placeholder="Ingrese nuevamente su contraseña nueva...">
-                    </div>
-                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
-                        <div class="form-group">
-                            <input type="button" value="GUARDAR" class="btn btn-warning"
-                                onclick="editarPerfil()">
+                        <label for="txtdni">DNI</label>
+                        <input type="text" class="form-control" name="txtdni" id="txtdni"
+                            onkeypress="solonumeros(event,'#txtdni',8)" readonly="readonly" required>
+                        <div class="valid-feedback">
+                            Correctamente indentificado!!
+                        </div>
+                        <div class="invalid-feedback">
+                            Ops deberas otorgarnos esta informacion!
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="txtfecha">FECHA DE NACIMIENTO</label>
+                        <input type="date" class="form-control" name="txtfecha" id="txtfecha" readonly="readonly"
+                            required>
+                        <div class="valid-feedback">
+                            Te felicitaremos cuando llegue el dia!!!
+                        </div>
+                        <div class="invalid-feedback">
+                            Ya ne cansé de hablarte bonito, no seas gil ctmr!
+                        </div>
+                    </div>
+                    <fieldset class="form-group">
+                        <label>SEXO</label> <br>
+                        <div class="custom-control custom-radio custom-control-inline ml-5">
+                            <input class="custom-control-input" type="radio" name="txtsexo" id="masculino"
+                                value="masculino" required>
+                            <label class="custom-control-label text-blue-darken-1" style="font-size: 2.5vh;"
+                                for="masculino">Masculino</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input class="custom-control-input" type="radio" name="txtsexo" id="femenino"
+                                value="femenino" required>
+                            <label class="custom-control-label text-pink " style="font-size: 2.5vh;"
+                                for="femenino">Femenino</label>
+                        </div>
+                        <div class="custom-control custom-radio ml-4">
+                            <input class="custom-control-input" type="radio" name="txtsexo" required>
+                            <div class="valid-feedback">
+                                Gaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                            </div>
+                            <div class="invalid-feedback">
+                                Queremos saber si eres machito o hembrita
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <label for="txtcorreo">CORREO</label>
+                        <input type="email" class="form-control" name="txtcorreo" id="txtcorreo" required>
+                        <div class="valid-feedback">
+                            Ok
+                        </div>
+                        <div class="invalid-feedback">
+                            No ok
+                        </div>
+                    </div>
+                    <form class="text-white">
+                        <div class="form-group">
+                            <label for="txtusuario">USUARIO</label>
+                            <input type="text" class="form-control" name="txtusuario" id="txtusuario"
+                                onkeypress="sinespacios(event)" onkeyup="valuser()" required>
+                            <div class="valid-feedback" id="msg-s">
+                                Ok
+                            </div>
+                            <div class="invalid-feedback" id="msg-e1">
+                                Complete
+                            </div>
+                            <div class="invalid-feedback" id="msg-e2">
+                                Usuario ya existe
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                            <div class="form-group">
+                                <input type="button" value="ACTUALIZAR DATOS" class="btn btn-warning"
+                                    onclick="editarPerfil()">
+                            </div>
+                    </form>
                 </form>
             </div>
         </div>
     </section>
-
 
 
 

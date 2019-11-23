@@ -1,8 +1,10 @@
 <?php
 session_start();
-if(!isset($_SESSION['idusuario'])){header("location: iniciarsesion.php");}
+if($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");};
+/*
+if(!isset($_SESSION['acceso'])){header("location: iniciarsesion.php");}
 elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
-
+*/
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -725,3 +725,48 @@ function culqi() {
     });
 }
 */
+
+function listarClientes(){
+	$.ajax({
+        url: '../php/listarClientes.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#clientes").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function buscarCliente(){
+	var opcion = $("select[name=selectorC]").val();
+	var buscar = $("#buscar").val();
+
+	$.ajax({
+        url: '../php/buscarCliente.php',
+        type: 'post',
+        data: {'opcion':opcion,'buscar':buscar},
+        success: function( data ){
+        	$("#clientes").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function contactarCliente(cliente){
+	$.ajax({
+        url: '../php/contactarCliente.php',
+        type: 'post',
+        data: {'cliente':cliente},
+        success: function( data ){
+        	$("#contacto").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}

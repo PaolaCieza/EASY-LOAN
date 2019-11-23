@@ -15,6 +15,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/js.js"></script>
+    <script type="text/javascript">
+        window.ready = listarClientes();
+    </script>
     <title>MANTENIMIENTO CLIENTE</title>
 </head>
 
@@ -83,18 +86,18 @@
         </div>
     </div>
     <section class="container mt-5 p-0">
-        </div>
+        
         <div class="row">
             <div class=" col-md-2 mr-1">
-                <select name="" id="" class="btn btn-outline-purple">
-                    <option value="" disabled selected>SELECCIONAR</option>
-                    <option value="">DNI</option>
-                    <option value="">NOMBRE</option>
-                    <option value="">USUARIO</option>
+                <select name="selectorC" id="selectorC" class="btn btn-outline-purple">
+                    <!--<option value="" disabled selected>SELECCIONAR</option>-->
+                    <option value="1" selected>DNI</option>
+                    <option value="2">NOMBRE</option>
+                    <option value="3">USUARIO</option>
                 </select>
             </div>
             <div class="col-md-8">
-                <input class="form-control mr-sm-2 " type="search" placeholder="BUSCAR" aria-label="Search">
+                <input class="form-control mr-sm-2 " onkeyup="buscarCliente()" type="search" placeholder="BUSCAR" id="buscar"aria-label="Search">
             </div>
 
             <div class=" col-lg-2 row justify-content-end">
@@ -102,57 +105,10 @@
                     data-target="#modalClientesBaja" data-whatever="@mdo">DADOS DE BAJA</button>
             </div>
         </div>
-        <div class=" container-fluid mt-1 mb-3 bg-transparent rounded align-content-center div-usu-man">
-            <div class="row font-weight-bold ">
-                <div class="col-sm-3  border-right">
-                    <div class="col-1">
-                        <label for="" class="bg-warning p-1 font-weight-bold">ID</label>
-                    </div>
-                    <div class="col-12 justify-content-center">
-                        <center>
-                            <img src="../recursos/perfiles/yo.jpg" alt=""
-                                class="rounded-circle perfil_user_mantenimiento imgperf9">
-                            <label for="" class="m-1"> 1999-11-09 </label>
-                        </center>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="row p-3 justify-content-between">
-                        <label for="">PAOLA CIEZA BANCES</label> <label for="">75756219</label>
-
-                    </div>
-                    <div class="row justify-content-center p-5">
-                        <center>
-                            <h1 class="text-warning text-uppercase text-nivel"> <label for="">NIVEL AVANZADO </label>
-                            </h1>
-                        </center>
-                    </div>
-                    <div class="row justify-content-around p-2">
-                        <button class="btn btn-outline-purple" type="button" data-toggle="modal"
-                            data-target="#modalContactar" data-whatever="@mdo">CONTACTAR</button>
-                        <button class="btn btn-outline-purple" type="button" data-toggle="modal"
-                            data-target="#modalDarBaja" data-whatever="@mdo">DAR DE BAJA</button>
-                        <button class="btn btn-outline-purple">PDF</button>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-12 p-0 d-flex   flex-column font-weight-bold align-middle">
-                    <button class="border-0 bg-transparent" style="height: 20%;"> </button>
-                    <button class="btn btn-outline-success mb-1 border-right-0 " style="height: 30%;" type="button"
-                        data-toggle="modal" data-target="#modalPrestamista" data-whatever="@mdo">
-                        <h2 class=""> PRESTAMISTA </h2>
-                        <label for=""> 3</label>
-                    </button>
-                    <button class="btn btn-outline-info border-right-0 " style="height: 30%;" type="button"
-                        data-toggle="modal" data-target="#modalPrestatario" data-whatever="@mdo" style="height: 30%;">
-                        <h2> PRESTATARIO </h2>
-                        <label for=""> 3</label>
-                    </button>
-                    <button class="border-0 bg-transparent" style="height: 20%;"> </button>
-                </div>
-            </div>
+        <div id="clientes">
 
         </div>
-        <br><br><br><br><br><br>
+        <br><br><br>
     </section>
 
     <!--  BOTÓN CON MODAL DE CONTACTO -->
@@ -168,33 +124,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="respuestas">
-                        <div class="form-group border border-purple  p-3">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <img src='../recursos/perfiles/yo.jpg' alt='prestatario' width="100px"
-                                        class="rounded-circle">
-                                </div>
-                                <div class="col-lg-8">
-                                    <form action="">
-                                        <div class="form-group">
-                                                <label for="txtCorreo"> CORREO</label>
-                                                <input type="text" class="form-control border border-danger border-left-0 border-top-0 border-right-0 bg-white" value="paolacieza8@gmail.com" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="txtTelefono"> TELÉFONO </label>
-                                                <input type="text" class="form-control border border-danger border-left-0 border-top-0 border-right-0 bg-white" value="979829186" readonly>
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="txtDireccion"> DIRECCIÓN</label>
-                                                <input type="text" class="form-control border border-danger border-left-0 border-top-0 border-right-0 bg-white" value="en la casa de mamita" readonly>
-                                        </div>
-                                    </form>
-                                    <div class="modal-footer">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <form id="contacto">
+                        
                     </form>
                 </div>
                 <div class="modal-footer">

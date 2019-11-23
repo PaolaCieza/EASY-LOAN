@@ -14,6 +14,8 @@ CREATE TABLE CLIENTE(
 	FECHANAC 	DATE 							NOT NULL,
 	SEXO 		BOOLEAN							NOT NULL, 		--- MASUCULINO = TRUE , FEMENINO = FALSE
 	EMAIL 		VARCHAR(100) 					NOT NULL,
+	TELEFONO	VARCHAR(8)						NULL,
+	DIRECCION 	VARCHAR(200)					NULL,
 	USUARIO 	VARCHAR(20) 					NOT NULL 		UNIQUE,
 	CLAVE 		CHAR(32) 						NOT NULL,
 	IDNIVEL 	INT 			DEFAULT 1		NULL 		REFERENCES NIVEL,
@@ -189,7 +191,7 @@ BEGIN
 	UPDATE public.respuesta r SET estado=true WHERE r.idrespuesta=id;
 	UPDATE public.respuesta r SET estado=false WHERE r.idsolicitud=sol and r.estado is null;
 	INSERT INTO public.prestamo(
-	idprestamo, idrespuesta, estado, fecha, hora, fechaPago, monto, tasainteres, numerocuotas, periodo)
+	idprestamo, idrespuesta, estado, fechaRegistro, hora, fechaPago, monto, tasainteres, numerocuotas, periodo)
 	VALUES ((select coalesce(max(idprestamo),0)+1 from prestamo), id, DEFAULT, DEFAULT, DEFAULT, null, mont, inter, cuotas, per);
 	return true;
 	exception
@@ -254,12 +256,23 @@ $$ LANGUAGE 'plpgsql';
 select fn_validar_solicitud(1);
 
 select * from solicitud
-select * from respuesta
+select * from prestamo
 
 SELECT montomax from cliente c inner join nivel n on c.idnivel=n.idnivel where c.idcliente=1
 
 select numerocuota, montocuota, fechavencimiento,(case when estado=true then 'PAGADO' else 'PENDIENTE' end) 
 from cuota c where c.idprestamo=1
 
+select * from cliente where idCliente=2
+SELECT *,(case when tipoacceso=true then 'cliente'  else 'admin' end) as acceso FROM cliente where usuario = 'fernando10' and clave = 'fernando123' and vigencia=true
+
+select count(*) as prestatario from prestamo p inner join respuesta r on r.idrespuesta=p.idrespuesta 
+inner join solicitud s on s.idsolicitud=r.idsolicitud where s.idcliente=1
+
+select count(*) from respuesta where estado=true and idcliente=2
+
+SELECT c.*,n.nombre as nivel from cliente c inner join nivel n on c.idnivel=n.idnivel  
+where upper(c.nombre) like upper('%CIE%') or upper(c.apellido) like upper('%CIE%')
 select * from cliente
 
+SELECT (case when telefono is null then 'No registrado' else telefono end)  FROM cliente 

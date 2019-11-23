@@ -591,7 +591,9 @@ function procesarPago(){
         amount: montoPagar,
     });
 	Culqi.open();
+   
 }
+
 
 function culqi() {
 	if (Culqi.token) { // ¡Objeto Token creado exitosamente!

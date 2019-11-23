@@ -286,56 +286,14 @@ if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">N° CUOTA</label>
-                                <input type="text" class="form-control" id="recipient-name" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="recipient-name" class="col-form-label">MONTO</label>
-                                <input type="text" class="form-control" id="recipient-name" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label>NOMBRE TITULAR</label>
-                                <input type="text" class="form-control" name="cc_number" required="" />
-                            </div>
-                            <div class="form-group">
-                                <label>NÚMERO DE TARJETA</label>
-                                <input type="number" class="form-control" name="cc_number" required="" />
-                            </div>
-                            <div class="row form-group">
-                                <div class="col-lg-8">
-                                    <label>FECHA EXPIRACIÓN</label>
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <input class="form-control" type="text" name="cc_month" placeholder="MM"
-                                                pattern="\\d*" minlength="2" maxlength="2" required="" />
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <input type="text" class="form-control" name="cc_year" placeholder="YY"
-                                                pattern="\\d*" minlength="2" maxlength="2" required="" />
-                                        </div>
-                                    </div>
-                                </div> <br>
-                                <div class="col-lg-2">
-                                    <label>
-                                        CVC
-                                    </label>
-                                    <input type="text" class="form-control" name="cc_cvc" placeholder="123"
-                                        pattern="\\d*" minlength="3" maxlength="3" required="" />
-                                </div>
-                            </div>
-                            <div>
-                                <label>
-                                    <input type="checkbox" name="save_cc" checked="checked">
-                                    GUARDAR TARJETA
-                                </label>
-                            </div>
+                        <form class="needs-validation" id="pagarcuota">
+                            
+                            
+                        
+                        
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="button btn btn-success" onclick="pagarCuota()">PAGAR</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

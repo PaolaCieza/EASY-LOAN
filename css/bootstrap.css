@@ -232,6 +232,12 @@ body {
 .imgperf9{
   filter: drop-shadow(5px 5px 0.5px rgba(128, 0, 128, 0.151));
 }
+
+.img-Nivel{
+  filter: drop-shadow(5px 5px 0.5px rgba(46, 30, 46, 0.589));
+}
+
+
 /* .columna1{
   border: 1px #0b2e13 solid;
 }
@@ -347,6 +353,16 @@ body {
 
 .texto-label {
   size: 30px !important;
+}
+
+.bg-fondito-nivel{
+  background: rgb(109,37,138);
+background: linear-gradient(0deg, rgba(109,37,138,1) 0%, rgba(255,255,255,0) 100%);
+  /* background: rgb(60,26,77);
+  background: linear-gradient(90deg, rgba(60,26,77,1) 8%, rgba(121,9,102,1) 46%, rgba(226,0,255,0.4265056364342612) 100%); */
+  /* background: rgb(68, 2, 65);
+background: linear-gradient(90deg, rgb(100, 3, 92) 0%, rgb(110, 13, 155) 35%, rgb(191, 35, 230) 100%); */
+
 }
 
 .div-contenedor-icono{

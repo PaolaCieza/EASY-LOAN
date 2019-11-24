@@ -851,3 +851,17 @@ function cerrarSesion(){
         }
     });
 }
+
+function listarPrestatario(cliente){
+	$.ajax({
+        url: '../php/listarPrestatario.php',
+        type: 'post',
+        data: {'cliente':cliente},
+        success: function( data ){
+        	$("#prestatario").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}

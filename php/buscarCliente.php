@@ -68,7 +68,7 @@
                         <label for=""> <?=$resultPrestamista->fetchObject()->prestamista?></label>
                     </button>
                     <button class="btn btn-outline-info border-right-0 " style="height: 30%;" type="button"
-                        data-toggle="modal" data-target="#modalPrestatario" data-whatever="@mdo" style="height: 30%;">
+                        data-toggle="modal" data-target="#modalPrestatario" data-whatever="@mdo" style="height: 30%;" onclick="listarPrestatario(<?=$reg->idcliente?>)">
                         <h2> PRESTATARIO </h2>
                         <label for=""><?=$resultPrestatario->fetchObject()->prestatario?></label>
                     </button>

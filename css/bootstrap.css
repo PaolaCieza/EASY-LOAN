@@ -206,6 +206,15 @@ body {
   /* height: 30vh; */
 }
 
+.perfil_icono{
+  width: 2vw;
+  /* height: 30vh; */
+}
+
+.perfil_prestamista_prestatario{
+  width: 8vw;
+}
+
 .perfil_admi{
   width: 18vw;
   /* height: 30vh; */

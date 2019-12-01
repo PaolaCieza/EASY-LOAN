@@ -43,19 +43,19 @@
                     <a class="nav-link nav-a" href="#"> PRESTAMOS </a>
                 </li>
                 <li class="nav-item active">
-                        <div class="btn-group">
-                            <button type="button" class="btn bg-transparent text-white dropdown-toggle"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Hola, <label for=""> <?=$_SESSION['nombre']; ?> </label>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="perfil.php">Perfil</a>
-                                <a class="dropdown-item" href="cambiarcontraseña.php">Cambiar Contraseña</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
-                            </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn bg-transparent text-white dropdown-toggle"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Hola, <label for=""> <?=$_SESSION['nombre']; ?> </label>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" href="cambiarcontraseña.php">Cambiar Contraseña</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
                         </div>
-                    </li>
+                    </div>
+                </li>
             </ul>
         </div>
 
@@ -100,7 +100,7 @@
         </div>
     </div>
     <section class="container mt-5 p-0  ">
-        <button class="col-lg-12 mb-3 btn btn-outline-purple" data-toggle="modal" data-target="#modalNuevoNivel"
+        <button class="col-lg-12 mb-5 btn btn-outline-purple" data-toggle="modal" data-target="#modalNuevoNivel"
             data-whatever="@mdo">
             AGREGAR NUEVO NIVEL
         </button>

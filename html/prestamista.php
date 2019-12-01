@@ -31,10 +31,10 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
     <script type="text/javascript">
         window.ready = inicio();
     </script>
-    <title>PRÉSTAMO</title>
+    <title>PRESTAMISTA</title>
 </head>
 
-<body class="bg-light">
+<body class="bg-lightd">
     <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top   " style="background-color: black; ">
         
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
@@ -94,9 +94,9 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
             </div>
             <div class="col-lg-10 ">
                 <div class="row justify-content-end pt-3 ">
-                    <!--  BOTÓN CON MODAL DE SOLICITAR PRÉSTAMO -->
+                    <!--  BOTÓN CON MODAL DE PRÉSTAMO DADO -->
                     <button type="button" class="btn btn-outline-warning mr-3" data-whatever="@mdo"
-                        onclick="permitirSolicitud()">SOLICITAR PRÉSTAMO</button>
+                        onclick="permitirSolicitud()">PRÉSTAMO DADOS</button>
                     <div class="modal fade" id="modalPrestamoSoli" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -110,60 +110,40 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                                 </div>
                                 <div class="modal-body">
                                     <form>
-                                        <div class="form-group">
-                                            <center><img src="../recursos/perfiles/<?=$_SESSION['foto']; ?>" alt=""
-                                                    class="rounded-circle perfil_admi"></center>
+                                        <div class="row form-group border">
+                                            <div class="col-lg-4">
+                                                <br>
+                                            <center><img src="../recursos/perfiles/yo2.jpg" alt=""
+                                                    class="rounded-circle perfil_prestamista_prestatario"></center>
+                                            </div>
+                                            <div class="col-lg-8">
+                                              <label for="">  ESTADO:</label> <br>
+                                              <label for="">  NOMBRE:</label><br>
+                                               <label for="">  DNI:</label><br>
+                                               <label for="">  MONTO:</label><br> 
+                                               <label for="">  CUOTAS PAGADAS: </label> <br>
+                                               <label for="">  CUOTAS TOTALES:</label><br>
+                                               <div class="row justify-content-end p-1">
+                                <button class="btn btn-outline-dark">PDF</button>
+                            </div>
+                                            </div>
+                                            
                                         </div>
-                                        <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">DNI</label>
-                                            <input type="text" class="form-control" id="recipient-name" value=""
-                                                readonly>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message-text" class="col-form-label">CORREO</label>
-                                            <input type="text" class="form-control" id="message-text" readonly></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message-text" class="col-form-label">MONTO SOLICITAR S/</label>
-                                            <input type="number" class="form-control" id="txtmonto"
-                                                onkeypress="solonumeros(event,'#txtmonto',8)"></input>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message-text" class="col-form-label">PERIODO</label> <br>
-                                            <select name="periodo" id="periodo" class="border-0">
-                                                <option value="" selected disabled="disabled">seleccionar</option>
-                                                <option value="false">SEMANAL</option>
-                                                <option value="true">MENSUAL</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="message-text" class="col-form-label">CUOTAS</label> <br>
-                                            <select name="cuotas" id="periodo" class="border-0">
-                                                <option value="" selected disabled="disabled">seleccionar</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                            </select>
-
-                                        </div>
+                                        
+                                        
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal">CANCELAR</button>
+                                    
                                     <button type="button" class="btn btn-primary"
-                                        onclick="validarSolicitud()">SOLICITAR</button>
+                                        onclick="validarSolicitud()">PDF</button>
+                                        <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">CANCELAR</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- FIN BOTÓN CON MODAL DE SOLICITAR PRÉSTAMO -->
+                    <!-- FIN BOTÓN CON MODAL DE PRÉSTAMO DADO -->
 
                     <!--  BOTÓN CON MODAL DE NIVEL -->
                     <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#modalNivel"
@@ -201,57 +181,85 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
         <!-- ESPACIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
 
         <div class="row mb-3">
-            <!--  BOTÓN CON MODAL DE RESPUESTAS-->
-            <button type="button" class="btn btn-outline-info col-12 p-3" data-toggle="modal"
-                data-target="#modalRespuestas" data-whatever="@mdo" onclick="listarRespuestas()">RESPUESTAS A LA
-                SOLICITUD ACTUAL</button>
-            <div class="modal fade" id="modalRespuestas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">AQUÍ TE TENEMOS
-                                RESPUESTAS</h1>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+           
+        </div>
+        <div class=" ">
+        <b>
+                <center><label for="" class="text-warning blockquote ">ESTÁN ESPERANDO TU RESPUESTA</label></center>
+            </b>
+        <div class="row">
+            <div class=" col-lg-3 btn-group form-group">
+                        <button type="button" class="btn bg-transparent  dropdown-toggle font-weight-bold"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ORDENAR POR: </label>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item " href="#">Nombre</a>
+                            <a class="dropdown-item " href="#">Dni</a>
+                            <a class="dropdown-item " href="#">Menor</a>
+                            <a class="dropdown-item " href="#">Mayor</a>
+                            <a class="dropdown-item " href="#" >Fecha</a>
+                            <a class="dropdown-item " href="#" >Fecha</a>
+                            <a class="dropdown-item " href="#" >Fecha</a>
                         </div>
-                        <div class="modal-body">
-                            <form id="respuestas">
+            </div>
+            <div class="col-lg-9  mb-2">
+                        <input
+                            class="form-control form-control-range border-top-0 border-left-0 border-right-0 border-purple"
+                            type="search" placeholder="BUSCAR PRESTATARIO" aria-label="Search">
+            </div>
+        </div>
+            
+            
+            <div class="row mb-2">
+                
+                <div class="col-lg-6 bg-fondito-nivel border">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <br>
+                            <img src="../recursos/perfiles/yo.jpg" class="perfil_prestamista_prestatario rounded-circle ">
+                        </div>
+                        <div class="col-lg-8 mt-1">
+                            <div class="row justify-content-end p-1">
+                                <button class="btn btn-outline-dark">DAR PRESTAMO</button>
+                            </div>
+                            <div class="">
+                                <label for=""> PRESTATARIO:  PAOLA CIEZA</label> <br>
+                                <label for=""> DNI: 75756219</label> <br>
+                                <label for=""> MONTO: 5000</label> <br>
+                                <label for=""> PERIODO: mensual</label>
+                                <label for=""> CUOTAS: 4 </label>
+                            </div>
+                        </div>
+                    </div>
 
-                                <!-- <div class="form-group">
-                            <center> <img src="../recursos/nivel1.png" alt="" width="120px"></center>
-                            </div> -->
-                            </form>
+                </div>
+                <!-- <div class="col-lg-2">
+                
+                </div> -->
+                <div class="col-lg-6 bg-fondito-nivel border">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <br>
+                            <img src="../recursos/perfiles/yo.jpg" class="perfil_prestamista_prestatario rounded-circle ">
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                        <div class="col-lg-8 mt-1">
+                            <div class="row justify-content-end p-1">
+                                <button class="btn btn-outline-dark">DAR PRESTAMO</button>
+                            </div>
+                            <div class="">
+                                <label for=""> PRESTATARIO:  PAOLA CIEZA</label> <br>
+                                <label for=""> DNI: 75756219</label> <br>
+                                <label for=""> MONTO: 5000</label> <br>
+                                <label for=""> PERIODO: mensual</label>
+                                <label for=""> CUOTAS: 4 </label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- FIN BOTÓN CON MODAL DE RESPUESTAS -->
-        </div>
-        <div class="bg-white p-4">
-            <b>
-                <center><label for="" class="text-danger blockquote">HISTORIAL DE PRÉSTAMOS</label></center>
-            </b>
-            <table class="table table-responsive  table-striped table-dark">
-                <thead class="">
-                    <tr>
-                        <th>ID</th>
-                        <th>PRESTAMISTA</th>
-                        <th>MONTO</th>
-                        <th>CUOTAS</th>
-                        <th>ESTADO</th>
-                        <th>FECHA-PRÉSTAMO</th>
-                        <th>LISTA CUOTAS</th>
-                        <th>PAGAR CUOTA</th>
-                    </tr>
-                </thead>
-                <tbody id="registros">
-                </tbody>
-            </table>
+
+
             <div id="divpaginas"></div>
             <br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br>

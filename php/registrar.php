@@ -32,9 +32,10 @@ else{
         } else{
             $sexo = true;
         }
-        $sql= "INSERT INTO cliente VALUES 
-        ((select coalesce(max(idcliente),0)+1 from cliente), '$nombre', '$apellidos', '$dni',
-        '$fecha', '$sexo', '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,null,null);";
+        $sql= "INSERT INTO cliente(
+                idcliente, nombre, apellido, dni, fechanac, sexo, email, usuario, clave, idnivel, tipo, vigencia, fotousuario, tipoacceso, telefono, direccion)
+                VALUES ((select coalesce(max(idcliente),0)+1 from cliente), '$nombre', '$apellidos', '$dni',
+                '$fecha', '$sexo', '$correo', '$usuario', '$contraseña', DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT,null,null);";
         //modificar order de campos
         $resp = 1;
         $cnx->query($sql); //or $resp=100;

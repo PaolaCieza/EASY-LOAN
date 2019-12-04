@@ -277,11 +277,15 @@ select * from nivel
 
 SELECT (case when telefono is null then 'No registrado' else telefono end)  FROM cliente 
 
-SELECT c.nombre ||' '||c.apellido as prestamista,p.fecharegistro, p.monto,p.numerocuotas, p.tasainteres*100 as ineteres,
+SELECT c.nombre ||' '||c.apellido as prestamista, c.fotousuario,p.fecharegistro, p.monto,p.numerocuotas, p.tasainteres*100 as interes,
 (case when p.estado=true then 'Pagado' else 'Pendiente' end) estado from prestamo p inner join respuesta r 
 on r.idrespuesta=p.idrespuesta inner join solicitud s on s.idsolicitud=r.idsolicitud inner join 
 cliente c on r.idcliente=c.idcliente where s.idcliente=1
-			
-			
+
+SELECT c.nombre ||' '||c.apellido as prestamista, c.fotousuario,p.fecharegistro, p.monto,p.numerocuotas, p.tasainteres*100 as interes,
+(case when p.estado=true then 'Pagado' else 'Pendiente' end) estado from prestamo p inner join respuesta r 
+on r.idrespuesta=p.idrespuesta inner join solicitud s on s.idsolicitud=r.idsolicitud inner join 
+cliente c on s.idcliente=c.idcliente where r.idcliente=2
+
 
 			

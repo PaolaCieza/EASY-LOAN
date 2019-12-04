@@ -865,3 +865,17 @@ function listarPrestatario(cliente){
         }
     });
 }
+
+function listarPrestamista(cliente){
+	$.ajax({
+        url: '../php/listarPrestamista.php',
+        type: 'post',
+        data: {'cliente':cliente},
+        success: function( data ){
+        	$("#prestamista").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}

@@ -63,7 +63,7 @@
                 <div class="col-lg-2 col-md-12 p-0 d-flex   flex-column font-weight-bold align-middle">
                     <button class="border-0 bg-transparent" style="height: 20%;"> </button>
                     <button class="btn btn-outline-success mb-1 border-right-0 " style="height: 30%;" type="button"
-                        data-toggle="modal" data-target="#modalPrestamista" data-whatever="@mdo">
+                        data-toggle="modal" data-target="#modalPrestamista" data-whatever="@mdo" onclick="listarPrestamista(<?=$reg->idcliente?>)">
                         <h2 class=""> PRESTAMISTA </h2>
                         <label for=""> <?=$resultPrestamista->fetchObject()->prestamista?></label>
                     </button>

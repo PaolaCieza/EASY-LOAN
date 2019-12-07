@@ -35,55 +35,51 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
 </head>
 
 <body class="bg-light">
-    <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top   " style="background-color: black; ">
-        
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
+<nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top " style="background-color: black; ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
             aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
-    <a class="navbar-brand" href="../index.html">
-            <!-- <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> -->
+        </button>       
+    
+        <a class="navbar-brand" href="../index.html">
             <span class="text-warning titulo"> EASY LOAN</span>
         </a>
-        <div class="collapse navbar-collapse  " id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto  ">
-                <li class="nav-item active">
-                    <a class="nav-link nav-a" href="#">NOTICIAS<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link nav-a" href="#">CATEGORIAS</a>
-                </li>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
                 <li class=" nav-item active">
-                    <a class="nav-link nav-a" href="#"> SERVICIOS </a>
+                    <a class="nav-link nav-a" href="servicios.html"> SERVICIOS </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="#">HISTORIA</a>
+                    <a class="nav-link nav-a" href="conocenos.html">SOBRE NOSOTROS</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="#">VISION</a>
+                    <a class="nav-link nav-a" href="nivel.html">NIVELES</a>
                 </li>
-                <li class="nav-item active ">
-                    <div class="btn-group">
-                        <button type="button" class="btn bg-transparent text-white dropdown-toggle font-weight-bold"
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="prestamista.php">PRESTAMISTA <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="prestamo.php">PRESTATARIO</a>
+                </li>
+                
+                <li class="nav-item active">
+                    <div class="btn-group mb-0 ">
+                        <button type="button" class="btn bg-transparent text-white dropdown-toggle  "
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="../recursos/perfiles/<?=$_SESSION['foto']; ?>" alt=""
-                    class=" rounded-circle perfil_icono  " >
-                            Hola, <label for=""> <?=$_SESSION['nombre']; ?> </label>
+                            <label for="" class="nav-a">HOLA</label>
+                             <label for="" class="nav-a"> <?=$_SESSION['nombre']; ?> </label>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item " href="perfil.php"  >Perfil</a>
-                            <a class="dropdown-item " href="cambiarcontraseña.php">Cambiar Contraseña</a>
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" href="cambiarcontraseña.php">Cambiar Contraseña</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item " href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
                         </div>
                     </div>
                 </li>
             </ul>
 
         </div>
-
-        
-        <!-- <a href="iniciarsesion.html" id="estesi"> <button class="btn btn-warning">INICIAR SESION</button></a> -->
     </nav>
     <section class="container mt-1">
         <br>

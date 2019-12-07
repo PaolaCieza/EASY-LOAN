@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <script type="text/javascript" src="js/js.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"></script>
@@ -24,37 +25,52 @@
   </head>
 
 <body class="--fondito -badge-dark">
-  <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light wrapper fixed-top "
-    style="background-color: black; overflow: hidden;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
-      aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="index.html">
-      <!-- <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> -->
-      <span class="text-warning titulo"> EASY LOAN</span>
-    </a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link nav-a" href="#">NOTICIAS <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link nav-a" href="html/nivel.html">NIVELES</a>
-        </li>
-        <li class=" nav-item active">
-          <a class="nav-link nav-a" href="html/servicios.html"> SERVICIOS </a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link  nav-a" href="#">HISTORIA</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link nav-a" href="#">VISION</a>
-        </li>
-      </ul>
+    <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top " style="background-color: black; ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
+            aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>       
+    
+        <a class="navbar-brand" href="index.html">
+            <span class="text-warning titulo"> EASY LOAN</span>
+        </a>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class=" nav-item active">
+                    <a class="nav-link nav-a" href="html/servicios.html"> SERVICIOS </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="html/conocenos.html">SOBRE NOSOTROS</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="html/nivel.html">NIVELES</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="html/prestamista.php">PRESTAMISTA <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="html/prestamo.php">PRESTATARIO</a>
+                </li>
+                
+                <li class="nav-item active">
+                    <div class="btn-group mb-0 ">
+                        <button type="button" class="btn bg-transparent text-white dropdown-toggle  "
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <label for="" class="nav-a">HOLA</label>
+                             <label for="" class="nav-a"> <?=$_SESSION['nombre']; ?> </label>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="html/perfil.php">Perfil</a>
+                            <a class="dropdown-item" href="html/cambiarcontraseña.php">Cambiar Contraseña</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
 
-    </div>
-  </nav> 
+        </div>
+    </nav>
   <section class="mt-5">
     <div class="index-primera-parte bg-white">
       <br><br><br><br> <br><br><br><br>

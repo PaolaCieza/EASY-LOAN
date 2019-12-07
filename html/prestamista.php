@@ -181,7 +181,6 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
         <!-- ESPACIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO -->
 
         <div class="row mb-3">
-           
         </div>
         <div class=" ">
         <b>
@@ -227,7 +226,7 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                                 <label for=""> PRESTATARIO:  PAOLA CIEZA</label> <br>
                                 <label for=""> DNI: 75756219</label> <br>
                                 <label for=""> MONTO: 5000</label> <br>
-                                <label for=""> PERIODO: mensual</label>
+                                <label for=""> PERIODO: mensual</label> <br>
                                 <label for=""> CUOTAS: 4 </label>
                             </div>
                         </div>
@@ -251,7 +250,7 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                                 <label for=""> PRESTATARIO:  PAOLA CIEZA</label> <br>
                                 <label for=""> DNI: 75756219</label> <br>
                                 <label for=""> MONTO: 5000</label> <br>
-                                <label for=""> PERIODO: mensual</label>
+                                <label for=""> PERIODO: mensual</label> <br>
                                 <label for=""> CUOTAS: 4 </label>
                             </div>
                         </div>
@@ -266,67 +265,7 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
             <br><br><br><br><br><br><br><br>
         </div>
 
-        <!--  BOTÓN CON MODAL DE LISTAR CUOTAS-->
-        <div class="modal fade  " id="modaListarCuotas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog  " role="document">
-                <div class="modal-content ">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">ESTÁS SON TUS CUOTAS</h1>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <table class="table table-responsive  table-striped table-dark">
-                                <thead class="">
-                                    <tr>
-                                        <th>NÚMERO CUOTA</th>
-                                        <th>MONTO CUOTA</th>
-                                        <th>FECHA VENCIMIENTO</th>
-                                        <th>ESTADO</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="listacuotas">
-
-                                </tbody>
-                            </table>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- FIN BOTÓN CON MODAL DE LISTAR CUOTAS -->
-
-        <!--  BOTÓN CON MODAL DE PAGAR CUOTAS-->
-        <div class="modal fade  " id="modalPagar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog  " role="document">
-                <div class="modal-content ">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">PAGAR</h1>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="needs-validation" id="pagarcuota">
-
-
-
-
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- FIN BOTÓN CON MODAL DE PAGAR CUOTAS -->
+     
 
     </section>
     <footer class="page-footer font-small unique-color-dark " style="background-color: black;  color: white; ">

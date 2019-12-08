@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <script type="text/javascript" src="../js/js.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.6/dist/sweetalert2.all.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -15,10 +14,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <title>SOBRE NOSOTROS</title>
+    <script type="text/javascript" src="../js/js.js"></script>
+    <script type="text/javascript">
+        window.ready = listarNiveles();
+    </script>
+    <title>NIVELES</title>
 </head>
 
-<body class="-fondito">
+<body class="">
         <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top " style="background-color: black; ">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
                     aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
@@ -64,96 +67,32 @@
                     </ul>
         
                 </div>
-            </nav>
+            </nav> <br>
+
     <section class="">
         <div class="sobre-nosotros-parte1 container-fluid">
             <br><br><br><br><br><br>
             <div class="row  offset-2 mt-5 ">
-                <h1 class="text-white"> CONÓCENOS</h1>
+                <h1 class="text-white"> CONOCE NUESTROS NIVELES</h1>
             </div><br><br><br><br><br>
         </div>
-        <div class="container-fluid">
-            <div class="row  offset-2 mt-5 ">
-                <h1 class="text-purple "> SOBRE NOSOTROS</h1>
-            </div>
-            <div class="col-8 offset-2 mt-5">
-                <div class="row mt-4">
-                    <div class="col-sm contenedor-sobre-nosotros" onclick="location.href='historia.html'">
-                        <div class="row div-contenedor-icono"  >
-                            <div>
-                                <span class="icono-sobre-nosotros"> f</span>
-                            </div>
-                            <span class="tex-contenedor-sobre-nosotros">HISTORIA</span>
-                        </div>
-                    </div>
-                    <div class="col-sm contenedor-sobre-nosotros">
-                        <div class="row div-contenedor-icono">
-                            <div>
-                                <span class="icono-sobre-nosotros"> f</span>
-                            </div>
-                            <span class="tex-contenedor-sobre-nosotros">CONTRATOS</span>
-                        </div>
-                    </div>
-                    <div class="col-sm contenedor-sobre-nosotros">
-                        <div class="row div-contenedor-icono">
-                            <div>
-                                <span class="icono-sobre-nosotros"> f</span>
-                            </div>
-                            <span class="tex-contenedor-sobre-nosotros">TRANSPARENCIA</span>
-                        </div>
-                    </div>
+        <div class="container mb-3 mt-5">
+
+            <!-- dsjjef -->
+            <div class="row border border-white p-4 rounded bg-fondito-nivel-general mb-2">
+                <div class="col-lg-3 ">
+                    <h1 class="text-center ">
+                        <label for="" class="text-white font-weight-bold">NIVEL 1</label>
+                    </h1>
                 </div>
-                <div class="row mt-4">
-                    <div class="col-sm contenedor-sobre-nosotros">
-                        <div class="row div-contenedor-icono">
-                            <div>
-                                <span class="icono-sobre-nosotros"> f</span>
-                            </div>
-                            <span class="tex-contenedor-sobre-nosotros">WBDS</span>
-                        </div>
-                    </div>
-                    <div class="col-sm contenedor-sobre-nosotros">
-                        <div class="row div-contenedor-icono">
-                            <div>
-                                <span class="icono-sobre-nosotros"> f</span>
-                            </div>
-                            <span class="tex-contenedor-sobre-nosotros">VISIÓN</span>
-                        </div>
-                    </div>
-                    <div class="col-sm contenedor-sobre-nosotros">
-                        <div class="row div-contenedor-icono">
-                            <div>
-                                <span class="icono-sobre-nosotros"> f</span>
-                            </div>
-                            <span class="tex-contenedor-sobre-nosotros">CALIDAD</span>
-                        </div>
-                    </div>
+
+                <div class="col-lg-6 text-center ">
+                    <img src="../recursos/niveles/nivel1.png" alt="" class=" perfil_user_mantenimiento img-Nivel">
                 </div>
-                <div class="row mt-4 mb-5">
-                    <div class="col-sm contenedor-sobre-nosotros">
-                        <div class="row div-contenedor-icono">
-                            <div>
-                                <span class="icono-sobre-nosotros"> f</span>
-                            </div>
-                            <span class="tex-contenedor-sobre-nosotros">SEGURIDAD</span>
-                        </div>
-                    </div>
-                    <div class="col-sm contenedor-sobre-nosotros">
-                        <div class="row div-contenedor-icono">
-                            <div>
-                                <span class="icono-sobre-nosotros"> f</span>
-                            </div>
-                            <span class="tex-contenedor-sobre-nosotros">OBJETIVOS</span>
-                        </div>
-                    </div>
-                    <div class="col-sm contenedor-sobre-nosotros">
-                        <div class="row div-contenedor-icono">
-                            <div>
-                                <span class="icono-sobre-nosotros"> f</span>
-                            </div>
-                            <span class="tex-contenedor-sobre-nosotros">GARANTÍA</span>
-                        </div>
-                    </div>
+
+                <div class="col-lg-3 text-center  ">
+                    <label for="" class="text-warning font-weight-bold text-justify ">Se puede realizar prestamos de máximo
+                        25 soles</label>
                 </div>
             </div>
 
@@ -163,6 +102,11 @@
 
 
     </section>
+
+
+
+
+
 
 
 

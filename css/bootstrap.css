@@ -122,9 +122,11 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+article, aside, figcaption, figure, footer, header, hgroup, main, nav,  section {
   display: block;
 }
+
+
 
 body {
   margin: 0;
@@ -331,7 +333,7 @@ body {
 .nav-a{
   color: #fff !important;
   font-size: 20px;
-  padding: 0.5em 1.2em;
+  /* padding: 0.5em 1.2em; */
   position: relative;
   transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -372,6 +374,17 @@ background: linear-gradient(0deg, rgba(109,37,138,1) 0%, rgba(255,255,255,0) 100
   /* background: rgb(68, 2, 65);
 background: linear-gradient(90deg, rgb(100, 3, 92) 0%, rgb(110, 13, 155) 35%, rgb(191, 35, 230) 100%); */
 
+}
+
+.bg-fondito-nivel-general{
+  /* background: rgb(255,193,7);
+  background: linear-gradient(0deg, rgba(255,193,7,0.7794468129048494) 38%, rgba(255,255,255,1) 100%); */
+  /* background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%); */
+  /* background: rgb(57,221,210);
+background: linear-gradient(0deg, rgba(57,221,210,1) 64%, rgba(97,12,134,1) 65%); */
+background: rgb(171,170,168);
+background: linear-gradient(0deg, rgba(171,170,168,0.28925073447347693) 64%, rgba(97,12,134,1) 65%);
 }
 
 .div-contenedor-icono{
@@ -4551,7 +4564,7 @@ input[type="button"].btn-block {
   display: block;
 }
 
-.navbar {
+.navbar{
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -4564,6 +4577,7 @@ input[type="button"].btn-block {
   /* padding: 0.5rem 1rem; */
   padding-left: 1rem ;
   padding-right: 1rem m;
+  justify-content: space-between;
 }
 
 .navbar > .container,

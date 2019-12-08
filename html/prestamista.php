@@ -95,48 +95,27 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
             <div class="col-lg-10 ">
                 <div class="row justify-content-end pt-3 ">
                     <!--  BOTÓN CON MODAL DE PRÉSTAMO DADO -->
-                    <button type="button" class="btn btn-outline-warning mr-3" data-whatever="@mdo"
-                        onclick="permitirSolicitud()">PRÉSTAMO DADOS</button>
-                    <div class="modal fade" id="modalPrestamoSoli" tabindex="-1" role="dialog"
+                    <button type="button" class="btn btn-outline-warning mr-3" data-toggle="modal" data-target="#modalPrestamoDados"
+                        data-whatever="@mdo" onclick="listarPrestamosDados()">PRÉSTAMO DADOS</button>
+                   
+                    <div class="modal fade" id="modalPrestamoDados" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">SOLICITAR
-                                        NUEVO PRESTAMO</h1>
+                                    <h1 class="modal-title" id="exampleModalLabel" class="text-lowercase">PRESTAMOS OTORGADOS</h1>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
-                                        <div class="row form-group border">
-                                            <div class="col-lg-4">
-                                                <br>
-                                            <center><img src="../recursos/perfiles/yo2.jpg" alt=""
-                                                    class="rounded-circle perfil_prestamista_prestatario"></center>
-                                            </div>
-                                            <div class="col-lg-8">
-                                              <label for="">  ESTADO:</label> <br>
-                                              <label for="">  NOMBRE:</label><br>
-                                               <label for="">  DNI:</label><br>
-                                               <label for="">  MONTO:</label><br> 
-                                               <label for="">  CUOTAS PAGADAS: </label> <br>
-                                               <label for="">  CUOTAS TOTALES:</label><br>
-                                               <div class="row justify-content-end p-1">
-                                <button class="btn btn-outline-dark">PDF</button>
-                            </div>
-                                            </div>
-                                            
-                                        </div>
+                                    <form id="prestamosDados">
+                                        
                                         
                                         
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="validarSolicitud()">PDF</button>
                                         <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">CANCELAR</button>
                                 </div>
@@ -194,73 +173,33 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                             ORDENAR POR: </label>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item " href="#">Nombre</a>
-                            <a class="dropdown-item " href="#">Dni</a>
-                            <a class="dropdown-item " href="#">Menor</a>
-                            <a class="dropdown-item " href="#">Mayor</a>
-                            <a class="dropdown-item " href="#" >Fecha</a>
-                            <a class="dropdown-item " href="#" >Fecha</a>
-                            <a class="dropdown-item " href="#" >Fecha</a>
+                            <button class="dropdown-item "  onclick="filtrarSolicitudes(0)">TODO</button>
+                            <button class="dropdown-item "  onclick="filtrarSolicitudes(1)">MAS CUOTAS</button>
+                            <button class="dropdown-item "  onclick="filtrarSolicitudes(2)">MENOS CUOTAS</button>
+                            <button class="dropdown-item "  onclick="filtrarSolicitudes(3)">MONTO MENOR</button>
+                            <button class="dropdown-item "  onclick="filtrarSolicitudes(4)">MONTO MAYOR</button>
+                            <button class="dropdown-item "  onclick="filtrarSolicitudes(5)">FECHA</button>
                         </div>
             </div>
             <div class="col-lg-9  mb-2">
                         <input
                             class="form-control form-control-range border-top-0 border-left-0 border-right-0 border-purple"
-                            type="search" placeholder="BUSCAR PRESTATARIO" aria-label="Search">
+                            type="search" placeholder="BUSCAR PRESTATARIO" id="buscarSolicitud" aria-label="Search" onkeyup="buscarSolicitud()">
             </div>
         </div>
             
             
-            <div class="row mb-2">
+            <div id="solicitudes"class="row mb-2">
                 
-                <div class="col-lg-6 bg-fondito-nivel border">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <br>
-                            <img src="../recursos/perfiles/yo.jpg" class="perfil_prestamista_prestatario rounded-circle ">
-                        </div>
-                        <div class="col-lg-8 mt-1">
-                            <div class="row justify-content-end p-1">
-                                <button class="btn btn-outline-dark">DAR PRESTAMO</button>
-                            </div>
-                            <div class="">
-                                <label for=""> PRESTATARIO:  PAOLA CIEZA</label> <br>
-                                <label for=""> DNI: 75756219</label> <br>
-                                <label for=""> MONTO: 5000</label> <br>
-                                <label for=""> PERIODO: mensual</label>
-                                <label for=""> CUOTAS: 4 </label>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                
                 <!-- <div class="col-lg-2">
                 
                 </div> -->
-                <div class="col-lg-6 bg-fondito-nivel border">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <br>
-                            <img src="../recursos/perfiles/yo.jpg" class="perfil_prestamista_prestatario rounded-circle ">
-                        </div>
-                        <div class="col-lg-8 mt-1">
-                            <div class="row justify-content-end p-1">
-                                <button class="btn btn-outline-dark">DAR PRESTAMO</button>
-                            </div>
-                            <div class="">
-                                <label for=""> PRESTATARIO:  PAOLA CIEZA</label> <br>
-                                <label for=""> DNI: 75756219</label> <br>
-                                <label for=""> MONTO: 5000</label> <br>
-                                <label for=""> PERIODO: mensual</label>
-                                <label for=""> CUOTAS: 4 </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
 
 
-            <div id="divpaginas"></div>
+            <div id=""></div>
             <br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br>
             <br><br><br><br><br><br><br><br>

@@ -287,5 +287,19 @@ SELECT c.nombre ||' '||c.apellido as prestamista, c.fotousuario,p.fecharegistro,
 on r.idrespuesta=p.idrespuesta inner join solicitud s on s.idsolicitud=r.idsolicitud inner join 
 cliente c on s.idcliente=c.idcliente where r.idcliente=2
 
+-----------------------------------------------------------------------------------------------------------------------
+select s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto, 
+(case when s.periodo=true then 'Mensual' else 'Semanal' end) as periodo, s.numerocuotas, s.fecha
+from solicitud s left join respuesta r on r.idsolicitud=s.idsolicitud 
+left join prestamo p on r.idrespuesta=p.idrespuesta 
+inner join cliente c on c.idcliente=s.idcliente
+where p.idprestamo is null and s.estado is not false and (r.idcliente != 2 or r.idcliente is null) and s.idcliente!=1
 
-			
+select * from cliente
+
+
+
+select * from respuesta			
+select * from solicitud r inner join prestamo p on r.idrespuesta<>p.idrespuesta
+
+

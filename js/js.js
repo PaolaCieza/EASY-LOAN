@@ -1,6 +1,7 @@
 function inicio(){
 	$("#msg-capt").hide();
 	listarPrestamos(1);
+	listarSolicitudes();
 }
 
 var montoPagar;
@@ -852,7 +853,10 @@ function cerrarSesion(){
     });
 }
 
+var clienteId;
+
 function listarPrestatario(cliente){
+	clienteId = cliente;
 	$.ajax({
         url: '../php/listarPrestatario.php',
         type: 'post',
@@ -867,6 +871,7 @@ function listarPrestatario(cliente){
 }
 
 function listarPrestamista(cliente){
+	clienteId = cliente;
 	$.ajax({
         url: '../php/listarPrestamista.php',
         type: 'post',
@@ -878,4 +883,387 @@ function listarPrestamista(cliente){
             console.log( error );
         }
     });
+}
+
+function buscarPrestatario(){
+	var nombre = $("#txtPrestamista").val();
+	//var cliente = $("#clienteId").val();
+	$.ajax({
+        url: '../php/buscarPrestatario.php',
+        type: 'post',
+        data: {'cliente':clienteId, 'nombre':nombre},
+        success: function( data ){
+        	$("#prestatario").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+	});
+}
+
+function buscarPrestamista(){
+	var nombre = $("#txtPrestatario").val();
+	//var cliente = $("#clienteId").val();
+	$.ajax({
+        url: '../php/buscarPrestamista.php',
+        type: 'post',
+        data: {'cliente':clienteId, 'nombre':nombre},
+        success: function( data ){
+        	$("#prestamista").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+	});
+}
+
+function listarDadosBaja(){
+	$.ajax({
+        url: '../php/listarDadosBaja.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#listaDadosDeBaja").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function buscarDadoBaja(){
+	var opcion = $("select[name=opcionBaja]").val();
+	var buscar = $("#buscarBaja").val();
+
+	$.ajax({
+        url: '../php/buscarDadoBaja.php',
+        type: 'post',
+        data: {'opcion':opcion,'buscar':buscar},
+        success: function( data ){
+        	$("#listaDadosDeBaja").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function filtrarPrestatario(opcion){
+	//var nombre = $("#txtPrestamista").val();
+	//var cliente = $("#clienteId").val();
+	$.ajax({
+        url: '../php/filtrarPrestatario.php',
+        type: 'post',
+        data: {'cliente':clienteId, 'opcion':opcion},
+        success: function( data ){
+        	$("#prestatario").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+	});
+}
+
+function filtrarPrestamista(opcion){
+	//var nombre = $("#txtPrestamista").val();
+	//var cliente = $("#clienteId").val();
+	$.ajax({
+        url: '../php/filtrarPrestamista.php',
+        type: 'post',
+        data: {'cliente':clienteId, 'opcion':opcion},
+        success: function( data ){
+        	$("#prestamista").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+	});
+}
+
+function validarNivel(){
+	var forms = document.getElementsByClassName('needs-validation');
+	var uploadFoto = document.getElementById("foto").value;
+	var contactAlert = document.getElementById('form_alert');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        if (form.checkValidity() == false && uploadFoto =='') {
+		  contactAlert.innerHTML = '<p class="errorArchivo">No seleccionó imagen</p>';
+		  event.preventDefault();
+          event.stopPropagation();
+          //console.log(valuser());
+        }
+        else{
+			registrarNivel();
+        }
+        form.classList.add('was-validated');
+        });
+}
+function registrarNivel(){
+	var paqueteDeDatos = new FormData();
+	paqueteDeDatos.append('imagen', $('#foto')[0].files[0]);
+	paqueteDeDatos.append('nombre', $('#txtNombre').prop('value'));
+	paqueteDeDatos.append('descripcion', $('#txtDescripcion').prop('value'));
+	paqueteDeDatos.append('montoMax', $('#txtMontoMaximo').prop('value'));
+
+	$.ajax({
+	    url: '../php/registrarNivel.php',
+		type: 'post',
+		contentType: false,
+		data: paqueteDeDatos,
+		processData: false,
+		cache: false, 
+	    success: function( data ){
+			//console.log(data);
+			if(data == 1){
+				Swal.fire({
+					title: '¡Registrado correctamente!',
+					text: "Se agregó el nuevo nivel",
+					type: 'success',
+					showCancelButton: false,
+					confirmButtonColor: '#3085d6',
+					//cancelButtonColor: '#d33',
+					confirmButtonText: 'Aceptar'
+				  }).then((result) => {
+					if (result.value) {
+					  location.reload();
+					}
+					else{
+					  location.reload();
+					}
+				  }) 
+			}
+			else{
+				Swal.fire({
+					title: '¡Ocurrió un error',
+					text: "Revisa bien los datos ingresados",
+					type: 'error',
+					showCancelButton: false,
+					confirmButtonColor: '#FF4242',
+					//cancelButtonColor: '#d33',
+					confirmButtonText: 'Volver a intentar'
+				  }).then((result) => {
+					if (result.value) {
+						//window.location.href="persona.php";
+					}
+					else{
+					  //window.location.href="login.html";
+					}
+				  })  
+			}
+			
+	    },
+	    error: function( jqXhr, textStatus, error ){
+	        console.log( error );
+	    }
+	});
+}
+
+function editarNivel(){
+	var paqueteDeDatos = new FormData();
+	paqueteDeDatos.append('imagen', $('#foto')[0].files[0]);
+	paqueteDeDatos.append('nivel', $('#idnivel').prop('value'));
+	paqueteDeDatos.append('nombre', $('#txtNombreE').prop('value'));
+	paqueteDeDatos.append('descripcion', $('#txtDescripcionE').prop('value'));
+	paqueteDeDatos.append('montoMax', $('#txtMontoMaximoE').prop('value'));
+
+	$.ajax({
+	    url: '../php/editarNivel.php',
+		type: 'post',
+		contentType: false,
+		data: paqueteDeDatos,
+		processData: false,
+		cache: false, 
+	    success: function( data ){
+			console.log(data);
+			if(data == 1){
+				Swal.fire({
+					title: '¡Actualizado correctamente!',
+					text: "Se editó el nivel",
+					type: 'success',
+					showCancelButton: false,
+					confirmButtonColor: '#3085d6',
+					//cancelButtonColor: '#d33',
+					confirmButtonText: 'Aceptar'
+				  }).then((result) => {
+					if (result.value) {
+					  location.reload();
+					}
+					else{
+					  location.reload();
+					}
+				  }) 
+			}
+			else{
+				Swal.fire({
+					title: '¡Ocurrió un error',
+					text: "Revisa bien los datos ingresados",
+					type: 'error',
+					showCancelButton: false,
+					confirmButtonColor: '#FF4242',
+					//cancelButtonColor: '#d33',
+					confirmButtonText: 'Volver a intentar'
+				  }).then((result) => {
+					if (result.value) {
+						//window.location.href="persona.php";
+					}
+					else{
+					  //window.location.href="login.html";
+					}
+				  })  
+			}
+			
+	    },
+	    error: function( jqXhr, textStatus, error ){
+	        console.log( error );
+	    }
+	});
+}
+
+function validarNivelE(){
+	var forms = document.getElementsByClassName('needs-validation');
+	var uploadFoto = document.getElementById("foto").value;
+	var contactAlert = document.getElementById('form_alert');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+        if (form.checkValidity() == false) {
+		  contactAlert.innerHTML = '<p class="errorArchivo">No seleccionó imagen</p>';
+		  event.preventDefault();
+          event.stopPropagation();
+          //console.log(valuser());
+        }
+        else{
+			editarNivel();
+        }
+        form.classList.add('was-validated');
+        });
+}
+
+function datosNivel(nivel){
+	//var nombre = $("#txtPrestamista").val();
+	//var cliente = $("#clienteId").val();
+	$.ajax({
+        url: '../php/datosNivel.php',
+        type: 'post',
+        data: {'nivel':nivel},
+        success: function( data ){
+			var datos = JSON.parse(data);
+			$(".imgNivel").remove();
+			$(".delPhoto").removeClass('notBlock');
+			$('#foto').val('');
+        	$("#idnivel").val(nivel);
+        	$("#txtNombreE").val(datos.nombre);
+        	$("#txtDescripcionE").val(datos.descripcion);
+			$("#txtMontoMaximoE").val(datos.montomax);
+			$(".prevPhoto").append("<img id='img' class='imgNivel' src='../recursos/niveles/"+datos.imagen+"'>");
+			//$("#img").remove();
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+	});
+}
+
+
+function formatoFoto(){
+	$(document).ready(function(){
+		//--------------------- SELECCIONAR FOTO PRODUCTO ---------------------
+		  $("#foto").on("change",function(){
+			  var uploadFoto = document.getElementById("foto").value;
+			  var foto       = document.getElementById("foto").files;
+			  var nav = window.URL || window.webkitURL;
+			  var contactAlert = document.getElementById('form_alert');
+			  
+				  if(uploadFoto !='')
+				  {
+					  var type = foto[0].type;
+					  var name = foto[0].name;
+					  if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png')
+					  {
+						  contactAlert.innerHTML = '<p class="errorArchivo">El archivo no es válido.</p>';                        
+						  $(".imgNivel").remove();
+						  $(".delPhoto").addClass('notBlock');
+						  $('#foto').val('');
+						  return false;
+					  }else{  
+							  contactAlert.innerHTML='';
+							  $(".imgNivel").remove();
+							  $(".delPhoto").removeClass('notBlock');
+							  var objeto_url = nav.createObjectURL(this.files[0]);
+							  $(".prevPhoto").append("<img class='imgNivel' id='img' src="+objeto_url+">");
+							  $(".upimg label").remove();
+							  
+						  }
+					}else{
+						  contactAlert.innerHTML = '<p class="errorArchivo">No seleccionó imagen</p>';                        
+						  $(".imgNivel").remove();
+						  $(".delPhoto").addClass('notBlock');
+						  $('#foto').val('');
+						  return false;
+					}              
+		  });
+	  
+		  $('.delPhoto').click(function(){
+			  
+			  $('#foto').val('');
+			  $(".delPhoto").addClass('notBlock');
+			  $(".imgNivel").remove();
+	  
+		  });
+	  
+	  });
+}
+
+function listarSolicitudes(){
+	$.ajax({
+        url: '../php/listarSolicitudes.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#solicitudes").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function buscarSolicitud(){
+	var buscar = $("#buscarSolicitud").val();
+	$.ajax({
+        url: '../php/buscarSolicitud.php',
+        type: 'post',
+        data: {'nombre':buscar},
+        success: function( data ){
+        	$("#solicitudes").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function listarPrestamosDados(){
+	$.ajax({
+        url: '../php/listarPrestamosDados.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#prestamosDados").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}
+
+function filtrarSolicitudes(opcion){
+	$.ajax({
+        url: '../php/filtrarSolicitudes.php',
+        type: 'post',
+        data: {'opcion':opcion},
+        success: function( data ){
+        	$("#solicitudes").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+	});
 }

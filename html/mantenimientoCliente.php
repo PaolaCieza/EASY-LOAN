@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -116,7 +119,7 @@
 
             <div class=" col-lg-2 row justify-content-end">
                 <button class="btn btn-outline-dark m-1 text-warning " type="button" data-toggle="modal"
-                    data-target="#modalClientesBaja" data-whatever="@mdo">DADOS DE BAJA</button>
+                    data-target="#modalClientesBaja" data-whatever="@mdo" onclick="listarDadosBaja()">DADOS DE BAJA</button>
             </div>
         </div>
         <div id="clientes">
@@ -172,17 +175,20 @@
                     <div class="row mt-2 mb-2">
                         <input
                             class="form-control m-3 form-control-range border-top-0 border-left-0 border-right-0 border-info"
-                            type="search" placeholder="BUSCAR PRESTAMISTA" aria-label="Search">
+                            type="search" placeholder="BUSCAR PRESTAMISTA" aria-label="Search" id="txtPrestamista" onkeyup="buscarPrestatario()">
                     </div>
                     <div class="row m-2">
-                        <select name="" id="" class="btn btn-outline-info">
-                            <option value="" disabled selected>SELECCIONAR</option>
-                            <option value="">TODO</option>
-                            <option value="">MONTO MENOR</option>
-                            <option value="">MONTO MAYOR</option>
-                            <option value="">PENDIENTE</option>
-                            <option value="">PAGADOS</option>
-                        </select>
+                        <button type="button" class="btn bg-transparent  dropdown-toggle font-weight-bold"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ORDENAR POR: </label>
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item " onclick="filtrarPrestatario(0)">TODO</button>
+                            <button class="dropdown-item " onclick="filtrarPrestatario(1)">MONTO MENOR</button>
+                            <button class="dropdown-item " onclick="filtrarPrestatario(2)">MONTO MAYOR</button>
+                            <button class="dropdown-item " onclick="filtrarPrestatario(3)">PENDIENTE</button>
+                            <button class="dropdown-item " onclick="filtrarPrestatario(4)">PAGADOS</button>
+                        </div>
                     </div>
 
                     <form id="prestatario">
@@ -217,19 +223,22 @@
                     <div class="row mt-2 mb-2">
                         <input
                             class="form-control m-3 form-control-range border-top-0 border-left-0 border-right-0 border-success"
-                            type="search" placeholder="BUSCAR PRESTATARIO" aria-label="Search">
+                            type="search" placeholder="BUSCAR PRESTATARIO" id="txtPrestatario" onkeyup="buscarPrestamista()" aria-label="Search">
                     </div>
                     <div class="row m-2">
-                        <select name="" id="" class="btn btn-outline-success">
-                            <option value="" disabled selected>ORDENAR POR:</option>
-                            <option value="">TODO</option>
-                            <option value="">RECIENTES</option>
-                            <option value="">ANTIGUOS</option>
-                            <option value="">MONTO MENOR</option>
-                            <option value="">MONTO MAYOR</option>
-                            <option value="">PENDIENTE</option>
-                            <option value="">PAGADOS</option>
-                        </select>
+                        <button type="button" class="btn bg-transparent  dropdown-toggle font-weight-bold"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ORDENAR POR: </label>
+                        </button>
+                        <div class="dropdown-menu">
+                            <button class="dropdown-item " onclick="filtrarPrestamista(0)">TODO</button>
+                            <button class="dropdown-item " onclick="filtrarPrestamista(1)">RECIENTES</button>
+                            <button class="dropdown-item " onclick="filtrarPrestamista(2)">ANTIGUOS</button>
+                            <button class="dropdown-item " onclick="filtrarPrestamista(3)">MONTO MENOR</button>
+                            <button class="dropdown-item " onclick="filtrarPrestamista(4)">MONTO MAYOR</button>
+                            <button class="dropdown-item " onclick="filtrarPrestamista(5)">PENDIENTE</button>
+                            <button class="dropdown-item " onclick="filtrarPrestamista(6)">PAGADOS</button>
+                        </div>
                     </div>
 
                     <form id="prestamista">
@@ -259,27 +268,27 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-3 mr-5">
-                            <select name="" id="" class="btn btn-outline-purple">
-                                <option value="" disabled selected>SELECCIONAR</option>
-                                <option value="">DNI</option>
-                                <option value="">NOMBRE</option>
-                                <option value="">USUARIO</option>
+                            <select  class="btn btn-outline-purple" name="opcionBaja">
+                                <option value="0" disabled selected>SELECCIONAR</option>
+                                <option value="1">DNI</option>
+                                <option value="2">NOMBRE</option>
+                                <option value="3">USUARIO</option>
                             </select>
                         </div>
                         <div class="col-lg-7 mb-3 align-content-end">
-                            <input class="form-control mr-sm-2 " type="search" placeholder="BUSCAR" aria-label="Search">
+                            <input class="form-control mr-sm-2 " type="search" placeholder="BUSCAR" aria-label="Search" id="buscarBaja" onkeyup="buscarDadoBaja()">
                         </div>
                     </div>
                     <form>
                         <table class="table table-responsive  table-striped table-warning">
                             <thead class="">
                                 <tr>
-                                    <th>FOTO</th>
+                                    <th>ID</th>
                                     <th>NOMBRE</th>
+                                    <th>APELLIDO</th>
                                     <th>DNI</th>
-                                    <th>RAZÓN</th>
-                                    <th>FECHA</th>
-                                    <th>ACTIVAR</th>
+                                    <th>NIVEL</th>
+                                    <th>USUARIO</th>
                                     <th>PDF</th>
                                 </tr>
                             </thead>

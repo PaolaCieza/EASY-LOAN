@@ -1,6 +1,6 @@
 <?php
     require_once("conexion.php");
-    $sql="SELECT * from nivel";
+    $sql="SELECT * from nivel order by 1 asc";
     $result = $cnx->query($sql);
     if($result->rowCount() != 0){
         while($reg = $result->fetchObject()){
@@ -24,7 +24,7 @@
                 </div>
                 <div class=" row justify-content-end">
                     <button class="btn btn-outline-light m-4" data-toggle="modal"
-                    data-target="#modalEditarNivel" data-whatever="@mdo">EDITAR</button>
+                    data-target="#modalEditarNivel" data-whatever="@mdo" onclick="datosNivel(<?=$reg->idnivel?>)">EDITAR</button>
                 </div>
             </div>
     

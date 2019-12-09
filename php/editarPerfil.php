@@ -8,9 +8,9 @@ if(!empty($_POST)){
     $usuario = $_POST['usuario'];
     $mantenerFoto = $_POST['mantenerFoto'];
     if ($sexo == 'femenino') {
-        $sexo = false;
+        $sexo = 'false';
     } else{
-        $sexo = true;
+        $sexo = 'true';
     }
     //$nom_img = "";
     if(!empty($_FILES)){
@@ -29,11 +29,11 @@ if(!empty($_POST)){
             $img = $titulo_img.".".$tipo_img;
             $src = $destino.$img;
              
-            $sql="UPDATE public.cliente SET sexo='$sexo', email='$correo', usuario='$usuario', fotousuario='$img' WHERE idcliente=$idcliente;";
+            $sql="UPDATE public.cliente SET sexo=$sexo, email='$correo', usuario='$usuario', fotousuario='$img' WHERE idcliente=$idcliente;";
             if($cnx->query($sql)){
-                
                 move_uploaded_file($url_img,$src);
                 $_SESSION['foto'] = $img;
+                $_SESSION['usuario'] = $usuario;
                 echo 1;
             }
             else{
@@ -44,10 +44,10 @@ if(!empty($_POST)){
     }
     else{
         if($mantenerFoto == "false"){
-            
-            $sql="UPDATE public.cliente SET  sexo='$sexo', email='$correo', usuario='$usuario', fotousuario='user.png' WHERE idcliente=$idcliente;";
+            $sql="UPDATE public.cliente SET  sexo=$sexo, email='$correo', usuario='$usuario', fotousuario='user.png' WHERE idcliente=$idcliente;";
             if($cnx->query($sql)){
                 $_SESSION['foto'] = "user.png";
+                $_SESSION['usuario'] = $usuario;
                 echo 1;
             }
             else{
@@ -55,13 +55,14 @@ if(!empty($_POST)){
             } 
         }
         else{
-            $sql="UPDATE public.cliente SET  sexo='$sexo', email='$correo', usuario='$usuario' WHERE idcliente=$idcliente;";
-        if($cnx->query($sql)){
-            echo 1;
-        }
-        else{
-            echo 0;
-        } 
+            $sql="UPDATE public.cliente SET  sexo=$sexo, email='$correo', usuario='$usuario' WHERE idcliente=$idcliente;";
+            if($cnx->query($sql)){
+                echo 1;
+                $_SESSION['usuario'] = $usuario;
+            }
+            else{
+                echo 0;
+            } 
         }
         
     }

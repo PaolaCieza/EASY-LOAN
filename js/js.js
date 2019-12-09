@@ -1260,7 +1260,7 @@ function editarPerfil(){
 	paqueteDeDatos.append('correo', $('#txtcorreo').prop('value'));
 	paqueteDeDatos.append('usuario', $('#txtusuario').prop('value'));
 	paqueteDeDatos.append('mantenerFoto', mantenerFoto);
-	if(validarCorreo()){
+	if(validarCorreo() && usuarioEditar ){
 		$.ajax({
 			url: '../php/editarPerfil.php',
 			type: 'post',
@@ -1314,3 +1314,45 @@ function editarPerfil(){
 		});
 	}
 }
+
+var usuarioEditar = true;
+function userEditar(){
+	var usuario = $("#txtusuario").val();
+	if(usuario !== ""){
+		$.ajax({
+			url: '../php/validarUsuario.php',
+			type: 'post',
+			data: {"txtusuario":usuario},
+			success: function( data ){
+			  console.log(data);
+			  if(data != 0){
+				$("#msg-e2").show();
+				$("#msg-e1").hide();
+				$("#msg-s").hide();
+				$("#txtusuario").toggleClass("is-invalid", true);
+				$("#txtusuario").toggleClass("is-valid",false);
+				usuarioEditar = false;
+			  }else{
+				$("#msg-s").show();
+				$("#msg-e1").hide();
+				$("#msg-e2").hide();
+				$("#txtusuario").toggleClass("is-valid",true);
+				$("#txtusuario").toggleClass("is-invalid", false);
+				usuarioEditar = true;
+			  }
+			 
+			},
+			error: function( jqXhr, textStatus, error ){
+				console.log( error );
+			}
+		});
+	}
+	else{
+		$("#msg-e1").show();
+		$("#msg-s").hide();
+		$("#msg-e2").hide();
+		$("#txtusuario").toggleClass("is-invalid", true);
+		$("#txtusuario").toggleClass("is-valid",false);
+		usuarioEditar = false;
+	}
+}																															

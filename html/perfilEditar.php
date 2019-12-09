@@ -154,7 +154,7 @@
                     <div class="form-group">
                             <label for="txtusuario">USUARIO</label>
                             <input type="text" class="form-control" name="txtusuario" id="txtusuario"
-                                onkeypress="sinespacios(event)" onkeyup="valuser()" required>
+                                onkeypress="sinespacios(event)" onkeyup="userEditar()" required>
                             <div class="valid-feedback" id="msg-s">
                                 Ok
                             </div>

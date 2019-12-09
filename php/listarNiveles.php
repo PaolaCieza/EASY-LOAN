@@ -22,7 +22,13 @@
                 <div>
                     <label for="" class="text-body font-weight-bold text-justify"><?=$reg->descripcion?></label>
                 </div>
-                <div class=" row justify-content-end">
+                <div class="row justify-content-end">
+                <label for="" class="font-weight-bold m-3 text-white">Monto máximo 
+                <label for="" class="text-warning"> <?=$reg->montomax?> </label>    
+                 </label>
+
+                </div>
+                <div class=" row justify-content-end mb-1">
                     <button class="btn btn-outline-light m-4" data-toggle="modal"
                     data-target="#modalEditarNivel" data-whatever="@mdo" onclick="datosNivel(<?=$reg->idnivel?>)">EDITAR</button>
                 </div>
@@ -33,7 +39,9 @@
     }
     else{
 ?>
-    <!-- aqui va html -->
+    <div class="row border border-warning">
+        <label for="" class="text-purple"> NO HAY NIVELES</label>
+    </div>
 
 <?php
     }

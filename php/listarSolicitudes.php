@@ -20,7 +20,8 @@
                         </div>
                         <div class="col-lg-8 mt-1">
                             <div class="row justify-content-end p-1">
-                                <button class="btn btn-outline-dark">DAR PRESTAMO</button>
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalDarPrestamo"
+                        data-whatever="@mdo" >DAR PRESTAMO</button>
                             </div>
                             <div class="">
                                 <label for=""> PRESTATARIO:  <?=$reg->solicitante?></label> <br>

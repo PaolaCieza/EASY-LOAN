@@ -190,56 +190,33 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
             
             <div id="solicitudes"class="row mb-2">
                 
+                <!--   MODAL DE DAR PRESTAMO -->
                 
-
-                <!-- <div class="col-lg-2">
-                
-                </div> -->
-                
-                <div class="col-lg-6 bg-fondito-nivel border">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <br>
-                            <img src="../recursos/perfiles/yo.jpg" class="perfil_prestamista_prestatario rounded-circle ">
-                        </div>
-                        <div class="col-lg-8 mt-1">
-                            <div class="row justify-content-end p-1">
-                                <button class="btn btn-outline-dark">DAR PRESTAMO</button>
-                            </div>
-                            <div class="">
-                                <label for=""> PRESTATARIO:  PAOLA CIEZA</label> <br>
-                                <label for=""> DNI: 75756219</label> <br>
-                                <label for=""> MONTO: 5000</label> <br>
-                                <label for=""> PERIODO: mensual</label> <br>
-                                <label for=""> CUOTAS: 4 </label>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- <div class="col-lg-2">
-                
-                </div> -->
-                <div class="col-lg-6 bg-fondito-nivel border">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <br>
-                            <img src="../recursos/perfiles/yo.jpg" class="perfil_prestamista_prestatario rounded-circle ">
-                        </div>
-                        <div class="col-lg-8 mt-1">
-                            <div class="row justify-content-end p-1">
-                                <button class="btn btn-outline-dark">DAR PRESTAMO</button>
-                            </div>
-                            <div class="">
-                                <label for=""> PRESTATARIO:  PAOLA CIEZA</label> <br>
-                                <label for=""> DNI: 75756219</label> <br>
-                                <label for=""> MONTO: 5000</label> <br>
-                                <label for=""> PERIODO: mensual</label> <br>
-                                <label for=""> CUOTAS: 4 </label>
+                    <div class="modal fade" id="modalDarPrestamo" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <!---->
+                                <div class='modal-header'>
+                                    <h1 class='modal-title' id='exampleModalLabel' class='text-lowercase'><b> Hola, cuánto interés cobrarás?
+                                    </b></h1>
+                                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>
+                                <div class='modal-body'>
+                                    <label for="txtinteres">INTERÉS</label>
+                                    <input type="text" name="txtinteres" id="txtinteres" class="form-control-lg" >
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-purple" data-dismiss="modal">OFRECER</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <!-- MODAL DE DAR PRESTAMO -->
+
             </div>
 
 

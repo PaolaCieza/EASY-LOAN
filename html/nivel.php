@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    if($_SESSION['acceso'] == "cliente"){header("location: iniciarsesion.php");};
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,19 +32,19 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>       
             
-                <a class="navbar-brand" href="../index.html">
+                <a class="navbar-brand" href="../index.php">
                     <span class="text-warning titulo"> EASY LOAN</span>
                 </a>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class=" nav-item active">
-                            <a class="nav-link nav-a" href="servicios.html"> SERVICIOS </a>
+                            <a class="nav-link nav-a" href="servicios.php"> SERVICIOS </a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link nav-a" href="conocenos.html">SOBRE NOSOTROS</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link nav-a" href="nivel.html">NIVELES</a>
+                            <a class="nav-link nav-a" href="nivel.php">NIVELES</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link nav-a" href="prestamista.php">PRESTAMISTA <span class="sr-only">(current)</span></a>

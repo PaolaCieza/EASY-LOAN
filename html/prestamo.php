@@ -28,6 +28,7 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script src="https://checkout.culqi.com/js/v3"></script>
     <script type="text/javascript" src="../js/js.js"></script>
+    <script type="text/javascript" src="../js/pagarCuotaCulqi.js"></script>
     <script type="text/javascript">
         window.ready = inicio();
     </script>

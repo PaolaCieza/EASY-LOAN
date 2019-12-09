@@ -5,7 +5,7 @@
     $opcion = $_POST['opcion'];
     switch ($opcion){
         case 0:
-            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto, 
+            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto::numeric, 
             (case when s.periodo=true then 'Mensual' else 'Semanal' end) as periodo, s.numerocuotas, s.fecha
             from solicitud s left join respuesta r on r.idsolicitud=s.idsolicitud 
             left join prestamo p on r.idrespuesta=p.idrespuesta 
@@ -13,7 +13,7 @@
             where p.idprestamo is null and s.estado is not false and (r.idcliente != $idcliente or r.idcliente is null) and s.idcliente!=$idcliente";           
             break;
         case 1:
-            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto, 
+            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto::numeric, 
             (case when s.periodo=true then 'Mensual' else 'Semanal' end) as periodo, s.numerocuotas, s.fecha
             from solicitud s left join respuesta r on r.idsolicitud=s.idsolicitud 
             left join prestamo p on r.idrespuesta=p.idrespuesta 
@@ -22,7 +22,7 @@
             order by s.numerocuotas desc";          
             break;
         case 2:
-            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto, 
+            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto::numeric, 
             (case when s.periodo=true then 'Mensual' else 'Semanal' end) as periodo, s.numerocuotas, s.fecha
             from solicitud s left join respuesta r on r.idsolicitud=s.idsolicitud 
             left join prestamo p on r.idrespuesta=p.idrespuesta 
@@ -31,7 +31,7 @@
             order by s.numerocuotas asc";            
             break;
         case 3:
-            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto, 
+            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto::numeric, 
             (case when s.periodo=true then 'Mensual' else 'Semanal' end) as periodo, s.numerocuotas, s.fecha
             from solicitud s left join respuesta r on r.idsolicitud=s.idsolicitud 
             left join prestamo p on r.idrespuesta=p.idrespuesta 
@@ -40,7 +40,7 @@
             order by s.monto asc";           
             break;
         case 4:
-            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto, 
+            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto::numeric, 
             (case when s.periodo=true then 'Mensual' else 'Semanal' end) as periodo, s.numerocuotas, s.fecha
             from solicitud s left join respuesta r on r.idsolicitud=s.idsolicitud 
             left join prestamo p on r.idrespuesta=p.idrespuesta 
@@ -49,7 +49,7 @@
             order by s.monto desc";            
             break;
         case 5:
-            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto, 
+            $sql="SELECT s.idsolicitud, c.nombre ||' '||c.apellido as solicitante, c.fotousuario,c.dni,s.monto::numeric, 
             (case when s.periodo=true then 'Mensual' else 'Semanal' end) as periodo, s.numerocuotas, s.fecha
             from solicitud s left join respuesta r on r.idsolicitud=s.idsolicitud 
             left join prestamo p on r.idrespuesta=p.idrespuesta 
@@ -71,7 +71,8 @@
                     </div>
                     <div class="col-lg-8 mt-1">
                         <div class="row justify-content-end p-1">
-                            <button class="btn btn-outline-dark">DAR PRESTAMO</button>
+                            <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#modalDarPrestamo"
+                            data-whatever="@mdo" onclick="darPrestamo(<?=$reg->idsolicitud?>, <?=$reg->monto?>)">DAR PRESTAMO</button>
                         </div>
                         <div class="">
                             <label for=""> PRESTATARIO:  <?=$reg->solicitante?></label> <br>

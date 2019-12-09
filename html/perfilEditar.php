@@ -24,6 +24,9 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script type="text/javascript">
+         
+    </script>
     <title>SOBRE NOSOTROS</title>
 </head>
 
@@ -80,7 +83,17 @@
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col-lg-3  border border-left-3 mr-3 ml-3 p-3">
                 <div class=" row justify-content-center mt-3" id="">
-                    <img src="../recursos/perfiles/<?=$_SESSION['foto']?>" alt="" class="perfil_user rounded-circle">
+                    <div style="text-align:center">
+                        <label for="foto" class="text-warning">Foto de perfil</label>
+                        <div class="prevPhotoPerfil border border-0">
+                        <span class="delPhoto notBlock font-weight-bold">X</span>
+                        <label for="foto"></label>
+                        </div>
+                        <div class="upimg ">
+                            <input type="file" name="foto" id="foto">
+                        </div>
+                        <div id="form_alert"></div>
+                    </div>
                 </div>
                 <div class="row justify-content-center mt-3">
                     <span class="text-break"><?=$_SESSION['nombre']?></span>
@@ -95,45 +108,30 @@
                     <h1>EDITA TU PERFIL AQUÍ</h1>
                 </div> <br>
 
-                <form class="needs-validation text-dark bg-light p-2 rounded-circle">
+                <form class="text-dark bg-light p-2 rounded-circle">
                     <div class="form-group">
                         <label for="txtdni">DNI</label>
-                        <input type="text" class="form-control" name="txtdni" id="txtdni"
-                            onkeypress="solonumeros(event,'#txtdni',8)" readonly="readonly" required>
-                        <div class="valid-feedback">
-                            Correctamente indentificado!!
-                        </div>
-                        <div class="invalid-feedback">
-                            Ops deberas otorgarnos esta informacion!
-                        </div>
+                        <input type="text" class="form-control" name="txtdni" id="txtdni" readonly="readonly">
                     </div>
                     <div class="form-group">
                         <label for="txtfecha">FECHA DE NACIMIENTO</label>
-                        <input type="date" class="form-control" name="txtfecha" id="txtfecha" readonly="readonly"
-                            required>
-                        <div class="valid-feedback">
-                            Te felicitaremos cuando llegue el dia!!!
-                        </div>
-                        <div class="invalid-feedback">
-                            Ya ne cansé de hablarte bonito, no seas gil ctmr!
-                        </div>
+                        <input type="date" class="form-control" name="txtfecha" id="txtfecha" readonly="readonly">
                     </div>
                     <fieldset class="form-group">
                         <label>SEXO</label> <br>
                         <div class="custom-control custom-radio custom-control-inline ml-5">
-                            <input class="custom-control-input" type="radio" name="txtsexo" id="masculino"
-                                value="masculino" required>
+                            <input class="custom-control-input" type="radio" name="txtsexo" id="rdmasculino"
+                                value="masculino">
                             <label class="custom-control-label text-blue-darken-1" style="font-size: 2.5vh;"
-                                for="masculino">Masculino</label>
+                                for="rdmasculino">Masculino</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input class="custom-control-input" type="radio" name="txtsexo" id="femenino"
-                                value="femenino" required>
+                            <input class="custom-control-input" type="radio" name="txtsexo" id="rdfemenino"
+                                value="femenino">
                             <label class="custom-control-label text-pink " style="font-size: 2.5vh;"
-                                for="femenino">Femenino</label>
+                                for="rdfemenino">Femenino</label>
                         </div>
                         <div class="custom-control custom-radio ml-4">
-                            <input class="custom-control-input" type="radio" name="txtsexo" required>
                             <div class="valid-feedback">
                                 Gaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                             </div>
@@ -144,7 +142,8 @@
                     </fieldset>
                     <div class="form-group">
                         <label for="txtcorreo">CORREO</label>
-                        <input type="email" class="form-control" name="txtcorreo" id="txtcorreo" required>
+                        <input type="email" class="form-control" name="txtcorreo" id="txtcorreo" onkeypress="sinespacios(event)" 
+                        onkeyup="validarCorreo()" required>
                         <div class="valid-feedback">
                             Ok
                         </div>
@@ -152,8 +151,7 @@
                             No ok
                         </div>
                     </div>
-                    <form class="text-white">
-                        <div class="form-group">
+                    <div class="form-group">
                             <label for="txtusuario">USUARIO</label>
                             <input type="text" class="form-control" name="txtusuario" id="txtusuario"
                                 onkeypress="sinespacios(event)" onkeyup="valuser()" required>
@@ -171,8 +169,7 @@
                             <div class="form-group">
                                 <input type="button" value="ACTUALIZAR DATOS" class="btn btn-warning"
                                     onclick="editarPerfil()">
-                            </div>
-                    </form>
+                        </div>
                 </form>
             </div>
         </div>
@@ -278,5 +275,8 @@
 
     </footer>
 </body>
-
+<script type="text/javascript">
+         window.ready = datosEditarPerfil();
+         window.ready = formatoFotoPerfil();
+</script>
 </html>

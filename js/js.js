@@ -4,7 +4,6 @@ function inicio(){
 	listarSolicitudes();
 }
 
-var montoPagar;
 
 function iniciarSesion(a){
 	if(a==0){
@@ -273,30 +272,6 @@ function Limpiar()
     $("#txtcontraseña").val("");
 }
 
-
-function editarPerfil(){
-    $.ajax({
-        url: 'editarUsuario.php',
-        dataType: 'text',
-        type: 'post',
-        data: {'id': id },
-        success: function( data ){
-            var datos = JSON.parse(data);
-            // $("#divform").modal("toggle");
-            $("#idproducto").val(datos.idproducto);
-            $("#txtnombre").val(datos.nombre);
-            $("#txtprecio").val(datos.precio);
-            $("#txtfecha").val(datos.fecha_vencimiento);
-            $("#cbopresentacion").val(datos.idpresentacion);
-            $("#cbocategoria").val(datos.idcategoria);
-
-            console.log(data);
-        },
-        error: function( jqXhr, textStatus, errorThrown ){
-            console.log( errorThrown );
-        }
-    });
-}
 
 function listarPrestamos(pag){
 	$.ajax({
@@ -578,113 +553,7 @@ function validarVacio(id){
 }
 
 
-function procesarPago(){
-	var monto = $("#cmonto").val();
-	var mora = $("#cmora").val();
-	montoPagar = (parseFloat(monto)+parseFloat(mora))*100;
-	console.log(montoPagar);
-	Culqi.publicKey = 'pk_test_3kjZ9masp6u8AYBU';
-	// Configura tu Culqi Checkout
-    Culqi.settings({
-        title: 'EASYLOAN',
-        currency: 'PEN',
-        description: 'Pago de cuotas',
-        amount: montoPagar,
-    });
-	Culqi.open();
-   
-}
 
-
-function culqi() {
-	if (Culqi.token) { // ¡Objeto Token creado exitosamente!
-		var token = Culqi.token.id;
-		var email = Culqi.token.email;
-		var idcuota = $("#idcuota").val();
-		let timerInterval
-		Swal.fire({
-			title: 'Espera',
-			type: 'warning',
-			html: 'Estamos procesando el pago',
-			timer: 10000,
-			timerProgressBar: true,
-			onBeforeOpen: () => {
-				Swal.showLoading()
-				timerInterval = setInterval(() => {
-				Swal.getContent().querySelector('b')
-					.textContent = Swal.getTimerLeft()
-				}, 100)
-			},
-			onClose: () => {
-				clearInterval(timerInterval)
-			}
-			}).then((result) => {
-			if (
-				/* Read more about handling dismissals below */
-				result.dismiss === Swal.DismissReason.timer
-			) {
-				console.log('I was closed by the timer') // eslint-disable-line
-			}
-		})
-		$.ajax({
-			url: '../php/pagarCuota.php',
-			type: 'post',
-			data: {'token':token,'monto':montoPagar,'email':email,'idcuota':idcuota},
-			dataType: 'JSON',
-			success: function( data ){
-				if(data.capture==true){
-					console.log(data.outcome.type);
-					if(data.outcome.type="venta_exitosa"){
-						Swal.fire({
-							title: '¡Cuota pagada correctamente!',
-							type: 'success',
-							showCancelButton: false,
-							confirmButtonColor: '#328FE1',
-							confirmButtonText: 'Ok'
-						  }).then((result) => {
-							if (result.value) {
-								location.reload();
-							}
-							else{
-								location.reload();
-							}
-						  }) 
-					}
-					else{
-						Swal.fire({
-							type: 'error',
-							title: 'Ocurrió un error',
-							text: 'Algo salió mal',
-						});
-					}	
-				}
-				else{
-					data = JSON.parse(data);
-					console.log(data.merchant_message);
-					Swal.fire({
-						type: 'error',
-						title: 'Ocurrió un error',
-						text: data.merchant_message,
-					});
-				}
-			},
-			error: function( jqXhr, textStatus, error ){
-				console.log( error );
-			}
-		});
-		//alert('Se ha creado un token:' + token);
-		//En esta linea de codigo debemos enviar el "Culqi.token.id"
-		//hacia tu servidor con Ajax
-	} else { // ¡Hubo algún problema!
-		// Mostramos JSON de objeto error en consola
-		console.log(Culqi.error);
-		Swal.fire({
-			type: 'error',
-			title: 'Ocurrio un error',
-			text: 'Algo salió mal',
-		});
-	}
-  }
 
   /*
  function pagarCuota(){
@@ -1210,7 +1079,56 @@ function formatoFoto(){
 	  
 	  });
 }
-
+var mantenerFoto = true;
+function formatoFotoPerfil(){
+	$(document).ready(function(){
+		  $("#foto").on("change",function(){
+			  var uploadFoto = document.getElementById("foto").value;
+			  var foto       = document.getElementById("foto").files;
+			  var nav = window.URL || window.webkitURL;
+			  var contactAlert = document.getElementById('form_alert');
+			  
+				  if(uploadFoto !='')
+				  {
+					  var type = foto[0].type;
+					  var name = foto[0].name;
+					  if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png')
+					  {
+						  contactAlert.innerHTML = '<p class="errorArchivo">El archivo no es válido.</p>';                        
+						  $("#img").remove();
+						  $(".delPhoto").addClass('notBlock');
+						  $('#foto').val('');
+						  return false;
+					  }else{  
+							  contactAlert.innerHTML='';
+							  $("#img").remove();
+							  $(".delPhoto").removeClass('notBlock');
+							  var objeto_url = nav.createObjectURL(this.files[0]);
+							  $(".prevPhotoPerfil").append("<img class='imgNivel' id='img' src="+objeto_url+">");
+							  $(".upimg label").remove();
+							  
+						  }
+					}else{                      
+						  $("#img").remove();
+						  $(".delPhoto").addClass('notBlock');
+						  $('#foto').val('');
+						  contactAlert.innerHTML = '<p class="errorArchivo">No seleccionó imagen</p>';  
+						  return false;
+					}              
+		  });
+	  
+		  $('.delPhoto').click(function(){
+			  var contactAlert = document.getElementById('form_alert');
+			  contactAlert.innerHTML = '<p class="errorArchivo">No seleccionó imagen</p>'; 
+			  $('#foto').val('');
+			  $(".delPhoto").addClass('notBlock');
+			  $("#img").remove();
+			  mantenerFoto = false;
+	  
+		  });
+	  
+	  });
+}
 function listarSolicitudes(){
 	$.ajax({
         url: '../php/listarSolicitudes.php',
@@ -1266,4 +1184,133 @@ function filtrarSolicitudes(opcion){
             console.log( error );
         }
 	});
+}
+
+function validarInteres(){
+	var interes = $("#txtinteres").val();
+	if(interes.length > 0){
+		$("#msg-interes").hide();
+		return true;
+	}
+	else{
+		$("#msg-interes").show();
+		return false;
+	}
+}
+
+function datosPersonales(){
+	$.ajax({
+        url: '../php/datosPersonales.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#datosPerfil").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+	});
+}
+
+function datosEditarPerfil(){	
+	$.ajax({
+        url: '../php/datosPerfilEditar.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+			var datos = JSON.parse(data);
+			$("#img").remove();
+			$(".delPhoto").removeClass('notBlock');
+			$('#foto').val('');
+			$(".prevPhotoPerfil").append("<img id='img' src='../recursos/perfiles/"+datos.fotousuario+"'>");
+        	$("#txtdni").val(datos.dni);
+			$("#txtfecha").val(datos.fechanac);
+			if(datos.sexo){$("#rdmasculino").prop("checked",true);}
+			else{$("#rdfemenino").prop("checked",true);};
+            $("#txtcorreo").val(datos.email);
+            $("#txtusuario").val(datos.usuario);
+
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+	});
+}
+
+function validarCorreo(){
+	var correo = $("#txtcorreo").val()
+	if(correo.length > 0){
+		$("#txtcorreo").toggleClass("is-valid", true);
+		$("#txtcorreo").toggleClass("is-invalid", false);
+		return true;
+	}
+	else{
+		$("#txtcorreo").toggleClass("is-invalid", true);
+		$("#txtcorreo").toggleClass("is-valid", false);
+		return false;
+	}
+	
+	//$("#txtusuario").toggleClass("is-valid",false);
+}
+
+function editarPerfil(){
+	var paqueteDeDatos = new FormData();
+	paqueteDeDatos.append('imagen', $('#foto')[0].files[0]);
+	paqueteDeDatos.append('sexo', $("input:radio[name=txtsexo]:checked").val());
+	paqueteDeDatos.append('correo', $('#txtcorreo').prop('value'));
+	paqueteDeDatos.append('usuario', $('#txtusuario').prop('value'));
+	paqueteDeDatos.append('mantenerFoto', mantenerFoto);
+	if(validarCorreo()){
+		$.ajax({
+			url: '../php/editarPerfil.php',
+			type: 'post',
+			contentType: false,
+			data: paqueteDeDatos,
+			processData: false,
+			cache: false, 
+			success: function( data ){
+				console.log(data);
+				if(data == 1){
+					Swal.fire({
+						title: '¡Actualizado correctamente!',
+						text: "Se editó tu perfil",
+						type: 'success',
+						showCancelButton: false,
+						confirmButtonColor: '#3085d6',
+						//cancelButtonColor: '#d33',
+						confirmButtonText: 'Aceptar'
+					  }).then((result) => {
+						if (result.value) {
+						  window.location.href="../html/perfil.php" ;
+						}
+						else{
+							window.location.href="../html/perfil.php" ;
+						}
+					  }) 
+				}
+				else{
+					Swal.fire({
+						title: '¡Ocurrió un error',
+						text: "Revisa bien los datos ingresados",
+						type: 'error',
+						showCancelButton: false,
+						confirmButtonColor: '#FF4242',
+						//cancelButtonColor: '#d33',
+						confirmButtonText: 'Volver a intentar'
+					  }).then((result) => {
+						if (result.value) {
+							//window.location.href="persona.php";
+						}
+						else{
+						  //window.location.href="login.html";
+						}
+					  })  
+				}
+				
+			},
+			error: function( jqXhr, textStatus, error ){
+				console.log( error );
+			}
+		});
+	}
 }

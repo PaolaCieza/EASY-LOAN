@@ -25,6 +25,9 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <!-- fghhjk -->
+    <script type="text/javascript">
+        window.ready = datosPersonales();
+    </script>
     <title>PERFIL USUARIO</title>
 </head>
 
@@ -84,7 +87,7 @@
                     <span class="text-break"><?=$_SESSION['nombre']?></span>
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <a href="perfilEditar.html"> <input type="button" class="bg-warning" value="EDITAR PERFIL" > </a>
+                    <a href="perfilEditar.php"> <input type="button" class="bg-warning" value="EDITAR PERFIL" > </a>
                 </div>
 
             </div>
@@ -102,44 +105,8 @@
                     </nav>
                 </div>
                 <br>
-                <div id="datos" class=" bg-light p-2 rounded-circle">
-                    <div class="form-group">
-                        <label for="txtnombre">NOMBRE</label> 
-                        <input type="text" class="form-control" name="txtnombre" id="txtnombre" readonly required> 
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="txtapellidos">APELLIDOS</label> 
-                        <input type="text" class="form-control" name="txtapellidos" id="txtapellidos" readonly required>
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="txtdni">DNI</label> 
-                        <input type="text" class="form-control" name="txtdni" id="txtdni" onkeypress="solonumeros(event,'#txtdni',8)" readonly required> 
-                        
-                    </div>
-                    <div class="form-group">
-                        <label for="txtfecha">FECHA DE NACIMIENTO</label> 
-                        <input type="date" class="form-control" name="txtfecha" id="txtfecha" readonly required> 
-                        
-                    </div>
-                    <fieldset class="form-group">
-                      <label>SEXO</label> <br>
-                      <input type="text" class="form-control" name="txtsexo" id="txtsexo    " readonly required> 
-                        
-                    </fieldset>
-                    <div class="form-group">
-                        <label for="txtcorreo">CORREO</label> 
-                        <input type="email" class="form-control" name="txtcorreo" id="txtcorreo" readonly required> 
-                        
-                    </div>
-                  </form>
-                  <form class="text-capitalize">
-                    <div class="form-group">
-                      <label for="txtusuario">USUARIO</label>
-                      <input type="text" class="form-control" readonly name="txtusuario" id="txtusuario" onkeypress="sinespacios(event)" onkeyup="valuser()" required> 
-                  </div>
-                  </form>
+                <div id="datosPerfil" class=" bg-light p-2 rounded-circle">
+                    
                 </div>
                 
             </div>

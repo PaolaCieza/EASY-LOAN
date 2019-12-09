@@ -28,6 +28,7 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
     <script src="http://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script src="https://checkout.culqi.com/js/v3"></script>
     <script type="text/javascript" src="../js/js.js"></script>
+    <script type="text/javascript" src="../js/darPrestamo.js"></script>
     <script type="text/javascript">
         window.ready = inicio();
     </script>
@@ -190,9 +191,21 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
             
             <div id="solicitudes"class="row mb-2">
                 
-                <!--   MODAL DE DAR PRESTAMO -->
                 
-                    <div class="modal fade" id="modalDarPrestamo" tabindex="-1" role="dialog"
+                
+                   
+                    
+
+            </div>
+
+
+            <div id=""></div>
+            <br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br>
+        </div>
+<!--   MODAL DE DAR PRESTAMO -->
+        <div class="modal fade" id="modalDarPrestamo" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -204,30 +217,21 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                                         <span aria-hidden='true'>&times;</span>
                                     </button>
                                 </div>
-                                <div class='modal-body'>
-                                    <label for="txtinteres">INTERÉS</label>
-                                    <input type="text" name="txtinteres" id="txtinteres" class="form-control-lg" >
+                                <div class='modal-body' style="text-align:center">
+                                    <label for="txtinteres">INTERÉS %</label><br>
+                                    <input type="text" name="txtinteres" id="txtinteres" class="form-control-lg" onkeyup="validarInteres()" onkeypress="soloDecimales(event,'#txtinteres',5);validarInteres()" >
+                                    <div id="msg-interes">
+                                        <label class="text-danger">Especifique el porcentaje de interés</label>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-purple" data-dismiss="modal">OFRECER</button>
+                                    <button type="button" class="btn btn-purple"  onclick="procesarRespuesta()">OFRECER</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- MODAL DE DAR PRESTAMO -->
-
-            </div>
-
-
-            <div id=""></div>
-            <br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br>
-        </div>
-
-     
-
+<!-- MODAL DE DAR PRESTAMO -->
     </section>
     <footer class="page-footer font-small unique-color-dark " style="background-color: black;  color: white; ">
 

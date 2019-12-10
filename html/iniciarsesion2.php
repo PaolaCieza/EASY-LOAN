@@ -20,7 +20,7 @@ if(!isset($_SESSION['usuario'])) header("location: iniciarsesion.php");
 
 <body class="bg-light">
   <!-- <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light   " style="background-color: black;">
-      <a class="navbar-brand" href="../index.html">
+      <a class="navbar-brand" href="../index.php">
            <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> 
         <span class="text-warning titulo"> EASY LOAN</span>
     </a>

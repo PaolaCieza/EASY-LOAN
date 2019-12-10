@@ -1,3 +1,11 @@
+<?php
+    $nombre="inicia sesión";
+    session_start();
+    if(isset($_SESSION['idusuario'])){
+      $nombre = $_SESSION['nombre'];
+    }
+    //if($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");};
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -16,7 +24,7 @@
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/js.js"></script>
     <script type="text/javascript">
-        window.ready = listarNiveles();
+        window.ready = infoNiveles();
     </script>
     <title>NIVELES</title>
 </head>
@@ -28,19 +36,19 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>       
             
-                <a class="navbar-brand" href="../index.html">
+                <a class="navbar-brand" href="../index.php">
                     <span class="text-warning titulo"> EASY LOAN</span>
                 </a>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class=" nav-item active">
-                            <a class="nav-link nav-a" href="servicios.html"> SERVICIOS </a>
+                            <a class="nav-link nav-a" href="servicios.php"> SERVICIOS </a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link nav-a" href="conocenos.html">SOBRE NOSOTROS</a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link nav-a" href="nivel.html">NIVELES</a>
+                            <a class="nav-link nav-a" href="nivel.php">NIVELES</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link nav-a" href="prestamista.php">PRESTAMISTA <span class="sr-only">(current)</span></a>
@@ -54,7 +62,7 @@
                                 <button type="button" class="btn bg-transparent text-white dropdown-toggle  "
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <label for="" class="nav-a">HOLA</label>
-                                     <label for="" class="nav-a"> <?=$_SESSION['nombre']; ?> </label>
+                                     <label for="" class="nav-a"> <?=$nombre?> </label>
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="perfil.php">Perfil</a>
@@ -76,25 +84,10 @@
                 <h1 class="text-white"> CONOCE NUESTROS NIVELES</h1>
             </div><br><br><br><br><br>
         </div>
-        <div class="container mb-3 mt-5">
+        <div class="container mb-3 mt-5" id="infoNiveles">
 
             <!-- dsjjef -->
-            <div class="row border border-white p-4 rounded bg-fondito-nivel-general mb-2">
-                <div class="col-lg-3 ">
-                    <h1 class="text-center ">
-                        <label for="" class="text-white font-weight-bold">NIVEL 1</label>
-                    </h1>
-                </div>
 
-                <div class="col-lg-6 text-center ">
-                    <img src="../recursos/niveles/nivel1.png" alt="" class=" perfil_user_mantenimiento img-Nivel">
-                </div>
-
-                <div class="col-lg-3 text-center  ">
-                    <label for="" class="text-warning font-weight-bold text-justify ">Se puede realizar prestamos de máximo
-                        25 soles</label>
-                </div>
-            </div>
 
 
         </div>

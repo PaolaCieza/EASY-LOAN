@@ -1,5 +1,6 @@
 <?php
     session_start();
+    if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +38,7 @@
             aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="../index.html">
+        <a class="navbar-brand" href="../index.php">
             <!-- <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> -->
             <span class="text-warning titulo"> EASY LOAN</span>
         </a>

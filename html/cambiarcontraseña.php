@@ -1,5 +1,6 @@
 <?php
     session_start();
+    if(!isset($_SESSION['idusuario'])) header("location: iniciarsesion.php");
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +30,7 @@
 
 <body class="-fondito">
     <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light   " style="background-color: black; ">
-        <a class="navbar-brand" href="../index.html">
+        <a class="navbar-brand" href="../index.php">
             <!-- <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> -->
             <span class="text-warning titulo"> EASY LOAN</span>
         </a>
@@ -42,7 +43,7 @@
                     <a class="nav-link nav-a" href="#">NIVELES</a>
                 </li>
                 <li class=" nav-item active">
-                    <a class="nav-link nav-a" href="servicios.html"> SERVICIOS </a>
+                    <a class="nav-link nav-a" href="servicios.php"> SERVICIOS </a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link nav-a" href="#">HISTORIA</a>

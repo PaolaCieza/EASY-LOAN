@@ -39,8 +39,14 @@ else{
 		$_SESSION['usuario']=$registro->usuario;
 		$_SESSION['acceso']=$registro->acceso;	
 		$_SESSION['foto']=$registro->fotousuario;	
-		$_SESSION['nombre']=$registro->nombre;	
-		echo 1;				
+		$_SESSION['nombre']=$registro->nombre;
+		if($registro->acceso == "cliente"){
+			echo 1;
+		}
+		else{
+			echo 0;
+		}	
+						
 	}
 	else{
 		//session_start();  

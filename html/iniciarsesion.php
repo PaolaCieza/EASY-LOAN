@@ -17,7 +17,7 @@
 
 <body class="bg-light">
   <!-- <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light   " style="background-color: black;">
-      <a class="navbar-brand" href="../index.html">
+      <a class="navbar-brand" href="../index.php">
           <!-- <img src="../recursos/icono_libreria.png" width="60" height="60" alt=""> 
           <span class="text-warning titulo"> EASY LOAN</span>
       </a>
@@ -61,7 +61,7 @@
       <div class="col-4">
       </div>
         <div class="col-md-4 col-sm-6 col-md-offset-3 col-sm-offset-3 inicio-fondo">
-          <center> <a href="../index.html"><img src="../recursos/iconfinder_Facebook-1_669610.png" alt=""></a> </center>
+          <center> <a href="../index.php"><img src="../recursos/iconfinder_Facebook-1_669610.png" alt=""></a> </center>
             <h1 class="text-center text-warning ">INICIAR SESION</h1> <br>
             <form id="frmuser">     
               <div class="from-group">

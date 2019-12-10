@@ -59,30 +59,50 @@ function iniciarSesion(a){
 					confirmButtonText: 'Aceptar'
 				  }).then((result) => {
 					if (result.value) {
-					  window.location.href="../index.html";
+					  window.location.href="../index.php";
 					}
 					else{
-					  window.location.href="../index.html";
+					  window.location.href="../index.php";
 					}
 				  }) 
 			}
 			else{
-				Swal.fire({
-					title: '¡Error al iniciar sesion!',
-					text: "Revisa bien tus datos",
-					type: 'error',
-					showCancelButton: false,
-					confirmButtonColor: '#FF4242',
-					//cancelButtonColor: '#d33',
-					confirmButtonText: 'Volver a intentar'
-				  }).then((result) => {
-					if (result.value) {
-						//window.location.href="persona.php";
-					}
-					else{
-					  //window.location.href="login.html";
-					}
-				  })  
+				if(data == 0){
+					Swal.fire({
+						title: '¡Bienvenido!',
+						text: "Disfruta de tu estadia",
+						type: 'success',
+						showCancelButton: false,
+						confirmButtonColor: '#3085d6',
+						//cancelButtonColor: '#d33',
+						confirmButtonText: 'Aceptar'
+					  }).then((result) => {
+						if (result.value) {
+						  window.location.href="../html/mantenimientoCliente.php";
+						}
+						else{
+						  window.location.href="../html/mantenimientoCliente.php";
+						}
+					  }) 
+				}
+				else{
+					Swal.fire({
+						title: '¡Error al iniciar sesion!',
+						text: "Revisa bien tus datos",
+						type: 'error',
+						showCancelButton: false,
+						confirmButtonColor: '#FF4242',
+						//cancelButtonColor: '#d33',
+						confirmButtonText: 'Volver a intentar'
+					  }).then((result) => {
+						if (result.value) {
+							//window.location.href="persona.php";
+						}
+						else{
+						  //window.location.href="login.html";
+						}
+					  })  
+				}
 			}
 		  },
 		  error: function( jqXhr, textStatus, error ){
@@ -1355,4 +1375,18 @@ function userEditar(){
 		$("#txtusuario").toggleClass("is-valid",false);
 		usuarioEditar = false;
 	}
-}																															
+}
+
+function infoNiveles(){
+	$.ajax({
+        url: '../php/infoNiveles.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#infoNiveles").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}

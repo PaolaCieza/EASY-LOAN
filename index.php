@@ -1,3 +1,10 @@
+<?php
+  $nombre="inicia sesión";
+  session_start();
+  if(isset($_SESSION['idusuario'])){
+    $nombre = $_SESSION['nombre'];
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
 

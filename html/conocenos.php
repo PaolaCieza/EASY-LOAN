@@ -1,3 +1,13 @@
+<?php
+    $nombre="";
+    $btn = "disabled";
+    session_start();
+    if(isset($_SESSION['idusuario'])){
+      $nombre = $_SESSION['nombre'];
+      $btn = "";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -34,7 +44,7 @@
                     <a class="nav-link nav-a" href="servicios.php"> SERVICIOS </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="conocenos.html">SOBRE NOSOTROS</a>
+                    <a class="nav-link nav-a" href="conocenos.php">SOBRE NOSOTROS</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link nav-a" href="nivel.php">NIVELES</a>
@@ -50,9 +60,9 @@
                 <li class="nav-item active">
                     <div class="btn-group mb-0 ">
                         <button type="button" class="btn bg-transparent text-white dropdown-toggle  "
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <?=$btn; ?>>
                             <label for="" class="nav-a">HOLA</label>
-                            <label for="" class="nav-a"> <?=$_SESSION['nombre']; ?> </label>
+                            <label for="" class="nav-a"> <?=$nombre; ?> </label>
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="perfil.php">Perfil</a>
@@ -80,7 +90,7 @@
             </div>
             <div class="col-8 offset-2 mt-5">
                 <div class="row mt-4">
-                    <div class="col-sm contenedor-sobre-nosotros" onclick="location.href='historia.html'">
+                    <div class="col-sm contenedor-sobre-nosotros" onclick="location.href='historia.php'">
                         <div class="row div-contenedor-icono">
                             <div>
                                 <span class="icono-sobre-nosotros"> f</span>

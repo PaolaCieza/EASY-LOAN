@@ -1,8 +1,10 @@
 <?php
     $nombre="inicia sesión";
+    $btn = "disabled";
     session_start();
     if(isset($_SESSION['idusuario'])){
       $nombre = $_SESSION['nombre'];
+      $btn = "";
     }
     //if($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");};
 ?>
@@ -60,7 +62,7 @@
                         <li class="nav-item active">
                             <div class="btn-group mb-0 ">
                                 <button type="button" class="btn bg-transparent text-white dropdown-toggle  "
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <?=$btn?>>
                                     <label for="" class="nav-a">HOLA</label>
                                      <label for="" class="nav-a"> <?=$nombre?> </label>
                                 </button>

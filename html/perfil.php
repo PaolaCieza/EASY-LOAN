@@ -80,8 +80,8 @@
     <section class="container-fluid">
         <div class="row justify-content-center mt-5 mb-5">
             <div class="col-lg-3  border border-left-3 mr-3 ml-3 p-3">
-                <div class=" row justify-content-center mt-3" id="">
-                    <img src="../recursos/perfiles/<?=$_SESSION['foto']?>" alt="" class="perfil_user rounded-circle">
+                <div class=" row justify-content-center mt-3 intento" id="">
+                    <img src="../recursos/perfiles/<?=$_SESSION['foto']?>" alt="" class="perfil_user rounded-circle intento ">
                 </div>
                 <div class="row justify-content-center mt-3">
                     <span class="text-break"><?=$_SESSION['nombre']?></span>

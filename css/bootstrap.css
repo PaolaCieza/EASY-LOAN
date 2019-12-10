@@ -55,42 +55,123 @@
 .cuadros-oferta-1{
   border-radius: 2vh;
   border: white 5px solid;
-  background-color: black;
+  background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+}
+
+.cuadros-oferta-1 h1{
+  -webkit-text-stroke: 1.5px black;
+  color: white;
+  font-size: 40px;
+}
+
+.cuadros-oferta-1 h2{
+  /* -webkit-text-stroke: 1.5px black; */
+  color: #000851;
+  font-size: 25px;
+}
+
+.cuadros-oferta-2 h1{
+  -webkit-text-stroke: 1.5px black;
+  color: white;
+  font-size: 40px;
+}
+
+.cuadros-oferta-2 h2{
+  /* -webkit-text-stroke: 1.5px black; */
+  color: #b10085;
+  font-size: 25px;
+}
+.cuadros-oferta-3 h1{
+  -webkit-text-stroke: 1.5px black;
+  color: white;
+  font-size: 40px;
+}
+
+.cuadros-oferta-3 h2{
+  /* -webkit-text-stroke: 1.5px black; */
+  color: #f2f3f3;
+  font-size: 25px;
 }
 
 .cuadros-oferta-2{
   border-radius: 2vh;
   border: white 5px solid;
-  background-color: #00897b;
-  /* width: 90% !important; */
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);  /* width: 90% !important; */
 }
 
 .cuadros-oferta-3{
   border-radius: 2vh;
   border: white 5px solid;
-  background-color:  #5e35b1;
-  /* width: 90% !important; */
+  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
 }
 
 .cuadro1{
-  border-radius: 10px;
+  border-radius: 5px;
   border: rgba(0, 0, 0, 0.479) 1px solid;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-  /* background-color: dimgray; */
+  /* background:#0033a1; */
+  background:#4527a0;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
 }
+
+.cuadritoAbajo{
+  border-radius: 30px 0px 30px 0px;
+  border: transparent 2px solid;
+  background: #7c5ed4;
+}
+
+.cuadritoAbajo h1{
+  font-size: 1.25rem;
+  color: white;
+}
+
+
+.cuadro2{
+  /* background:#0033a1; */
+  background:var(--warning);
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+
+}
+
+.cuadro2 h1{
+  -webkit-text-stroke: 0.3px white;
+  color: purple;
+  font-size: 3.25rem;
+  line-height: 1.07692;}
+
+  .cuadro2 label{
+    color: white;
+    font-size: 1.25rem;
+    line-height: 1.07692;
+  }
+
+  .cuadro2 button{
+    font-size: 1.25rem;
+    margin-top: 3.25rem;
+  }
 
 .contenedor-index{
   border-radius: 0px 10px 10px 0px;
 }
 
 .index-primera-parte{
-  background-image: url(../recursos/fondo-index-3.jpg); 
+  /* background-image: url(../recursos/fondo-index-3.jpg);  */
   /* background-image: url(https://www.freepik.es/fotos-vectores-gratis/fondo); */
   background-repeat: no-repeat;
   /* background-image: url(../recursos/fondo2.jpg); */
+  background-image: url(../recursos/FONDO.jpg);
   width: 100%;
   height: 100%;
+}
+
+.text-index-titulo{
+  -webkit-text-stroke: 1.5px black;
+  font-size: 45px;
+}
+
+.texto-2{
+  background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
 }
 
 .sobre-nosotros-parte1{
@@ -10494,9 +10575,9 @@ a.text-dark:hover, a.text-dark:focus {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  margin: auto;
-  
+  margin: auto;  
 }
+
 .prevPhoto {
   display: flex;
   justify-content: space-between;
@@ -10510,8 +10591,20 @@ a.text-dark:hover, a.text-dark:focus {
   background-size: cover;
   background-position: center center;
   margin: auto;
-  
 }
+
+.intento {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+  background: url(../images/uploads/user.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  margin: auto;
+}
+
 .prevPhoto label{
 cursor: pointer;
 width: 100%;
@@ -10538,11 +10631,13 @@ display: none !important;
   left: 0;
   z-index: 2;
   }
+
   .prevPhotoPerfil img{
   width: 100%;
   height: 100%;
   border-radius: 50% !important;
   }
+
   .upimg, .notBlock{
   display: none !important;
   }

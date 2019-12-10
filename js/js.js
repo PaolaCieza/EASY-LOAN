@@ -1390,3 +1390,8 @@ function infoNiveles(){
         }
     });
 }
+
+function pdfCliente(cliente){
+	window.open('http://localhost/Proyecto-final-programacion-web/php/clientePdf.php?cliente=\''+cliente+'\'', '_blank');
+
+}

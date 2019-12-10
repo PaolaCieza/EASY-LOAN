@@ -51,7 +51,7 @@ elseif($_SESSION['acceso'] != "cliente"){header("location: iniciarsesion.php");}
                     <a class="nav-link nav-a" href="servicios.php"> SERVICIOS </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link nav-a" href="conocenos.html">SOBRE NOSOTROS</a>
+                    <a class="nav-link nav-a" href="conocenos.php">SOBRE NOSOTROS</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link nav-a" href="nivel.php">NIVELES</a>

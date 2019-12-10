@@ -99,7 +99,7 @@
                     <span class="text-break"><?=$_SESSION['nombre']?></span>
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <a href="cambiarContraseña.html"> <button class="bg-warning border-0">CAMBIAR CONTRASEÑA</button>
+                    <a href="cambiarContraseña.php"> <button class="bg-warning border-0">CAMBIAR CONTRASEÑA</button>
                     </a>
                 </div>
             </div>

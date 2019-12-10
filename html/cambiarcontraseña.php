@@ -86,7 +86,7 @@
                     <span class="text-break font-weight-bold"><?=$_SESSION['nombre']?></span>
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <a href="perfil.html"> <button class="bg-warning border-0">VOLVER A PERFIL</button> </a>
+                    <a href="perfil.php"> <button class="bg-warning border-0">VOLVER A PERFIL</button> </a>
                 </div>
             </div>
             <div class="col-lg-7 ">

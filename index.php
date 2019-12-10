@@ -44,13 +44,13 @@
     <div class="collapse navbar-collapse " id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class=" nav-item active">
-          <a class="nav-link nav-a" href="html/servicios.html"> SERVICIOS </a>
+          <a class="nav-link nav-a" href="html/servicios.php"> SERVICIOS </a>
         </li>
         <li class="nav-item active">
           <a class="nav-link nav-a" href="html/conocenos.html">SOBRE NOSOTROS</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link nav-a" href="html/nivel.html">NIVELES</a>
+          <a class="nav-link nav-a" href="html/nivel.php">NIVELES</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link nav-a" href="html/prestamista.php">PRESTAMISTA <span class="sr-only">(current)</span></a>

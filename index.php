@@ -1,5 +1,9 @@
 <?php
+  $nombre="inicia sesión";
   session_start();
+  if(isset($_SESSION['idusuario'])){
+    $nombre = $_SESSION['nombre'];
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -60,7 +64,7 @@
                         <button type="button" class="btn bg-transparent text-white dropdown-toggle  "
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <label for="" class="nav-a">HOLA</label>
-                             <label for="" class="nav-a"> <?=$_SESSION['nombre']; ?> </label>
+                             <label for="" class="nav-a"> <?=$nombre;?> </label>
                         </button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="html/perfil.php">Perfil</a>

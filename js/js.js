@@ -1375,4 +1375,18 @@ function userEditar(){
 		$("#txtusuario").toggleClass("is-valid",false);
 		usuarioEditar = false;
 	}
-}																															
+}
+
+function infoNiveles(){
+	$.ajax({
+        url: '../php/infoNiveles.php',
+        type: 'post',
+        data: {},
+        success: function( data ){
+        	$("#infoNiveles").html(data);
+        },
+        error: function( jqXhr, textStatus, error ){
+            console.log( error );
+        }
+    });
+}

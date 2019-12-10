@@ -1,5 +1,11 @@
 <?php
-  session_start();
+    $nombre="inicia sesión";
+    $btn = "disabled";
+    session_start();
+    if(isset($_SESSION['idusuario'])){
+      $nombre = $_SESSION['nombre'];
+      $btn = "";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -57,9 +63,9 @@
                         <li class="nav-item active">
                             <div class="btn-group mb-0 ">
                                 <button type="button" class="btn bg-transparent text-white dropdown-toggle  "
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" <?=$btn?>>
                                     <label for="" class="nav-a">HOLA</label>
-                                     <label for="" class="nav-a"> <?=$_SESSION['nombre']; ?> </label>
+                                     <label for="" class="nav-a"> <?=$nombre ?> </label>
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="perfil.php">Perfil</a>

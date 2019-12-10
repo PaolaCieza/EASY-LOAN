@@ -31,13 +31,12 @@
     <title>INICIO</title>
   </head>
 
-<body class=" ">
+<body class="  ">
   <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top " style="background-color: black; ">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
       aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <a class="navbar-brand" href="index.html">
       <span class="text-warning titulo"> EASY LOAN</span>
     </a>
@@ -78,13 +77,14 @@
 
     </div>
   </nav>
-  <section class="mt-5">
+
+  <section class="mt-5 p-0 container-fluid ">
     <div class="index-primera-parte bg-white">
       <br><br><br><br> <br><br><br><br><br><br>
       <h1 class="text-center text-white  mt-3 mb-5 text-index-titulo"> TE AYUDAMOS A OBTENER UN PRÉSTAMO DE MANERA
         SENCILLA </h1>
 
-      <div class="row justify-content-center">
+      <div class="row container-fluid justify-content-center">
         <div class=" text-center justify-content-center">
           <button class="btn btn-purple text-white mb-5"   onclick="location.href='html/conocenos.html'"> CONÓCENOS
           </button>

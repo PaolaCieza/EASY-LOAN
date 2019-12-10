@@ -177,7 +177,22 @@
 .sobre-nosotros-parte1{
   background-image: url(../recursos/fondo-sobre-nosotros.jpg);
   /* background-image: url(../recursos/fondo-sobre-nosotros2.jpg); */
-  
+}
+
+.xd{
+  position: absolute;
+  z-index: 2;
+  margin: 0px  100px 0px 0px;
+  font-size: 1.93rem;
+}
+
+.fondoprueba{
+  background: url(../recursos/fondo-sobre-nosotros.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  z-index: -1;
+  margin: 0px 0px 0px 0px;
+  padding: 150px;
 }
 
 .text-pink{
@@ -262,8 +277,10 @@ body {
 
 .contenedor-sobre-nosotros{
   border-radius: 3px;
-  border: rgb(177, 167, 167) 1px solid;
-  background-color: rgba(102, 102, 102, 0.185);
+  /* border: rgb(177, 167, 167) 1px solid; */
+  /* background-color: rgba(102, 102, 102, 0.185); */
+  /* background-color: rgb(131, 20, 131); */
+  background-color: #ffc107;
   padding-right: 10px;
   margin: 10px;
   display: table;
@@ -272,14 +289,15 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  color: #666;
+  /* color: #666; */
+  color: purple;
 
 }
 
 .contenedor-sobre-nosotros:hover {
   background: rgb(74, 4, 121);
 	color: #ffffff;
-  box-shadow: inset 0 0 0 3px #3a7999;
+  box-shadow: inset 0 0 0 3px #ffc107;
   animation: bounce 1s;
 }
 

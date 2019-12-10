@@ -18,68 +18,70 @@
     <title>SOBRE NOSOTROS</title>
 </head>
 
-<body class="-fondito">
-        <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top " style="background-color: black; ">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
-                    aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>       
-            
-                <a class="navbar-brand" href="../index.php">
-                    <span class="text-warning titulo"> EASY LOAN</span>
-                </a>
-                <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class=" nav-item active">
-                            <a class="nav-link nav-a" href="servicios.php"> SERVICIOS </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link nav-a" href="conocenos.html">SOBRE NOSOTROS</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link nav-a" href="nivel.php">NIVELES</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link nav-a" href="prestamista.php">PRESTAMISTA <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link nav-a" href="prestamo.php">PRESTATARIO</a>
-                        </li>
-                        
-                        <li class="nav-item active">
-                            <div class="btn-group mb-0 ">
-                                <button type="button" class="btn bg-transparent text-white dropdown-toggle  "
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <label for="" class="nav-a">HOLA</label>
-                                     <label for="" class="nav-a"> <?=$_SESSION['nombre']; ?> </label>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="perfil.php">Perfil</a>
-                                    <a class="dropdown-item" href="cambiarcontraseña.php">Cambiar Contraseña</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-        
+<body class=" ">
+    <nav class="navbar navbar-dark  navbar-expand-lg  navbar-light fixed-top " style="background-color: black; ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent "
+            aria-controls="navbarSupportedContent " aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="../index.php">
+            <span class="text-warning titulo"> EASY LOAN</span>
+        </a>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class=" nav-item active">
+                    <a class="nav-link nav-a" href="servicios.php"> SERVICIOS </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="conocenos.html">SOBRE NOSOTROS</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="nivel.php">NIVELES</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="prestamista.php">PRESTAMISTA <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link nav-a" href="prestamo.php">PRESTATARIO</a>
+                </li>
+
+                <li class="nav-item active">
+                    <div class="btn-group mb-0 ">
+                        <button type="button" class="btn bg-transparent text-white dropdown-toggle  "
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <label for="" class="nav-a">HOLA</label>
+                            <label for="" class="nav-a"> <?=$_SESSION['nombre']; ?> </label>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="perfil.php">Perfil</a>
+                            <a class="dropdown-item" href="cambiarcontraseña.php">Cambiar Contraseña</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <section class="container-fluid">
+        <div class="-sobre-nosotros-parte1  container-fluid p-0 m-0">
+            <div class="row fondoprueba  "> 
+                <div class="row  offset-4 mt-1 justify-content-center">
+                    <p  style="text-decoration: none;" class="mt-1 ml-2 xd text-white font-italic font-weight-light"> <b class="font-weight-bold">HOLA</b>, SOMOS EASY LOAN, AQUÍ PODRÁS  CONOCERNOS MEJOR</h1>
                 </div>
-            </nav>
-    <section class="">
-        <div class="sobre-nosotros-parte1 container-fluid">
-            <br><br><br><br><br><br>
-            <div class="row  offset-2 mt-5 ">
-                <h1 class="text-white"> CONÓCENOS</h1>
-            </div><br><br><br><br><br>
+            </div>
         </div>
         <div class="container-fluid">
-            <div class="row  offset-2 mt-5 ">
-                <h1 class="text-purple "> SOBRE NOSOTROS</h1>
+            <div class="row  justify-content-center ">
+                <h1 class="text-warning mt-5 text-index-titulo"> SOBRE NOSOTROS</h1>
             </div>
             <div class="col-8 offset-2 mt-5">
                 <div class="row mt-4">
                     <div class="col-sm contenedor-sobre-nosotros" onclick="location.href='historia.html'">
-                        <div class="row div-contenedor-icono"  >
+                        <div class="row div-contenedor-icono">
                             <div>
                                 <span class="icono-sobre-nosotros"> f</span>
                             </div>

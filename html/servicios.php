@@ -80,56 +80,56 @@
                 </div>
             </nav>
     <section class="container-fluid">
-        <div class="row justify-content-center mt-5 mb-5">
+        <div class="row justify-content-center mt-5 mb-5 cuadros-oferta-3xd">
             <div class="col-md-4 ">
                 <div>
-                    <img src="../recursos/persona.jpg" alt="">
+                    <img src="../recursos/nueva-historia.png" alt="">
                 </div>
             </div>
-            <div class="col-md-5 bg-light justify-content-center text-center">
+            <div class="col-md-5 bg-light justify-content-center text-center pb-5 cuadros-oferta-3xd">
                 <div class="mt-5">
-                    <h1 class="text-black-50">¿NECESITAS DINERO?</h1>
-                    <h2>¿Se te hace muy tedioso ir a un banco?</h2>
-                    <span>Pues estafa a uno de estos wbds y listo, tu vida se soluciona</span>
+                    <h1 class="text-index-titulo text-white">¿NECESITAS DINERO?</h1>
+                    <h1 class="text-warning">¿Se te hace muy tedioso ir a un banco?</h1>
+                    <span class="text-white">Pues pide un préstamo</span>
                 </div>
                 <div class="mt-5">
-                    <h1 class="text-black-50">¿DESEAS INVERTIR?</h1>
-                    <h2>¿Quieres prestar dinero teniendo ganancia?</h2>
-                    <span>Pues si quieres estar ser estafado este es tu oportunidad </span>
+                    <h1 class="text-index-titulo text-white">¿DESEAS INVERTIR?</h1>
+                    <h1 class="text-warning">¿Quieres prestar dinero teniendo ganancia?</h1>
+                    <span class="text-white">Pues da prestamos y elige cuánto de interés vas a cobrar </span>
                 </div>
             </div>
         </div>
         <div class="row justify-content-center mt-5 mb-5">
 
-            <div class="col-md-5 bg-light justify-content-center text-center">
-                <div class="mt-5">
-                    <h1 class="text-warning">PRESTAMISTA</h1>
-                    <h2>¿Se te hace muy tedioso ir a un banco?</h2>
-                    <span>Pues estafa a uno de estos wbds y listo, tu vida se soluciona</span>
-                    <a href="prestamista.php"><input type="button" value="SOLICITUDES DE PRESTAMOS"></a> 
+            <div class="col-md-5 cuadro1 justify-content-center text-center " >
+                <div class="mt-5 mb-5">
+                    <h1 class="text-warning m-2">PRESTAMISTA</h1>
+                    <h2 class="text-white">¿Se te hace muy tedioso ir a un banco?</h2>
+                    <span class="text-white m-2">Pues estafa a uno de estos wbds y listo, tu vida se soluciona</span>
+                    <a href="prestamista.php"><input type="button" value="SOLICITUDES DE PRESTAMOS" class="btn btn-outline-warning m-2"></a> 
                 </div>
             </div>
             <div class="col-md-4 ">
                 <div>
-                    <img src="../recursos/persona.jpg" alt="">
+                    <img src="../recursos/prestamis2.jpg" alt=""  height="300px">
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-md-4 ">
-                <div>
-                    <img src="../recursos/persona.jpg" alt="">
-                </div>
-            </div>
-            <div class="col-md-5 bg-light justify-content-center text-center">
-                <div class="mt-5">
-                    <h1 class="text-pink">PRESTATARIO</h1>
-                    <h2>¿Se te hace muy tedioso ir a un banco?</h2>
-                    <span>Pues estafa a uno de estos wbds y listo, tu vida se soluciona</span> <br>
-                    <a href="prestamo.php"><input type="button" value="PEDIR PRESTAMO"></a>
+        <div class="row justify-content-center mt-5 mb-5 ">
+            
+            <div class="col-md-5  justify-content-center text-center cuadro2">
+                <div class="mt-5 mb-5">
+                    <h1 class="text-pink m-2">PRESTATARIO</h1>
+                    <h2 class="text-body">¿Se te hace muy tedioso ir a un banco?</h2>
+                    <span class="text-body m-2">Pues estafa a uno de estos wbds y listo, tu vida se soluciona</span> <br>
+                    <a href="prestamo.php"><input type="button" value="PEDIR PRESTAMO" class=" btn btn-outline-purple m-2"></a>
                     
                 </div>
-
+            </div>
+                <div class="col-md-4 ">
+                    <div height="100px">
+                        <img src="../recursos/prestatario.jpg" height="300px">
+                    </div>
             </div>
         </div>
     </section>
